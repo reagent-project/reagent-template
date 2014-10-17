@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="app"></div>
+    {% if dev %}
+      {% script "/js/out/goog/base.js" %}
+      {% script "/react/react.js" %}
+      {% script "goog.require('{{project-goog-module}}.dev')" %}
+    {% endif %}
+    <script src="/js/app.js" type="text/javascript"></script>
+  </body>
+</html>
