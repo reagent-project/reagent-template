@@ -47,7 +47,8 @@
 
                    :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.1"]
-                                  [pjstadig/humane-test-output "0.6.0"]]
+                                  [pjstadig/humane-test-output "0.6.0"]
+                                  [prone "0.6.0"]]
 
                    :plugins [[lein-figwheel "0.1.4-SNAPSHOT"]{{{project-dev-plugins}}}]
 
