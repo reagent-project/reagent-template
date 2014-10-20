@@ -1,6 +1,8 @@
 reagent-template
 ================
 
+## WORK IN PROGRESS!
+
 A Leiningen template for projects using Reagent.
 
 A Leiningen template for a Clojure/ClojureScript app based on Reagent,
