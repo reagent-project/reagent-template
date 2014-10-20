@@ -6,4 +6,3 @@
 (defn init! []
   (reagent/render-component [:h1 (:text @app-state)] (.getElementById js/document "app")))
 
-(init!)

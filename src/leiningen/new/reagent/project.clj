@@ -76,13 +76,13 @@
                                     :output-path "target/generated/cljs"
                                     :rules :cljs}]}
                    {{/cljx-build?}}
-                   :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]}}}}
+                   :cljsbuild {:builds {:dev {:source-paths ["env/dev/cljs"]}}}}
 
              :uberjar {:hooks [{{cljx-uberjar-hook}}leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
                        :omit-source true
                        :aot :all
-                       :cljsbuild {:builds {:app
+                       :cljsbuild {:builds {:release
                                             {:source-paths ["env/prod/cljs"]
                                              :compiler
                                              {:optimizations :advanced
