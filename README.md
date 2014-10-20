@@ -18,7 +18,7 @@ create a new project:
 lein new reagent <name>
 ```
 
-to enable support use `+cljx` flag:
+to enable [cljx](https://github.com/lynaghk/cljx) support use `+cljx` flag:
 
 ```
 lein new reagent <name> +cljx
