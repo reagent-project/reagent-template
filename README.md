@@ -47,7 +47,5 @@ Wait a bit, then browse to [http://localhost:10555](http://localhost:10555).
 
 ```
 lein cljsbuild clean
-lein cljsbuild once release
 lein ring uberjar
-```
 ```

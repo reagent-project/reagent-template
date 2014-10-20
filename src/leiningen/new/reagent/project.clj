@@ -32,27 +32,16 @@
 
   :minify-assets
   {:assets
-    {"resources/public/css/site.min.css" "resources/css/site.css"}}
+    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
-  :cljsbuild {:builds
-              {:dev
-                {:source-paths ["src/cljs"{{{cljx-cljsbuild-spath}}}]
-                 :compiler
-                  {:output-to     "resources/public/js/app.js"
-                   :output-dir    "resources/public/js/out"
-                   :source-map    "resources/public/js/out.js.map"
-                   :externs       ["react/externs/react.js"]
-                   :optimizations :none
-                   :pretty-print  true}}
-               :release
-                {:source-paths ["src-cljs"]
-                 :compiler
-                  {:output-to        "resources/public/js/app.js"
-                   :optimizations    :advanced
-                   :pretty-print     false
-                   :output-wrapper   false
-                   :closure-warnings {:non-standard-jsdoc :off}}}}}
-
+  :cljsbuild {:builds {:app {:source-paths ["src/cljs"{{{cljx-cljsbuild-spath}}}]
+                             :compiler {:output-to     "resources/public/js/app.js"
+                                        :output-dir    "resources/public/js/out"
+                                        :source-map    "resources/public/js/out.js.map"
+                                        :preamble      ["react/react.min.js"]
+                                        :externs       ["react/externs/react.js"]
+                                        :optimizations :none
+                                        :pretty-print  true}}}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.handler
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
@@ -76,13 +65,13 @@
                                     :output-path "target/generated/cljs"
                                     :rules :cljs}]}
                    {{/cljx-build?}}
-                   :cljsbuild {:builds {:dev {:source-paths ["env/dev/cljs"]}}}}
+                   :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]}}}}
 
              :uberjar {:hooks [{{cljx-uberjar-hook}}leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
                        :omit-source true
                        :aot :all
-                       :cljsbuild {:builds {:release
+                       :cljsbuild {:builds {:app
                                             {:source-paths ["env/prod/cljs"]
                                              :compiler
                                              {:optimizations :advanced
