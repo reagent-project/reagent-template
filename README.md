@@ -12,17 +12,26 @@ In addition, the template provides the artifacts necessary for Heroku deployment
 
 ## Usage
 
+create a new project:
 ```
 lein new reagent <name>
 ```
 
-Once the project is created you will need to start the ClojureScript compiler:
+### Development mode
+
+start the server:
+
+```
+lein ring server
+```
+
+start the ClojureScript compiler:
 
 ```
 lein cljsbuild auto
 ```
 
-Once the compiler finishes you can connect to it from the REPL as follows:
+start the browser REPL:
 
 ```
 $ lein repl
@@ -32,3 +41,13 @@ $ lein repl
 ```
 
 Wait a bit, then browse to [http://localhost:10555](http://localhost:10555).
+
+
+### Building for release
+
+```
+lein cljsbuild clean
+lein cljsbuild once release
+lein ring uberjar
+```
+```
