@@ -41,9 +41,6 @@
    :project-goog-module (sanitize (sanitize-ns name))
    :project-ns (sanitize-ns name)
    :sanitized (name-to-path name)
-   :server-clj-requires (dep-list 12 (server-clj-requires opts))
-   :core-cljs-requires (dep-list 12 (core-cljs-requires opts))
-   :project-clj-deps (dep-list 17 (project-clj-deps opts))
    :project-dev-plugins (dep-list 29 (project-plugins opts))
    :nrepl-middleware (indent 53 (project-nrepl-middleware opts))
 
@@ -61,8 +58,8 @@
               ["project.clj"
                (render "project.clj" data)]
               ["resources/templates/index.html" (render "resources/templates/index.html" data)]
-              ["resources/public/css/style.css" (render "resources/public/css/style.css" data)]
-              ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
+              ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
+              ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/dev.clj" (render "src/clj/reagent/dev.clj" data)]
               ["src/cljs/{{sanitized}}/core.cljs" (render "src/cljs/reagent/core.cljs" data)]
               ["env/dev/cljs/{{sanitized}}/dev.cljs" (render "env/dev/cljs/reagent/dev.cljs" data)]
