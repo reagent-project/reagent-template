@@ -13,8 +13,15 @@ In addition, the template provides the artifacts necessary for Heroku deployment
 ## Usage
 
 create a new project:
+
 ```
 lein new reagent <name>
+```
+
+to enable support use `+cljx` flag:
+
+```
+lein new reagent <name> +cljx
 ```
 
 ### Development mode
