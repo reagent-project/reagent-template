@@ -46,7 +46,14 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.handler
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
 
+                   :dependencies [[ring-mock "0.1.5"]
+                                  [ring/ring-devel "1.3.1"]
+                                  [pjstadig/humane-test-output "0.6.0"]]
+
                    :plugins [[lein-figwheel "0.1.4-SNAPSHOT"]{{{project-dev-plugins}}}]
+
+                   :injections [(require 'pjstadig.humane-test-output)
+                                (pjstadig.humane-test-output/activate!)]
 
                    :figwheel {:http-server-root "public"
                               :port 3449
@@ -66,6 +73,10 @@
                                     :rules :cljs}]}
                    {{/cljx-build?}}
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]}}}}
+
+             :production {:ring {:open-browser? false
+                       :stacktraces?  false
+                       :auto-reload?  false}}
 
              :uberjar {:hooks [{{cljx-uberjar-hook}}leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
