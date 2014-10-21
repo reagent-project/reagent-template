@@ -13,6 +13,7 @@
                  [compojure "1.2.0"]
                  [selmer "0.7.2"]
                  [reagent "0.4.2"]
+                 [reagent-utils "0.1.0"]
                  [figwheel "0.1.4-SNAPSHOT"]
                  [environ "1.0.0"]
                  [com.cemerick/piggieback "0.1.3"]
