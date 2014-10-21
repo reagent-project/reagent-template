@@ -28,7 +28,7 @@ lein ring server
 start the ClojureScript compiler:
 
 ```
-lein cljsbuild auto
+lein cljsbuild once
 ```
 
 start the browser REPL:
@@ -37,7 +37,7 @@ start the browser REPL:
 $ lein repl
 
 (run)
-(browser-repl)
+(start-figwheel)
 ```
 
 Wait a bit, then browse to [http://localhost:10555](http://localhost:10555).
