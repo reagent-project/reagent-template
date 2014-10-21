@@ -43,7 +43,6 @@ start the browser REPL:
 ```
 $ lein repl
 
-(run)
 (start-figwheel)
 ```
 
