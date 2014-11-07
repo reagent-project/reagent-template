@@ -14,5 +14,4 @@
 
 (def app
   (let [handler (wrap-defaults routes site-defaults)]
-    (if (env :dev?)
-      (wrap-exceptions handler) handler)))
+    (if (env :dev?) (wrap-exceptions handler) handler)))

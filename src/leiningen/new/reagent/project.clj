@@ -20,7 +20,8 @@
                  [weasel "0.4.0-SNAPSHOT"]
                  [ring/ring-defaults "0.1.2"]
                  [leiningen "2.5.0"]
-                 [secretary "1.2.0"]]
+                 [secretary "1.2.0"]
+                 [prone "0.6.0"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-environ "1.0.0"]
@@ -50,8 +51,7 @@
 
                    :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.1"]
-                                  [pjstadig/humane-test-output "0.6.0"]
-                                  [prone "0.6.0"]]
+                                  [pjstadig/humane-test-output "0.6.0"]]
 
                    :plugins [[lein-figwheel "0.1.4-SNAPSHOT"]{{{project-dev-plugins}}}]
 
