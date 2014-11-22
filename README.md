@@ -18,14 +18,14 @@ Create a new application project:
 lein new reagent <name>
 ```
 
-Create a new library project (development dependencies are moved into the :dev profile.) :
+Create a new library project (development dependencies are moved into the :dev profile) :
 
 ```
 lein new reagent <name> +lib
 ```
 
 
-to enable [cljx](https://github.com/lynaghk/cljx) support use `+cljx` flag:
+To enable [cljx](https://github.com/lynaghk/cljx) support use `+cljx` flag:
 
 ```
 lein new reagent <name> +cljx
@@ -35,19 +35,25 @@ When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespace
 
 ### Development mode
 
-start the server:
+Start the server:
 
 ```
 lein ring server
 ```
 
-start the ClojureScript compiler:
+If you don't plan on using the optional development tools, you will
+have to manually compile the cljs files:
 
 ```
 lein cljsbuild once
 ```
 
-start the browser REPL:
+Wait a bit, then browse to [http://localhost:3000](http://localhost:3000).
+
+
+#### Optional development tools
+
+Automatically push cljs changes to the browser:
 
 ```
 $ lein repl
@@ -55,7 +61,13 @@ $ lein repl
 (start-figwheel)
 ```
 
-Wait a bit, then browse to [http://localhost:3000](http://localhost:3000).
+Start the browser REPL:
+
+```
+$ lein repl
+
+(browser-repl)
+```
 
 
 ### Building for release
