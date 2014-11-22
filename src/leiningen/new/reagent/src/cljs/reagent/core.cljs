@@ -18,11 +18,11 @@
 ;; -------------------------
 ;; Views
 (defn page1 []
-  [:div (get-state :text) "Page 1"
+  [:div [:h2 (get-state :text) "Page 1"]
    [:div [:a {:href "#/page2"} "go to page 2"]]])
 
 (defn page2 []
-  [:div (get-state :text) "Page 2"
+  [:div [:h2 (get-state :text) "Page 2"]
    [:div [:a {:href "#/"} "go to page 1"]]])
 
 (defn main-page []
