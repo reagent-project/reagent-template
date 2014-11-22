@@ -6,6 +6,7 @@
 
 (def render (renderer "reagent"))
 
+
 (defn wrap-indent [wrap n list]
   (fn []
     (->> list
@@ -17,6 +18,58 @@
 
 (defn indent [n list]
   (wrap-indent identity n list))
+
+
+
+
+;;; Some libraries and plugins should not be included as dependencies
+;;; if we are only making a library instead of an app.
+
+(defn lib? [opts]
+  (some #{"+lib"} opts))
+
+(def lib-or-app-dependencies
+  "Dependencies for development or as part of an app."
+  '[[org.clojure/clojurescript "0.0-2371" :scope "provided"]
+    [com.cemerick/piggieback "0.1.3"]
+    [weasel "0.4.0-SNAPSHOT"]
+    [ring "1.3.1"]
+    [ring/ring-defaults "0.1.2"]
+    [prone "0.6.0"]
+    [compojure "1.2.0"]
+    [selmer "0.7.2"]
+    [environ "1.0.0"]
+    [leiningen "2.5.0"]
+    [figwheel "0.1.5-SNAPSHOT"]
+    [prone "0.6.0"]])
+
+(def lib-or-app-plugins
+  "Plugins for development or as part of an app."
+  '[[lein-cljsbuild "1.0.3"]
+    [lein-environ "1.0.0"]
+    [lein-ring "0.8.13"]
+    [lein-asset-minifier "0.2.0"]])
+
+(defn app-dependencies [opts]
+  (when-not (lib? opts)
+    ((wrap-indent str 17 lib-or-app-dependencies))))
+
+(defn lib-dependencies [opts]
+  (when (lib? opts)
+    ((wrap-indent str 34 lib-or-app-dependencies))))
+    
+
+(defn app-plugins [opts]
+  (when-not (lib? opts)
+    (str ":plugins ["((wrap-indent str 12 lib-or-app-plugins))"]")))
+
+(defn lib-plugins [opts]
+  (when (lib? opts)
+    ((wrap-indent str 29 lib-or-app-plugins))))
+    
+
+
+
 
 (defn cljx? [opts]
   (some #{"+cljx"} opts))
@@ -44,6 +97,12 @@
    :project-dev-plugins (dep-list 29 (project-plugins opts))
    :nrepl-middleware (indent 53 (project-nrepl-middleware opts))
 
+   :app-dependencies (app-dependencies opts)
+   :lib-dependencies (lib-dependencies opts)
+
+   :app-plugins (app-plugins opts)
+   :lib-plugins (lib-plugins opts)
+   
    ;; cljx
    :cljx-source-paths (if (cljx? opts) cljx-source-paths "")
    :cljx-extension (if (cljx? opts) "|\\.cljx")
