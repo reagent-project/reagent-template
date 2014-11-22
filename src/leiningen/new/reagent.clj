@@ -73,7 +73,7 @@
              ["Procfile" (render "Procfile" data)]]]
 
     (if (cljx? opts)
-      (conj args ["src/cljx/{{sanitized}}/core.cljx" (render "src/cljx/reagent/core.cljx" data)])
+      (conj args ["src/cljx/{{sanitized}}/util.cljx" (render "src/cljx/reagent/util.cljx" data)])
       args)))
 
 (defn reagent [name & opts]
