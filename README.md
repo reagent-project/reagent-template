@@ -18,8 +18,7 @@ Create a new application project:
 lein new reagent <name>
 ```
 
-Create a new library project:
-(Development dependencies are moved into the :dev profile.)
+Create a new library project (development dependencies are moved into the :dev profile.) :
 
 ```
 lein new reagent <name> +lib
