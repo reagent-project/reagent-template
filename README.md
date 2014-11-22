@@ -23,6 +23,8 @@ to enable [cljx](https://github.com/lynaghk/cljx) support use `+cljx` flag:
 ```
 lein new reagent <name> +cljx
 ```
+When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespaces.
+
 
 ### Development mode
 
