@@ -12,11 +12,19 @@ In addition, the template provides the artifacts necessary for Heroku deployment
 
 ## Usage
 
-create a new project:
+Create a new application project:
 
 ```
 lein new reagent <name>
 ```
+
+Create a new library project:
+(Development dependencies are moved into the :dev profile.)
+
+```
+lein new reagent <name> +lib
+```
+
 
 to enable [cljx](https://github.com/lynaghk/cljx) support use `+cljx` flag:
 
@@ -48,7 +56,7 @@ $ lein repl
 (start-figwheel)
 ```
 
-Wait a bit, then browse to [http://localhost:10555](http://localhost:10555).
+Wait a bit, then browse to [http://localhost:3000](http://localhost:3000).
 
 
 ### Building for release

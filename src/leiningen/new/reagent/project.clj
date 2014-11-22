@@ -7,26 +7,11 @@
   :source-paths ["src/clj" "src/cljs"{{{cljx-source-paths}}}]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2371" :scope "provided"]
-                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
-                 [ring "1.3.1"]
-                 [compojure "1.2.0"]
-                 [selmer "0.7.2"]
                  [reagent "0.4.2"]
                  [reagent-utils "0.1.0"]
-                 [figwheel "0.1.4-SNAPSHOT"]
-                 [environ "1.0.0"]
-                 [com.cemerick/piggieback "0.1.3"]
-                 [weasel "0.4.0-SNAPSHOT"]
-                 [ring/ring-defaults "0.1.2"]
-                 [leiningen "2.5.0"]
-                 [secretary "1.2.0"]
-                 [prone "0.6.0"]]
+                 [secretary "1.2.0"]{{{app-dependencies}}}]
 
-  :plugins [[lein-cljsbuild "1.0.3"]
-            [lein-environ "1.0.0"]
-            [lein-ring "0.8.13"]
-            [lein-asset-minifier "0.2.0"]]
+  {{{app-plugins}}}
 
   :ring {:handler {{project-ns}}.handler/app}
 
@@ -51,9 +36,9 @@
 
                    :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.1"]
-                                  [pjstadig/humane-test-output "0.6.0"]]
+                                  [pjstadig/humane-test-output "0.6.0"]{{{lib-dependencies}}}]
 
-                   :plugins [[lein-figwheel "0.1.4-SNAPSHOT"]{{{project-dev-plugins}}}]
+                   :plugins [[lein-figwheel "0.1.4-SNAPSHOT"]{{{lib-plugins}}}{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
