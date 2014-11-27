@@ -17,26 +17,32 @@
 
 ;; -------------------------
 ;; Views
-(defn page1 []
+
+(defmulti page identity)
+
+(defmethod page :page1 [_]
   [:div [:h2 (get-state :text) "Page 1"]
    [:div [:a {:href "#/page2"} "go to page 2"]]])
 
-(defn page2 []
+(defmethod page :page2 [_]
   [:div [:h2 (get-state :text) "Page 2"]
    [:div [:a {:href "#/"} "go to page 1"]]])
 
+(defmethod page :default [_]
+  [:div "Invalid/Unknown route"])
+
 (defn main-page []
-  [:div [(get-state :current-page)]])
+  [:div [page (get-state :current-page)]])
 
 ;; -------------------------
 ;; Routes
 (secretary/set-config! :prefix "#")
 
 (secretary/defroute "/" []
-  (put! :current-page page1))
+  (put! :current-page :page1))
 
 (secretary/defroute "/page2" []
-  (put! :current-page page2))
+  (put! :current-page :page2))
 
 ;; -------------------------
 ;; Initialize app
