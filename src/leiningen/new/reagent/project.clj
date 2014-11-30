@@ -44,7 +44,7 @@
                                 (pjstadig.humane-test-output/activate!)]
 
                    :figwheel {:http-server-root "public"
-                              :port 3449
+                              :server-port 3449
                               :css-dirs ["resources/public/css"]}
 
                    :env {:dev? true}
