@@ -40,8 +40,7 @@
     [selmer "0.7.2"]
     [environ "1.0.0"]
     [leiningen "2.5.0"]
-    [figwheel "0.1.5-SNAPSHOT"]
-    [prone "0.6.0"]])
+    [figwheel "0.1.5-SNAPSHOT"]])
 
 (def lib-or-app-plugins
   "Plugins for development or as part of an app."
