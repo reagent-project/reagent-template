@@ -50,7 +50,7 @@
                    :env {:dev? true}
 
                    {{#cljx-hook?}}
-                   :prep-tasks ["cljx once"]
+                   :prep-tasks [["cljx" "once"]]
                    {{/cljx-hook?}}
                    {{#cljx-build?}}
                    :cljx {:builds [{:source-paths ["src/cljx"]
