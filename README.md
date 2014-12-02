@@ -56,7 +56,7 @@ Wait a bit, then browse to [http://localhost:3000](http://localhost:3000).
 Automatically push cljs changes to the browser:
 
 ```
-$ lein repl
+$ lein figwheel
 
 (start-figwheel)
 ```
