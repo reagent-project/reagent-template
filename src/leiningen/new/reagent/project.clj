@@ -8,9 +8,9 @@
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [com.facebook/react "0.11.2"]
-                 [reagent "4.3.0"]
+                 [reagent "0.4.3"]
                  [reagent-utils "0.1.0"]
-                 [secretary "1.2.0"]{{{app-dependencies}}}]
+                 [secretary "1.2.1"]{{{app-dependencies}}}]
 
   {{{app-plugins}}}
 
@@ -36,7 +36,7 @@
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
 
                    :dependencies [[ring-mock "0.1.5"]
-                                  [ring/ring-devel "1.3.1"]
+                                  [ring/ring-devel "1.3.2"]
                                   [pjstadig/humane-test-output "0.6.0"]{{{lib-dependencies}}}]
 
                    :plugins [[lein-figwheel "0.1.4-SNAPSHOT"]{{{lib-plugins}}}{{{project-dev-plugins}}}]

@@ -1,53 +1,39 @@
 (ns {{project-ns}}.core
     (:require [reagent.core :as reagent :refer [atom]]
+              [reagent.session :as session]
               [secretary.core :as secretary :include-macros true]
               [goog.events :as events]
               [goog.history.EventType :as EventType])
     (:import goog.History))
 
 ;; -------------------------
-;; State
-(defonce app-state (atom {:text "Hello, this is: "}))
-
-(defn get-state [k & [default]]
-  (clojure.core/get @app-state k default))
-
-(defn put! [k v]
-  (swap! app-state assoc k v))
-
-;; -------------------------
 ;; Views
 
-(defmulti page identity)
+(defn home-page []
+  [:div [:h2 "Welcome to {{name}}"]
+   [:div [:a {:href "#/about"} "go to about page"]]])
 
-(defmethod page :page1 [_]
-  [:div [:h2 (get-state :text) "Page 1"]
-   [:div [:a {:href "#/page2"} "go to page 2"]]])
+(defn about-page []
+  [:div [:h2 "About {{name}}"]
+   [:div [:a {:href "#/"} "go to the home page"]]])
 
-(defmethod page :page2 [_]
-  [:div [:h2 (get-state :text) "Page 2"]
-   [:div [:a {:href "#/"} "go to page 1"]]])
-
-(defmethod page :default [_]
-  [:div "Invalid/Unknown route"])
-
-(defn main-page []
-  [:div [page (get-state :current-page)]])
+(defn current-page []
+  [:div [(session/get :current-page)]])
 
 ;; -------------------------
 ;; Routes
 (secretary/set-config! :prefix "#")
 
 (secretary/defroute "/" []
-  (put! :current-page :page1))
+  (session/put! :current-page home-page))
 
-(secretary/defroute "/page2" []
-  (put! :current-page :page2))
+(secretary/defroute "/about" []
+  (session/put! :current-page about-page))
 
 ;; -------------------------
 ;; Initialize app
 (defn init! []
-  (reagent/render-component [main-page] (.getElementById js/document "app")))
+  (reagent/render-component [current-page] (.getElementById js/document "app")))
 
 ;; -------------------------
 ;; History

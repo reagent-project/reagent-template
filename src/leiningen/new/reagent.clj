@@ -30,14 +30,14 @@
 
 (def lib-or-app-dependencies
   "Dependencies for development or as part of an app."
-  '[[org.clojure/clojurescript "0.0-2371" :scope "provided"]
+  '[[org.clojure/clojurescript "0.0-2496" :scope "provided"]
     [com.cemerick/piggieback "0.1.3"]
-    [weasel "0.4.0-SNAPSHOT"]
-    [ring "1.3.1"]
+    [weasel "0.4.2"]
+    [ring "1.3.2"]
     [ring/ring-defaults "0.1.2"]
-    [prone "0.6.0"]
+    [prone "0.8.0"]
     [compojure "1.3.1"]
-    [selmer "0.7.2"]
+    [selmer "0.7.7"]
     [environ "1.0.0"]
     [leiningen "2.5.0"]
     [figwheel "0.1.5-SNAPSHOT"]])
@@ -56,7 +56,7 @@
 (defn lib-dependencies [opts]
   (when (lib? opts)
     ((wrap-indent str 34 lib-or-app-dependencies))))
-    
+
 
 (defn app-plugins [opts]
   (when-not (lib? opts)
@@ -65,7 +65,7 @@
 (defn lib-plugins [opts]
   (when (lib? opts)
     ((wrap-indent str 29 lib-or-app-plugins))))
-    
+
 
 
 
@@ -101,7 +101,7 @@
 
    :app-plugins (app-plugins opts)
    :lib-plugins (lib-plugins opts)
-   
+
    ;; cljx
    :cljx-source-paths (if (cljx? opts) cljx-source-paths "")
    :cljx-extension (if (cljx? opts) "|\\.cljx")
