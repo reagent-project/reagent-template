@@ -8,7 +8,7 @@
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [com.facebook/react "0.11.2"]
-                 [reagent "4.3.0"]
+                 [reagent "0.4.3"]
                  [reagent-utils "0.1.0"]
                  [secretary "1.2.0"]{{{app-dependencies}}}]
 
