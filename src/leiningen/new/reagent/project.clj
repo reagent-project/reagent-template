@@ -61,7 +61,7 @@
                                     :rules :cljs}]}
                    {{/cljx-build?}}
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {:source-map "resources/public/js/out.js.map"}}}}}
+                                              :compiler {:source-map true}}}}}
 
              :uberjar {:hooks [{{cljx-uberjar-hook}}leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
