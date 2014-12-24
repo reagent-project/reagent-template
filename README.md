@@ -41,7 +41,7 @@ To run the development server, run
 lein figwheel
 ```
 
-Wait a bit, then browse to [http://localhost:3000](http://localhost:3000).
+Wait a bit, then browse to [http://localhost:3000](http://localhost:3449).
 
 #### Optional development tools
 
