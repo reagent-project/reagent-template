@@ -67,6 +67,8 @@
                        :env {:production true}
                        :aot :all
                        :omit-source true
+                       ;;TODO: figure out how to clean properly
+                       ;:prep-tasks [["cljsbuild" "clean"]]
                        :cljsbuild {:jar true
                                    :builds {:app
                                              {:source-paths ["env/prod/cljs"]
