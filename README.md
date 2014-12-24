@@ -35,21 +35,13 @@ When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespace
 
 ### Development mode
 
-Start the server:
+To run the development server, run
 
 ```
-lein ring server
-```
-
-If you don't plan on using the optional development tools, you will
-have to manually compile the cljs files:
-
-```
-lein cljsbuild once
+lein figwheel
 ```
 
 Wait a bit, then browse to [http://localhost:3000](http://localhost:3000).
-
 
 #### Optional development tools
 
