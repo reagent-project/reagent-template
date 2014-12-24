@@ -45,7 +45,8 @@
 
                    :figwheel {:http-server-root "public"
                               :server-port 3449
-                              :css-dirs ["resources/public/css"]}
+                              :css-dirs ["resources/public/css"]
+                              :ring-handler {{project-ns}}.handler/app}
 
                    :env {:dev? true}
 
