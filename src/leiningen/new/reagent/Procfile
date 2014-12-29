@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -jar target/{{name}}.jar
+-web: lein with-profile production trampoline ring server
