@@ -40,18 +40,11 @@ To run the development server, run
 ```
 lein figwheel
 ```
+Figwheel will automatically push cljs changes to the browser.
 
 Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
 
 #### Optional development tools
-
-Automatically push cljs changes to the browser:
-
-```
-$ lein repl
-
-(start-figwheel)
-```
 
 Start the browser REPL:
 
@@ -60,7 +53,6 @@ $ lein repl
 
 (browser-repl)
 ```
-
 
 ### Building for release
 
