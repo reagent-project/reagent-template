@@ -1,7 +1,7 @@
 reagent-template
 ================
 
-A Leiningen template for projects using Reagent.
+A [Leiningen](http://leiningen.org/) template for projects using Reagent.
 
 A Leiningen template for a Clojure/ClojureScript app based on Reagent,
 with dynamic reloading of Clojure, ClojureScript, and CSS and a browser-connected REPL.
