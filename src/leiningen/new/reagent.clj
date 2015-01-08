@@ -30,24 +30,24 @@
 
 (def lib-or-app-dependencies
   "Dependencies for development or as part of an app."
-  '[[org.clojure/clojurescript "0.0-2496" :scope "provided"]
+  '[[org.clojure/clojurescript "0.0-2665" :scope "provided"]
     [com.cemerick/piggieback "0.1.3"]
     [weasel "0.4.2"]
     [ring "1.3.2"]
-    [ring/ring-defaults "0.1.2"]
+    [ring/ring-defaults "0.1.3"]
     [prone "0.8.0"]
     [compojure "1.3.1"]
-    [selmer "0.7.7"]
+    [selmer "0.7.9"]
     [environ "1.0.0"]
     [leiningen "2.5.0"]
-    [figwheel "0.1.5-SNAPSHOT"]])
+    [figwheel "0.1.6-SNAPSHOT"]])
 
 (def lib-or-app-plugins
   "Plugins for development or as part of an app."
-  '[[lein-cljsbuild "1.0.3"]
+  '[[lein-cljsbuild "1.0.4"]
     [lein-environ "1.0.0"]
     [lein-ring "0.8.13"]
-    [lein-asset-minifier "0.2.0"]])
+    [lein-asset-minifier "0.2.2"]])
 
 (defn app-dependencies [opts]
   (when-not (lib? opts)
@@ -74,7 +74,7 @@
   (some #{"+cljx"} opts))
 
 (def cljx-plugin
-  "com.keminglabs/cljx \"0.4.0\" :exclusions [org.clojure/clojure]")
+  "com.keminglabs/cljx \"0.5.0\" :exclusions [org.clojure/clojure]")
 
 (def cljx-source-paths
   " \"target/generated/clj\" \"target/generated/cljx\"")
