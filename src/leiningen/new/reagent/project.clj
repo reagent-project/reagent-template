@@ -9,7 +9,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [com.facebook/react "0.11.2"]
                  [reagent "0.4.3"]
-                 [reagent-utils "0.1.0"]
+                 [reagent-forms "0.3.9"]
+                 [reagent-utils "0.1.2"]
                  [secretary "1.2.1"]{{{app-dependencies}}}]
 
   {{{app-plugins}}}
@@ -19,6 +20,8 @@
   :min-lein-version "2.5.0"
 
   :uberjar-name "{{name}}.jar"
+
+  :clean-targets ^{:protect false} ["resources/public/js"]
 
   :minify-assets
   {:assets
@@ -68,8 +71,6 @@
                        :env {:production true}
                        :aot :all
                        :omit-source true
-                       ;;TODO: figure out how to clean properly
-                       ;:prep-tasks [["cljsbuild" "clean"]]
                        :cljsbuild {:jar true
                                    :builds {:app
                                              {:source-paths ["env/prod/cljs"]
