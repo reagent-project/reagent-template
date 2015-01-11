@@ -15,7 +15,8 @@
 
   {{{app-plugins}}}
 
-  :ring {:handler {{project-ns}}.handler/app}
+  :ring {:handler {{project-ns}}.handler/app
+         :uberwar-name "{{name}}.war"}
 
   :min-lein-version "2.5.0"
 
