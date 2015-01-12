@@ -30,9 +30,9 @@
 
 (def lib-or-app-dependencies
   "Dependencies for development or as part of an app."
-  '[[org.clojure/clojurescript "0.0-2657" :scope "provided"]
-    [com.cemerick/piggieback "0.1.3"]
-    [weasel "0.4.2"]
+  '[[org.clojure/clojurescript "0.0-2665" :scope "provided"]
+    [com.cemerick/piggieback "0.1.4"]
+    [weasel "0.5.0"]
     [ring "1.3.2"]
     [ring/ring-defaults "0.1.3"]
     [prone "0.8.0"]
