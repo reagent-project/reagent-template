@@ -18,6 +18,14 @@ Create a new application project:
 lein new reagent <name>
 ```
 
+To enable [clojurescript testing](https://github.com/cemerick/clojurescript.test), use `+test` flag:
+
+```
+lein new reagent <name> +test
+```
+To run the tests, please use `lein cljsbuild test`.
+
+
 Create a new library project (development dependencies are moved into the :dev profile) :
 
 ```
