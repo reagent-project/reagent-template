@@ -67,7 +67,12 @@
     ((wrap-indent str 29 lib-or-app-plugins))))
 
 
+(defn test? [opts]
+  (some #{"+test"} opts))
 
+(def test-plugin "com.cemerick/clojurescript.test \"0.3.3\"")
+
+(def test-source-paths "\"src/cljs\" \"test/cljs\"")
 
 
 (defn cljx? [opts]
@@ -81,7 +86,8 @@
 
 (defn project-plugins [opts]
   (cond-> []
-          (cljx? opts) (conj cljx-plugin)))
+    (cljx? opts) (conj cljx-plugin)
+    (test? opts) (conj test-plugin)))
 
 (defn project-nrepl-middleware [opts]
   (cond-> []
@@ -108,7 +114,10 @@
    :cljx-cljsbuild-spath (if (cljx? opts) " \"target/generated/cljs\"" "")
    :cljx-hook? (fn [block] (if (cljx? opts) (str block "\n") ""))
    :cljx-build? (fn [block] (if (cljx? opts) (str block "\n") ""))
-   :cljx-uberjar-hook (if (cljx? opts) "cljx.hooks " "")})
+   :cljx-uberjar-hook (if (cljx? opts) "cljx.hooks " "")
+
+   ;; test
+   :test-hook? (fn [block] (if (test? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)
@@ -128,11 +137,19 @@
 
              ;; Heroku support
              ["system.properties" (render "system.properties" data)]
-             ["Procfile" (render "Procfile" data)]]]
+              ["Procfile" (render "Procfile" data)]]
+        args (if (cljx? opts)
+               (conj args ["src/cljx/{{sanitized}}/util.cljx" (render "src/cljx/reagent/util.cljx" data)])
+               args)
+        args (if (test? opts)
+               (conj args ["test/cljs/{{sanitized}}/core_test.cljs" (render "test/cljs/reagent/core_test.cljs" data)]
+                     ["test/vendor/console-polyfill.js" (render "test/vendor/console-polyfill.js" data)]
+                     ["test/vendor/es5-sham.js" (render "test/vendor/es5-sham.js" data)]
+                     ["test/vendor/es5-shim.js" (render "test/vendor/es5-shim.js" data)])
+               args)]
+    args
 
-    (if (cljx? opts)
-      (conj args ["src/cljx/{{sanitized}}/util.cljx" (render "src/cljx/reagent/util.cljx" data)])
-      args)))
+    ))
 
 (defn reagent [name & opts]
   (main/info "Generating fresh 'lein new' Reagent project.")

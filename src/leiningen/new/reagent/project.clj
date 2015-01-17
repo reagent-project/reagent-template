@@ -33,7 +33,18 @@
                                         :output-dir    "resources/public/js/out"
                                         :externs       ["react/externs/react.js"]
                                         :optimizations :none
-                                        :pretty-print  true}}}}
+                                        :pretty-print  true}}
+                       {{#test-hook?}}
+                       :test {:source-paths ["src/cljs" {{{cljx-cljsbuild-spath}}} "test/cljs"]
+                              :compiler {:output-to "target/test.js"
+                                         :optimizations :whitespace
+                                         :pretty-print true
+                                         :preamble ["react/react.js"]}}{{/test-hook?}}}{{#test-hook?}}
+              :test-commands {"unit" ["phantomjs" :runner
+                                      "test/vendor/es5-shim.js"
+                                      "test/vendor/es5-sham.js"
+                                      "test/vendor/console-polyfill.js"
+                                      "target/test.js"]}{{/test-hook?}}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.handler
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
