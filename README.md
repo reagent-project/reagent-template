@@ -18,12 +18,12 @@ Create a new application project:
 lein new reagent <name>
 ```
 
-To enable [clojurescript testing](https://github.com/cemerick/clojurescript.test), use `+test` flag:
+To enable [clojurescript testing](https://github.com/cemerick/clojurescript.test) with [PhantomJS](http://phantomjs.org/), use `+test` flag:
 
 ```
 lein new reagent <name> +test
 ```
-To run the tests, please use `lein cljsbuild test`.
+To run the tests, please use `lein cljsbuild test`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
 
 
 Create a new library project (development dependencies are moved into the :dev profile) :
