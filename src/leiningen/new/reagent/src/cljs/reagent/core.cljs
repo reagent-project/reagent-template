@@ -31,12 +31,8 @@
   (session/put! :current-page about-page))
 
 ;; -------------------------
-;; Initialize app
-(defn init! []
-  (reagent/render-component [current-page] (.getElementById js/document "app")))
-
-;; -------------------------
 ;; History
+;; must be called after routes have been defined
 (defn hook-browser-navigation! []
   (doto (History.)
     (events/listen
@@ -44,5 +40,9 @@
      (fn [event]
        (secretary/dispatch! (.-token event))))
     (.setEnabled true)))
-;; need to run this after routes have been defined
-(hook-browser-navigation!)
+
+;; -------------------------
+;; Initialize app
+(defn init! []
+  (hook-browser-navigation!)
+  (reagent/render-component [current-page] (.getElementById js/document "app")))
