@@ -33,18 +33,7 @@
                                         :output-dir    "resources/public/js/out"
                                         :externs       ["react/externs/react.js"]
                                         :optimizations :none
-                                        :pretty-print  true}}
-                       {{#test-hook?}}
-                       :test {:source-paths ["src/cljs" {{{cljx-cljsbuild-spath}}} "test/cljs"]
-                              :compiler {:output-to "target/test.js"
-                                         :optimizations :whitespace
-                                         :pretty-print true
-                                         :preamble ["react/react.js"]}}{{/test-hook?}}}{{#test-hook?}}
-              :test-commands {"unit" ["phantomjs" :runner
-                                      "test/vendor/es5-shim.js"
-                                      "test/vendor/es5-sham.js"
-                                      "test/vendor/console-polyfill.js"
-                                      "target/test.js"]}{{/test-hook?}}}
+                                        :pretty-print  true}}}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.handler
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
@@ -77,7 +66,19 @@
                                     :rules :cljs}]}
                    {{/cljx-build?}}
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {:source-map true}}}}}
+                                              :compiler {:source-map true}}
+                                        {{#test-hook?}}
+                                        :test {:source-paths ["src/cljs" {{{cljx-cljsbuild-spath}}} "test/cljs"]
+                                               :compiler {:output-to "target/test.js"
+                                                          :optimizations :whitespace
+                                                          :pretty-print true
+                                                          :preamble ["react/react.js"]}}{{/test-hook?}}}
+                               {{#test-hook?}}
+                               :test-commands {"unit" ["phantomjs" :runner
+                                                       "test/vendor/es5-shim.js"
+                                                       "test/vendor/es5-sham.js"
+                                                       "test/vendor/console-polyfill.js"
+                                                       "target/test.js"]}{{/test-hook?}}}}
 
              :uberjar {:hooks [{{cljx-uberjar-hook}}leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
