@@ -39,7 +39,7 @@
     [compojure "1.3.1"]
     [selmer "0.7.9"]
     [environ "1.0.0"]
-    [leiningen "2.5.0"]
+    [leiningen "2.5.1"]
     [figwheel "0.1.6-SNAPSHOT"]])
 
 (def lib-or-app-plugins
