@@ -31,7 +31,7 @@
 (def lib-or-app-dependencies
   "Dependencies for development or as part of an app."
   '[[org.clojure/clojurescript "0.0-2665" :scope "provided"]
-    [com.cemerick/piggieback "0.1.4"]
+    [com.cemerick/piggieback "0.1.5"]
     [weasel "0.5.0"]
     [ring "1.3.2"]
     [ring/ring-defaults "0.1.3"]
