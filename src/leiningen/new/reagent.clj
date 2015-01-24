@@ -127,6 +127,7 @@
               ["resources/templates/index.html" (render "resources/templates/index.html" data)]
               ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
+              ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
               ["src/clj/{{sanitized}}/dev.clj" (render "src/clj/reagent/dev.clj" data)]
               ["src/cljs/{{sanitized}}/core.cljs" (render "src/cljs/reagent/core.cljs" data)]
               ["env/dev/cljs/{{sanitized}}/dev.cljs" (render "env/dev/cljs/reagent/dev.cljs" data)]

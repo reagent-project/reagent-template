@@ -22,6 +22,8 @@
 
   :uberjar-name "{{name}}.jar"
 
+  :main {{project-ns}}.server
+
   :clean-targets ^{:protect false} ["resources/public/js"]
 
   :minify-assets
