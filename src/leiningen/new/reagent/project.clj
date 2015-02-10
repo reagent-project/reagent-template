@@ -49,6 +49,7 @@
                                   [com.cemerick/piggieback "0.1.6-SNAPSHOT"]
                                   [pjstadig/humane-test-output "0.6.0"]{{{lib-dependencies}}}]
 
+                   :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.2.3-SNAPSHOT"]{{{lib-plugins}}}{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
