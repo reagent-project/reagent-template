@@ -1,7 +1,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/site.css">
+    {% if dev %}
+      {% style "css/site.css" %}
+    {% else %}
+      {% style "css/site.min.css" %}
+    {% endif %}
   </head>
   <body>
     <div id="app"></div>
