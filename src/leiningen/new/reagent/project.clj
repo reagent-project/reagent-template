@@ -7,8 +7,8 @@
   :source-paths ["src/clj" "src/cljs"{{{cljx-source-paths}}}]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [com.facebook/react "0.11.2"]
-                 [reagent "0.4.3"]
+                 [cljsjs/react "0.12.2-5"]
+                 [reagent "0.5.0-alpha3"]
                  [reagent-forms "0.4.3"]
                  [reagent-utils "0.1.2"]
                  [secretary "1.2.1"]{{{app-dependencies}}}]
@@ -33,7 +33,8 @@
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"{{{cljx-cljsbuild-spath}}}]
                              :compiler {:output-to     "resources/public/js/app.js"
                                         :output-dir    "resources/public/js/out"
-                                        :externs       ["react/externs/react.js"]
+                                        ;;:externs       ["react/externs/react.js"]
+                                        :asset-path   "js/out"
                                         :optimizations :none
                                         :pretty-print  true}}}}
 
@@ -44,7 +45,7 @@
                                   [ring/ring-devel "1.3.2"]
                                   [pjstadig/humane-test-output "0.6.0"]{{{lib-dependencies}}}]
 
-                   :plugins [[lein-figwheel "0.2.0-SNAPSHOT"]{{{lib-plugins}}}{{{project-dev-plugins}}}]
+                   :plugins [[lein-figwheel "0.2.3-SNAPSHOT"]{{{lib-plugins}}}{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
@@ -68,7 +69,8 @@
                                     :rules :cljs}]}
                    {{/cljx-build?}}
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {:source-map true}}
+                                              :compiler {   :main "{{name}}.dev"
+                                                         :source-map true}}
                                         {{#test-hook?}}
                                         :test {:source-paths ["src/cljs" {{{cljx-cljsbuild-spath}}} "test/cljs"]
                                                :compiler {:output-to "target/test.js"
@@ -95,4 +97,6 @@
 
              :production {:ring {:open-browser? false
                                  :stacktraces?  false
-                                 :auto-reload?  false}}})
+                                 :auto-reload?  false}
+                          :cljsbuild {:builds {:app {:compiler {:main "{{name}}.prod"}}}}
+                          }})
