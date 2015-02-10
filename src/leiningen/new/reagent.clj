@@ -31,16 +31,12 @@
 (def lib-or-app-dependencies
   "Dependencies for development or as part of an app."
   '[[org.clojure/clojurescript "0.0-2814" :scope "provided"]
-    [com.cemerick/piggieback "0.1.6-SNAPSHOT"]
-    [weasel "0.6.0-SNAPSHOT"]
     [ring "1.3.2"]
     [ring/ring-defaults "0.1.3"]
     [prone "0.8.0"]
     [compojure "1.3.1"]
     [selmer "0.8.0"]
-    [environ "1.0.0"]
-    [leiningen "2.5.1"]
-    [figwheel "0.2.3-SNAPSHOT"]])
+    [environ "1.0.0"]])
 
 (def lib-or-app-plugins
   "Plugins for development or as part of an app."
@@ -128,7 +124,7 @@
               ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
-              ["src/clj/{{sanitized}}/dev.clj" (render "src/clj/reagent/dev.clj" data)]
+              ["env/dev/clj/{{sanitized}}/dev.clj" (render "env/dev/clj/reagent/dev.clj" data)]
               ["src/cljs/{{sanitized}}/core.cljs" (render "src/cljs/reagent/core.cljs" data)]
               ["env/dev/cljs/{{sanitized}}/dev.cljs" (render "env/dev/cljs/reagent/dev.cljs" data)]
               ["env/prod/cljs/{{sanitized}}/prod.cljs" (render "env/prod/cljs/reagent/prod.cljs" data)]

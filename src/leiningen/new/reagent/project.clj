@@ -43,6 +43,10 @@
 
                    :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.2"]
+                                  [leiningen "2.5.1"]
+                                  [figwheel "0.2.3-SNAPSHOT"]
+                                  [weasel "0.6.0-SNAPSHOT"]
+                                  [com.cemerick/piggieback "0.1.6-SNAPSHOT"]
                                   [pjstadig/humane-test-output "0.6.0"]{{{lib-dependencies}}}]
 
                    :plugins [[lein-figwheel "0.2.3-SNAPSHOT"]{{{lib-plugins}}}{{{project-dev-plugins}}}]

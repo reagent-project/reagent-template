@@ -1,11 +1,10 @@
 (ns {{project-ns}}.handler
-  (:require [{{project-ns}}.dev :refer [browser-repl start-figwheel]]
-            [compojure.core :refer [GET defroutes]]
+  (:require [compojure.core :refer [GET defroutes]]
             [compojure.route :refer [not-found resources]]
             [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
             [selmer.parser :refer [render-file]]
-            [environ.core :refer [env]]
-            [prone.middleware :refer [wrap-exceptions]]))
+            [prone.middleware :refer [wrap-exceptions]]
+            [environ.core :refer [env]]))
 
 (defroutes routes
   (GET "/" [] (render-file "templates/index.html" {:dev (env :dev?)}))
