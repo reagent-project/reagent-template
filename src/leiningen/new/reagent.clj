@@ -31,8 +31,8 @@
 (def lib-or-app-dependencies
   "Dependencies for development or as part of an app."
   '[[org.clojure/clojurescript "0.0-2814" :scope "provided"]
-    [com.cemerick/piggieback "0.1.5"]
-    [weasel "0.5.0"]
+    [com.cemerick/piggieback "0.1.6-SNAPSHOT"]
+    [weasel "0.6.0-SNAPSHOT"]
     [ring "1.3.2"]
     [ring/ring-defaults "0.1.3"]
     [prone "0.8.0"]
@@ -40,7 +40,7 @@
     [selmer "0.8.0"]
     [environ "1.0.0"]
     [leiningen "2.5.1"]
-    [figwheel "0.1.6-SNAPSHOT"]])
+    [figwheel "0.2.3-SNAPSHOT"]])
 
 (def lib-or-app-plugins
   "Plugins for development or as part of an app."
