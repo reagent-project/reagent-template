@@ -30,7 +30,7 @@
 
 (def lib-or-app-dependencies
   "Dependencies for development or as part of an app."
-  '[[org.clojure/clojurescript "0.0-2850" :scope "provided"]
+  '[[org.clojure/clojurescript "0.0-2913" :scope "provided"]
     [ring "1.3.2"]
     [ring/ring-defaults "0.1.3"]
     [prone "0.8.0"]
