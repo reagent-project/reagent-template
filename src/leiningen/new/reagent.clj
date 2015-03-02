@@ -66,7 +66,7 @@
 (defn test? [opts]
   (some #{"+test"} opts))
 
-(def test-plugin "com.cemerick/clojurescript.test \"0.3.3\"")
+(def test-plugin "com.cemerick/clojurescript.test \"0.3.2\"")
 
 (def test-source-paths "\"src/cljs\" \"test/cljs\"")
 
