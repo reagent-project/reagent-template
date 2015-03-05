@@ -46,4 +46,4 @@
 ;; Initialize app
 (defn init! []
   (hook-browser-navigation!)
-  (reagent/render-component [current-page] (.getElementById js/document "app")))
+  (reagent/render [current-page] (.getElementById js/document "app")))
