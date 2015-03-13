@@ -62,8 +62,7 @@ Start the browser REPL:
 ```
 $ lein repl
 
-(require '<app-name>.dev)
-(<app-name>/browser-repl)
+(browser-repl)
 ```
 
 ### Building for release
