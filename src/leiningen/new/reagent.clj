@@ -35,7 +35,7 @@
     [ring/ring-defaults "0.1.3"]
     [prone "0.8.0"]
     [compojure "1.3.2"]
-    [selmer "0.8.0"]
+    [selmer "0.8.2"]
     [environ "1.0.0"]])
 
 (def lib-or-app-plugins
