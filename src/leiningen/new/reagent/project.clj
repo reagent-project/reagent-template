@@ -9,7 +9,7 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [cljsjs/react "0.12.2-5"]
                  [reagent "0.5.0"]
-                 [reagent-forms "0.4.5"]
+                 [reagent-forms "0.4.6"]
                  [reagent-utils "0.1.4"]
                  [secretary "1.2.1"]{{{app-dependencies}}}]
 
