@@ -98,10 +98,4 @@
                                              {:source-paths ["env/prod/cljs"]
                                               :compiler
                                               {:optimizations :advanced
-                                               :pretty-print false}}}}}
-
-             :production {:ring {:open-browser? false
-                                 :stacktraces?  false
-                                 :auto-reload?  false}
-                          :cljsbuild {:builds {:app {:compiler {:main "{{name}}.prod"}}}}
-                          }})
+                                               :pretty-print false}}}}}})
