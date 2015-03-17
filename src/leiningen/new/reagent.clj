@@ -19,49 +19,8 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-
-
-
-;;; Some libraries and plugins should not be included as dependencies
-;;; if we are only making a library instead of an app.
-
-(defn lib? [opts]
-  (some #{"+lib"} opts))
-
-(def lib-or-app-dependencies
-  "Dependencies for development or as part of an app."
-  '[[org.clojure/clojurescript "0.0-3058" :scope "provided"]
-    [ring "1.3.2"]
-    [ring/ring-defaults "0.1.3"]
-    [prone "0.8.0"]
-    [compojure "1.3.2"]
-    [selmer "0.8.2"]
-    [environ "1.0.0"]])
-
-(def lib-or-app-plugins
-  "Plugins for development or as part of an app."
-  '[[lein-cljsbuild "1.0.4"]
-    [lein-environ "1.0.0"]
-    [lein-ring "0.9.1"]
-    [lein-asset-minifier "0.2.2"]])
-
-(defn app-dependencies [opts]
-  (when-not (lib? opts)
-    ((wrap-indent str 17 lib-or-app-dependencies))))
-
-(defn lib-dependencies [opts]
-  (when (lib? opts)
-    ((wrap-indent str 34 lib-or-app-dependencies))))
-
-
-(defn app-plugins [opts]
-  (when-not (lib? opts)
-    (str ":plugins ["((wrap-indent str 12 lib-or-app-plugins))"]")))
-
-(defn lib-plugins [opts]
-  (when (lib? opts)
-    ((wrap-indent str 29 lib-or-app-plugins))))
-
+(defn valid-opts? [opts]
+  (every? #(some #{%} ["+cljx" "+test"]) opts))
 
 (defn test? [opts]
   (some #{"+test"} opts))
@@ -69,7 +28,6 @@
 (def test-plugin "com.cemerick/clojurescript.test \"0.3.2\"")
 
 (def test-source-paths "\"src/cljs\" \"test/cljs\"")
-
 
 (defn cljx? [opts]
   (some #{"+cljx"} opts))
@@ -97,12 +55,6 @@
    :sanitized (name-to-path name)
    :project-dev-plugins (dep-list 29 (project-plugins opts))
    :nrepl-middleware (indent 53 (project-nrepl-middleware opts))
-
-   :app-dependencies (app-dependencies opts)
-   :lib-dependencies (lib-dependencies opts)
-
-   :app-plugins (app-plugins opts)
-   :lib-plugins (lib-plugins opts)
 
    ;; cljx
    :cljx-source-paths (if (cljx? opts) cljx-source-paths "")
@@ -150,4 +102,7 @@
 
 (defn reagent [name & opts]
   (main/info "Generating fresh 'lein new' Reagent project.")
-  (apply ->files (format-files-args name opts)))
+  (if-not (valid-opts? opts)
+    (println "invalid options supplied:" (clojure.string/join " " opts)
+             "\nvalid options are: +cljx +test")
+    (apply ->files (format-files-args name opts))))

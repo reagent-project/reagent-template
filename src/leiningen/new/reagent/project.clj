@@ -11,9 +11,19 @@
                  [reagent "0.5.0"]
                  [reagent-forms "0.4.6"]
                  [reagent-utils "0.1.4"]
+                 [org.clojure/clojurescript "0.0-3058" :scope "provided"]
+                 [ring "1.3.2"]
+                 [ring/ring-defaults "0.1.3"]
+                 [prone "0.8.0"]
+                 [compojure "1.3.2"]
+                 [selmer "0.8.2"]
+                 [environ "1.0.0"]
                  [secretary "1.2.1"]{{{app-dependencies}}}]
 
-  {{{app-plugins}}}
+  :plugins [[lein-cljsbuild "1.0.4"]
+            [lein-environ "1.0.0"]
+            [lein-ring "0.9.1"]
+            [lein-asset-minifier "0.2.2"]]
 
   :ring {:handler {{project-ns}}.handler/app
          :uberwar-name "{{name}}.war"}
@@ -47,10 +57,10 @@
                                   [figwheel "0.2.5-SNAPSHOT"]
                                   [weasel "0.6.0-SNAPSHOT"]
                                   [com.cemerick/piggieback "0.1.6-SNAPSHOT"]
-                                  [pjstadig/humane-test-output "0.6.0"]{{{lib-dependencies}}}]
+                                  [pjstadig/humane-test-output "0.6.0"]]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.2.3-SNAPSHOT"]{{{lib-plugins}}}{{{project-dev-plugins}}}]
+                   :plugins [[lein-figwheel "0.2.3-SNAPSHOT"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
