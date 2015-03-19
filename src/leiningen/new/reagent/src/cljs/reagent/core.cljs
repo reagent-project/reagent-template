@@ -44,6 +44,9 @@
 
 ;; -------------------------
 ;; Initialize app
+(defn mount-root []
+  (reagent/render [current-page] (.getElementById js/document "app")))
+
 (defn init! []
   (hook-browser-navigation!)
-  (reagent/render [current-page] (.getElementById js/document "app")))
+  (mount-root))
