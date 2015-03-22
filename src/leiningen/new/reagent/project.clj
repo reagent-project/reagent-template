@@ -7,7 +7,7 @@
   :source-paths ["src/clj" "src/cljs"{{{cljx-source-paths}}}]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [cljsjs/react "0.13.0-0"]
+                 [cljsjs/react "0.13.1-0"]
                  [reagent "0.5.0"]
                  [reagent-forms "0.4.6"]
                  [reagent-utils "0.1.4"]
