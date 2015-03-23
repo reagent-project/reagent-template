@@ -18,7 +18,7 @@ The template uses [lein-ring](https://github.com/weavejester/lein-ring) to provi
 support of standalone runnable `jar` or `war` for container deployment. A `Procfile`
 along with the necessary artifacts for Heroku deployment is also provided.
 
-## Getting Help
+### Getting Help
 
 For any questions or discussion please come join us at the [Reagent Google Group](https://groups.google.com/forum/#!forum/reagent-project).
 
@@ -143,7 +143,9 @@ The template supports the following options:
 * `+cljx` - enable cross-compiling of Clojure/Script sources
 * `+test` - ClojureScript testing support
  
-## Customizing and Contributing
+## Contributing & Customizing
+
+Take a look at the open issues, especially ones marked as `help wanted`. If you see one you'd like to address don't hesitate to start a discussion or submit a pull request.
 
 If the template isn't doing quite what you're looking for, it's easy to create a local copy of your own following these simple steps:
 
