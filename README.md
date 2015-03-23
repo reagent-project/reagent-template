@@ -1,17 +1,22 @@
-reagent-template
-================
+# reagent-template
 
 A [Leiningen](http://leiningen.org/) template for projects using Reagent.
 
-
 ![reagent-template](logo-rounded.jpg)
 
-A Leiningen template for a Clojure/ClojureScript app based on Reagent,
-with dynamic reloading of Clojure, ClojureScript, and CSS and a browser-connected REPL.
+A Leiningen template for a Clojure/ClojureScript app based on Reagent, with a focus on providing
+a betteries included setup for development and deployment.
+
+### Development
+
+The template provides dynamic reloading of Clojure, ClojureScript, and CSS and a browser-connected REPL
+via [Figwheel](https://github.com/bhauman/lein-figwheel).
+
+### Deployment
 
 The template uses [lein-ring](https://github.com/weavejester/lein-ring) to provide
-support of standalone runnable `jar` or `war` for container deployment.
-In addition, the template provides the artifacts necessary for Heroku deployment.
+support of standalone runnable `jar` or `war` for container deployment. A `Procfile`
+along with the necessary artifacts for Heroku deployment is also provided.
 
 ## Usage
 
@@ -71,3 +76,51 @@ $ lein repl
 lein cljsbuild clean
 lein ring uberjar
 ```
+
+## Contents
+
+The template packages everything you need to create a production ready ClojureScript application following current best practices. The template uses the following features and libraries:
+
+* [Reagent](https://github.com/reagent-project/reagent) - ClojureScript interface to Facebook's React
+* [reagent-forms](https://github.com/reagent-project/reagent-forms) - data binding library for Reagent
+* [reagent-utils](https://github.com/reagent-project/reagent-utils) - utilities such as session and cookie management
+* [Secretary](https://github.com/gf3/secretary) - client-side routing
+* [Selmer](https://github.com/yogthos/Selmer) - HTML templating
+* [Compojure](https://github.com/weavejester/compojure) - a popular routing library
+* [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
+* [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
+* [Heroku](https://www.heroku.com/) - the template is setup to work on Heroku out of the box, simply run `git push heroku master`
+* [clojurescript.test](https://github.com/cemerick/clojurescript.test) - a maximal port of clojure.test to ClojureScript
+ 
+## Options
+
+The template supports the following options:
+
+* `+cljx` - enable cross-compiling of Clojure/Script sources
+* `+test` - ClojureScript testing support
+ 
+## Customizing and Contributing
+
+If the template isn't doing quite what you're looking for, it's easy to create a local copy of your own following these simple steps:
+
+```
+git clone https://github.com/reagent-project/reagent-template.git
+cd reagent-template
+lein install
+```
+
+If you feel that your customizations are general enough to be useful for others then please consider making a pull request.
+
+## Requirements
+
+* JDK 1.7+
+* Leiningen 2.x
+
+## License
+
+Copyright © 2015 Dmitri Sotnikov 
+
+Distributed under the The MIT License (MIT).
+
+
+
