@@ -18,6 +18,10 @@ The template uses [lein-ring](https://github.com/weavejester/lein-ring) to provi
 support of standalone runnable `jar` or `war` for container deployment. A `Procfile`
 along with the necessary artifacts for Heroku deployment is also provided.
 
+## Getting Help
+
+For any questions or discussion please come join us at the [Reagent Google Group](https://groups.google.com/forum/#!forum/reagent-project).
+
 ## Usage
 
 Create a new application project:
