@@ -70,7 +70,10 @@ Start the browser REPL:
 
 ```
 $ lein repl
+```
+The REPL namespace provides functions for starting and stopping the Jetty server called `start-server` and `stop-server` respectively. The browser REPL can be started by calling the following command:
 
+```
 (browser-repl)
 ```
 
