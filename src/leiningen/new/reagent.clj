@@ -33,7 +33,7 @@
   (some #{"+cljx"} opts))
 
 (def cljx-plugin
-  "com.keminglabs/cljx \"0.5.0\" :exclusions [org.clojure/clojure]")
+  "com.keminglabs/cljx \"0.6.0\" :exclusions [org.clojure/clojure]")
 
 (def cljx-source-paths
   " \"target/generated/clj\" \"target/generated/cljx\"")

@@ -7,6 +7,7 @@
   :source-paths ["src/clj" "src/cljs"{{{cljx-source-paths}}}]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [ring-server "0.4.0"]
                  [cljsjs/react "0.13.1-0"]
                  [reagent "0.5.0"]
                  [reagent-forms "0.4.6"]
@@ -72,7 +73,7 @@
                    :env {:dev? true}
 
                    {{#cljx-hook?}}
-                   :prep-tasks [["cljx" "once"]]
+                   :prep-tasks [["cljx" "once"]  "javac" "compile"]
                    {{/cljx-hook?}}
                    {{#cljx-build?}}
                    :cljx {:builds [{:source-paths ["src/cljx"]
