@@ -1,7 +1,8 @@
 (ns {{name}}.repl
   (:use {{name}}.handler
-    ring.server.standalone
-    [ring.middleware file-info file]))
+        {{project-ns}}.dev
+        ring.server.standalone
+        [ring.middleware file-info file]))
 
 (defonce server (atom nil))
 
