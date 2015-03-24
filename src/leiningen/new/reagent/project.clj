@@ -57,7 +57,7 @@
                                   [figwheel "0.2.5"]
                                   [weasel "0.6.0"]
                                   [com.cemerick/piggieback "0.1.6-SNAPSHOT"]
-                                  [pjstadig/humane-test-output "0.7.0"]]
+                                  [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.2.3-SNAPSHOT"]{{{project-dev-plugins}}}]

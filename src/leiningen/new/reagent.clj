@@ -38,6 +38,9 @@
 (def cljx-source-paths
   " \"target/generated/clj\" \"target/generated/cljx\"")
 
+(defn project-dev-deps [opts]
+  (cond-> [] (cljx? opts) (conj "com.keminglabs/cljx \"0.6.0\"")))
+
 (defn project-plugins [opts]
   (cond-> []
     (cljx? opts) (conj cljx-plugin)
@@ -55,6 +58,7 @@
    :sanitized (name-to-path name)
    :project-dev-plugins (dep-list 29 (project-plugins opts))
    :nrepl-middleware (indent 53 (project-nrepl-middleware opts))
+   :dev-dependencies (dep-list 34 (project-dev-deps opts))
 
    ;; cljx
    :cljx-source-paths (if (cljx? opts) cljx-source-paths "")
