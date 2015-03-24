@@ -73,17 +73,17 @@ $ lein repl
 ```
 The Jetty server can be started by running:
 
-```
-start-server
+```clojure
+(start-server)
 ```
 and stopped by running:
-```
-stop-server
+```clojure
+(stop-server)
 ```
 
 The browser REPL can be started by calling the following command:
 
-```
+```clojure
 (browser-repl)
 ```
 
