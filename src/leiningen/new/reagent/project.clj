@@ -84,7 +84,7 @@
                                     :rules :cljs}]}
                    {{/cljx-build?}}
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {   :main "{{name}}.dev"
+                                              :compiler {:main "{{name}}.dev"
                                                          :source-map true}}
                                         {{#test-hook?}}
                                         :test {:source-paths ["src/cljs" {{{cljx-cljsbuild-spath}}} "test/cljs"]
