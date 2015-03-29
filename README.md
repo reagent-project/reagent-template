@@ -37,14 +37,6 @@ lein new reagent <name> +test
 ```
 To run the tests, please use `lein cljsbuild test`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
 
-
-Create a new library project (development dependencies are moved into the :dev profile) :
-
-```
-lein new reagent <name> +lib
-```
-
-
 To enable [cljx](https://github.com/lynaghk/cljx) support use `+cljx` flag:
 
 ```
@@ -70,7 +62,20 @@ Start the browser REPL:
 
 ```
 $ lein repl
+```
+The Jetty server can be started by running:
 
+```clojure
+(start-server)
+```
+and stopped by running:
+```clojure
+(stop-server)
+```
+
+The browser REPL can be started by calling the following command:
+
+```clojure
 (browser-repl)
 ```
 
