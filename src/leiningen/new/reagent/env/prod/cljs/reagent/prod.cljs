@@ -2,6 +2,6 @@
   (:require [{{project-ns}}.core :as core]))
 
 ;;ignore println statements in prod
-(set! *print-fn* (fn [& -]))
+(set! *print-fn* (fn [& _]))
 
 (core/init!)
