@@ -16,7 +16,7 @@
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
                  [prone "0.8.1"]
-                 [compojure "1.3.2"]
+                 [compojure "1.3.3"]
                  [selmer "0.8.2"]
                  [environ "1.0.0"]
                  [secretary "1.2.2"]{{{app-dependencies}}}]
