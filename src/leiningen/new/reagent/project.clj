@@ -10,7 +10,7 @@
                  [ring-server "0.4.0"]
                  [cljsjs/react "0.13.1-0"]
                  [reagent "0.5.0"]
-                 [reagent-forms "0.4.8"]
+                 [reagent-forms "0.4.9"]
                  [reagent-utils "0.1.4"]
                  [org.clojure/clojurescript "0.0-3169" :scope "provided"]
                  [ring "1.3.2"]
