@@ -19,7 +19,7 @@
                  [compojure "1.3.3"]
                  [selmer "0.8.2"]
                  [environ "1.0.0"]
-                 [secretary "1.2.2"]{{{app-dependencies}}}]
+                 [secretary "1.2.3"]{{{app-dependencies}}}]
 
   :plugins [[lein-cljsbuild "1.0.4"]
             [lein-environ "1.0.0"]
@@ -61,7 +61,7 @@
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.2.3-SNAPSHOT"]{{{project-dev-plugins}}}]
+                   :plugins [[lein-figwheel "0.2.5"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
