@@ -12,7 +12,7 @@
                  [reagent "0.5.0"]
                  [reagent-forms "0.5.0"]
                  [reagent-utils "0.1.4"]
-                 [org.clojure/clojurescript "0.0-3169" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-3178" :scope "provided"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
                  [prone "0.8.1"]
