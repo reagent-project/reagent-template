@@ -20,7 +20,7 @@
   (wrap-indent identity n list))
 
 (defn valid-opts? [opts]
-  (every? #(some #{%} ["+cljx" "+test"]) opts))
+  (every? #(some #{%} ["+cljx" "+test" "+less"]) opts))
 
 (defn test? [opts]
   (some #{"+test"} opts))
