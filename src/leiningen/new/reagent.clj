@@ -77,7 +77,10 @@
    :cljx-uberjar-hook (if (cljx? opts) "cljx.hooks " "")
 
    ;; test
-   :test-hook? (fn [block] (if (test? opts) (str block "") ""))})
+   :test-hook? (fn [block] (if (test? opts) (str block "") ""))
+
+   ;; less
+   :less-hook? (fn [block] (if (less? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)
