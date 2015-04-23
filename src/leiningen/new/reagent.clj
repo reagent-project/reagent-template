@@ -22,6 +22,13 @@
 (defn valid-opts? [opts]
   (every? #(some #{%} ["+cljx" "+test" "+less"]) opts))
 
+(defn less? [opts]
+  (some #{"+less"} opts))
+
+(def less-plugin "lein-less \"1.7.2\"")
+
+(def less-source-paths "\"resources/public/less\"")
+
 (defn test? [opts]
   (some #{"+test"} opts))
 
@@ -44,7 +51,8 @@
 (defn project-plugins [opts]
   (cond-> []
     (cljx? opts) (conj cljx-plugin)
-    (test? opts) (conj test-plugin)))
+    (test? opts) (conj test-plugin)
+    (less? opts) (conj less-plugin)))
 
 (defn project-nrepl-middleware [opts]
   (cond-> []
