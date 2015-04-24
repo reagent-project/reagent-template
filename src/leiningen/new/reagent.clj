@@ -19,8 +19,10 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
+(def valid-opts ["+cljx" "+test" "+less"])
+
 (defn valid-opts? [opts]
-  (every? #(some #{%} ["+cljx" "+test" "+less"]) opts))
+  (every? #(some #{%} valid-opts) opts))
 
 (defn less? [opts]
   (some #{"+less"} opts))
@@ -120,5 +122,5 @@
   (main/info "Generating fresh 'lein new' Reagent project.")
   (if-not (valid-opts? opts)
     (println "invalid options supplied:" (clojure.string/join " " opts)
-             "\nvalid options are: +cljx +test")
+             "\nvalid options are:" (join " " valid-opts))
     (apply ->files (format-files-args name opts))))
