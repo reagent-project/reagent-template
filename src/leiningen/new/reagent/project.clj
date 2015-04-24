@@ -46,7 +46,9 @@
                                         :output-dir    "resources/public/js/out"
                                         :asset-path   "js/out"
                                         :optimizations :none
-                                        :pretty-print  true}}}}
+                                        :pretty-print  true}}}}{{#less-hook?}}
+  :less {:source-paths ["src/less"]
+         :target-path "resources/public/css"}{{/less-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
