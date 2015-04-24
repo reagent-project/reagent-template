@@ -87,8 +87,7 @@
 (defn format-files-args [name opts]
   (let [data (template-data name opts)
         args [data
-              ["project.clj"
-               (render "project.clj" data)]
+              ["project.clj" (render "project.clj" data)]
               ["resources/templates/index.html" (render "resources/templates/index.html" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
