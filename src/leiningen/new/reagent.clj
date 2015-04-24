@@ -90,7 +90,6 @@
               ["project.clj"
                (render "project.clj" data)]
               ["resources/templates/index.html" (render "resources/templates/index.html" data)]
-              ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
               ["env/dev/clj/{{sanitized}}/dev.clj" (render "env/dev/clj/reagent/dev.clj" data)]
@@ -113,10 +112,11 @@
                      ["test/vendor/console-polyfill.js" (render "test/vendor/console-polyfill.js" data)]
                      ["test/vendor/es5-sham.js" (render "test/vendor/es5-sham.js" data)]
                      ["test/vendor/es5-shim.js" (render "test/vendor/es5-shim.js" data)])
+               args)
+        args (if (less? opts)
+               (conj args ["src/less/site.less" (render "src/less/site.less" data)])
                args)]
-    args
-
-    ))
+    args))
 
 (defn reagent [name & opts]
   (main/info "Generating fresh 'lein new' Reagent project.")
