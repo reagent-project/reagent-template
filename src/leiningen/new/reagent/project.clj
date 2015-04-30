@@ -12,18 +12,17 @@
                  [reagent "0.5.0"]
                  [reagent-forms "0.5.0"]
                  [reagent-utils "0.1.4"]
-                 [org.clojure/clojurescript "0.0-3196" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-3211" :scope "provided"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
                  [prone "0.8.1"]
                  [compojure "1.3.3"]
-                 [selmer "0.8.2"]
+                 [hiccup "1.0.5"]
                  [environ "1.0.0"]
                  [secretary "1.2.3"]{{{app-dependencies}}}]
 
-  :plugins [[lein-cljsbuild "1.0.4"]
+  :plugins [[lein-ring "0.9.1"]
             [lein-environ "1.0.0"]
-            [lein-ring "0.9.1"]
             [lein-asset-minifier "0.2.2"]]
 
   :ring {:handler {{project-ns}}.handler/app
@@ -53,15 +52,13 @@
 
                    :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.2"]
-                                  [leiningen "2.5.1"]
-                                  [figwheel "0.2.6"]
                                   [weasel "0.6.0"]
-                                  [com.cemerick/piggieback "0.2.1"]
                                   [org.clojure/tools.nrepl "0.2.10"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.2.5"]{{{project-dev-plugins}}}]
+                   :plugins [[lein-figwheel "0.2.8"]
+                             [lein-cljsbuild "1.0.5"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
@@ -71,7 +68,7 @@
                               :css-dirs ["resources/public/css"]
                               :ring-handler {{project-ns}}.handler/app}
 
-                   :env {:dev? true}
+                   :env {:dev true}
 
                    {{#cljx-hook?}}
                    :prep-tasks [["cljx" "once"]  "javac" "compile"]

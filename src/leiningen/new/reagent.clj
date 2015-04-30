@@ -76,7 +76,6 @@
         args [data
               ["project.clj"
                (render "project.clj" data)]
-              ["resources/templates/index.html" (render "resources/templates/index.html" data)]
               ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
