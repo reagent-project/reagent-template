@@ -53,6 +53,8 @@
                    :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.2"]
                                   [weasel "0.6.0"]
+                                  [leiningen-core "2.5.1"]
+                                  [com.cemerick/piggieback "0.2.1"]
                                   [org.clojure/tools.nrepl "0.2.10"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
