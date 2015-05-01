@@ -5,7 +5,7 @@ A [Leiningen](http://leiningen.org/) template for projects using Reagent.
 ![reagent-template](logo-rounded.jpg)
 
 A Leiningen template for a Clojure/ClojureScript app based on Reagent, with a focus on providing
-a betteries included setup for development and deployment.
+a batteries included setup for development and deployment.
 
 ### Development
 
