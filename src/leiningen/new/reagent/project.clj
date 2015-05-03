@@ -18,6 +18,7 @@
                  [compojure "1.3.3"]
                  [hiccup "1.0.5"]
                  [environ "1.0.0"]
+                 [org.clojure/clojurescript "0.0-3211" :scope "provided"]
                  [secretary "1.2.3"]{{{app-dependencies}}}]
 
   :plugins [[lein-ring "0.9.1"]
@@ -49,8 +50,7 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
 
-                   :dependencies [[org.clojure/clojurescript "0.0-3211"]
-                                  [ring-mock "0.1.5"]
+                   :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.2"]
                                   [weasel "0.6.0"]
                                   [leiningen-core "2.5.1"]
