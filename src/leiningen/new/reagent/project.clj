@@ -12,7 +12,6 @@
                  [reagent "0.5.0"]
                  [reagent-forms "0.5.0"]
                  [reagent-utils "0.1.4"]
-                 [org.clojure/clojurescript "0.0-3211" :scope "provided"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
                  [prone "0.8.1"]
@@ -50,7 +49,8 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
 
-                   :dependencies [[ring-mock "0.1.5"]
+                   :dependencies [[org.clojure/clojurescript "0.0-3211"]
+                                  [ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.2"]
                                   [weasel "0.6.0"]
                                   [leiningen-core "2.5.1"]

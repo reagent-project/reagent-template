@@ -50,7 +50,7 @@ When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespace
 To run the development server, run
 
 ```
-lein figwheel
+lein do clean, figwheel
 ```
 Figwheel will automatically push cljs changes to the browser.
 
