@@ -1,4 +1,4 @@
-(defproject reagent/lein-template "0.7.8"
+(defproject reagent/lein-template "0.7.9"
   :description "A Leiningen template for a ClojureScript setup with Figwheel, Austin, and Reagent."
   :url "https://github.com/reagent-project/reagent-template"
   :license {:name "MIT License"
