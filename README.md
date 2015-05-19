@@ -7,6 +7,8 @@ A [Leiningen](http://leiningen.org/) template for projects using Reagent.
 A Leiningen template for a Clojure/ClojureScript app based on Reagent, with a focus on providing
 a batteries included setup for development and deployment.
 
+#### Requires JDK 1.7+
+
 ### Development
 
 The template provides dynamic reloading of Clojure, ClojureScript, and CSS and a browser-connected REPL

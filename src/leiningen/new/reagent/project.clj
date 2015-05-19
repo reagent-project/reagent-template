@@ -10,7 +10,7 @@
                  [ring-server "0.4.0"]
                  [cljsjs/react "0.13.1-0"]
                  [reagent "0.5.0"]
-                 [reagent-forms "0.5.0"]
+                 [reagent-forms "0.5.1"]
                  [reagent-utils "0.1.4"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.4"]
@@ -34,7 +34,8 @@
 
   :main {{project-ns}}.server
 
-  :clean-targets ^{:protect false} ["resources/public/js"]
+  :clean-targets ^{:protect false} [[:cljsbuild :builds :app :compiler :output-dir]
+                                    [:cljsbuild :builds :app :compiler :output-to]]
 
   :minify-assets
   {:assets
