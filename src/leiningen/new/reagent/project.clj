@@ -61,7 +61,7 @@
 
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.3.1"]
-                             [lein-cljsbuild "1.0.5"]{{{project-dev-plugins}}}]
+                             [lein-cljsbuild "1.0.6"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
