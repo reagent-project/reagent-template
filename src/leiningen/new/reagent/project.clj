@@ -18,7 +18,7 @@
                  [compojure "1.3.3"]
                  [hiccup "1.0.5"]
                  [environ "1.0.0"]
-                 [org.clojure/clojurescript "0.0-3255" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-3291" :scope "provided"]
                  [secretary "1.2.3"]{{{app-dependencies}}}]
 
   :plugins [[lein-ring "0.9.1"]
