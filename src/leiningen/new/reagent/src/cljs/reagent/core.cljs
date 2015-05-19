@@ -3,8 +3,7 @@
               [reagent.session :as session]
               [secretary.core :as secretary :include-macros true]
               [goog.events :as events]
-              [goog.history.EventType :as EventType]
-              [cljsjs.react :as react])
+              [goog.history.EventType :as EventType])
     (:import goog.History))
 
 ;; -------------------------
