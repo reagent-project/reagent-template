@@ -92,8 +92,7 @@
                                         :test {:source-paths ["src/cljs" {{{cljx-cljsbuild-spath}}} "test/cljs"]
                                                :compiler {:output-to "target/test.js"
                                                           :optimizations :whitespace
-                                                          :pretty-print true
-                                                          :preamble ["react/react.js"]}}{{/test-hook?}}}
+                                                          :pretty-print true}}{{/test-hook?}}}
                                {{#test-hook?}}
                                :test-commands {"unit" ["phantomjs" :runner
                                                        "test/vendor/es5-shim.js"
