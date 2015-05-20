@@ -5,7 +5,9 @@ A [Leiningen](http://leiningen.org/) template for projects using Reagent.
 ![reagent-template](logo-rounded.jpg)
 
 A Leiningen template for a Clojure/ClojureScript app based on Reagent, with a focus on providing
-a betteries included setup for development and deployment.
+a batteries included setup for development and deployment.
+
+#### Requires JDK 1.7+
 
 ### Development
 
@@ -50,7 +52,7 @@ When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespace
 To run the development server, run
 
 ```
-lein figwheel
+lein do clean, figwheel
 ```
 Figwheel will automatically push cljs changes to the browser.
 
@@ -140,7 +142,7 @@ The template packages everything you need to create a production ready ClojureSc
 * [reagent-forms](https://github.com/reagent-project/reagent-forms) - data binding library for Reagent
 * [reagent-utils](https://github.com/reagent-project/reagent-utils) - utilities such as session and cookie management
 * [Secretary](https://github.com/gf3/secretary) - client-side routing
-* [Selmer](https://github.com/yogthos/Selmer) - HTML templating
+* [Hiccup](https://github.com/weavejester/hiccup) - server-side HTML templating
 * [Compojure](https://github.com/weavejester/compojure) - a popular routing library
 * [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
 * [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
