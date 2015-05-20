@@ -19,8 +19,17 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
+(def valid-opts ["+cljx" "+test" "+less"])
+
 (defn valid-opts? [opts]
-  (every? #(some #{%} ["+cljx" "+test"]) opts))
+  (every? #(some #{%} valid-opts) opts))
+
+(defn less? [opts]
+  (some #{"+less"} opts))
+
+(def less-plugin "lein-less \"1.7.2\"")
+
+(def less-source-paths "\"resources/public/less\"")
 
 (defn test? [opts]
   (some #{"+test"} opts))
@@ -44,7 +53,8 @@
 (defn project-plugins [opts]
   (cond-> []
     (cljx? opts) (conj cljx-plugin)
-    (test? opts) (conj test-plugin)))
+    (test? opts) (conj test-plugin)
+    (less? opts) (conj less-plugin)))
 
 (defn project-nrepl-middleware [opts]
   (cond-> []
@@ -69,13 +79,15 @@
    :cljx-uberjar-hook (if (cljx? opts) "cljx.hooks " "")
 
    ;; test
-   :test-hook? (fn [block] (if (test? opts) (str block "") ""))})
+   :test-hook? (fn [block] (if (test? opts) (str block "") ""))
+
+   ;; less
+   :less-hook? (fn [block] (if (less? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)
         args [data
-              ["project.clj"
-               (render "project.clj" data)]
+              ["project.clj" (render "project.clj" data)]
               ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
@@ -99,14 +111,15 @@
                      ["test/vendor/console-polyfill.js" (render "test/vendor/console-polyfill.js" data)]
                      ["test/vendor/es5-sham.js" (render "test/vendor/es5-sham.js" data)]
                      ["test/vendor/es5-shim.js" (render "test/vendor/es5-shim.js" data)])
+               args)
+        args (if (less? opts)
+               (conj args ["src/less/site.less" (render "src/less/site.less" data)])
                args)]
-    args
-
-    ))
+    args))
 
 (defn reagent [name & opts]
   (main/info "Generating fresh 'lein new' Reagent project.")
   (if-not (valid-opts? opts)
     (println "invalid options supplied:" (clojure.string/join " " opts)
-             "\nvalid options are: +cljx +test")
+             "\nvalid options are:" (join " " valid-opts))
     (apply ->files (format-files-args name opts))))

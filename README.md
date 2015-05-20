@@ -58,6 +58,12 @@ Figwheel will automatically push cljs changes to the browser.
 
 Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
 
+In case of using `+less` option you may also want to run
+```
+lein less auto
+```
+to autocompile less files.
+
 #### Optional development tools
 
 Start the browser REPL:
@@ -149,6 +155,7 @@ The template supports the following options:
 
 * `+cljx` - enable cross-compiling of Clojure/Script sources
 * `+test` - ClojureScript testing support
+* `+less` - use [less](https://github.com/montoux/lein-less) for compiling Less CSS files
  
 ## Contributing & Customizing
 
