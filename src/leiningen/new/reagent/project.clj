@@ -6,7 +6,7 @@
 
   :source-paths ["src/clj" "src/cljs"{{{cljx-source-paths}}}]
 
-  :dependencies [[org.clojure/clojure "1.7.0-beta3"]
+  :dependencies [[org.clojure/clojure "1.7.0-RC1"]
                  [ring-server "0.4.0"]
                  [cljsjs/react "0.13.1-0"]
                  [reagent "0.5.0"]
