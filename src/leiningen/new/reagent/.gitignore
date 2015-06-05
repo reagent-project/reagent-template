@@ -10,4 +10,4 @@ pom.xml.asc
 /resources/public/js
 /out
 /.repl
-figwheel_server.log
+*.log
