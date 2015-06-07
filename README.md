@@ -9,33 +9,6 @@ a batteries included setup for development and deployment.
 
 #### Requires JDK 1.7+
 
-### Development
-
-The template provides dynamic reloading of Clojure, ClojureScript, and CSS and a browser-connected REPL
-via [Figwheel](https://github.com/bhauman/lein-figwheel).
-
-The server can be started by running:
-
-```
-lein run
-```
-
-The Figwheel compiler can be started by running:
-
-```
-lein figwheel
-```
-
-### Deployment
-
-The project can be packaged for deployment as follows:
-
-```
-lein uberjar
-```
-
-A `Procfile` along with the necessary artifacts for Heroku deployment is also provided.
-
 ### Getting Help
 
 For any questions or discussion please come join us at the [Reagent Google Group](https://groups.google.com/forum/#!forum/reagent-project).
@@ -65,7 +38,7 @@ When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespace
 
 ### Development mode
 
-To run the development server, run
+To run the Figwheel development server, run
 
 ```
 lein do clean, figwheel
@@ -73,6 +46,14 @@ lein do clean, figwheel
 Figwheel will automatically push cljs changes to the browser.
 
 Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
+
+If you're also doing server side development then you'll need to run:
+
+```
+lein run
+```
+
+The application will now be available at [http://localhost:3000](http://localhost:3000).
 
 In case of using `+less` option you may also want to run
 ```
