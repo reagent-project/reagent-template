@@ -38,22 +38,24 @@ When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespace
 
 ### Development mode
 
-To run the Figwheel development server, run
+To run the Figwheel development server, run:
 
 ```
-lein do clean, figwheel
-```
-Figwheel will automatically push cljs changes to the browser.
-
-Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
-
-If you're also doing server side development then you'll need to run:
-
-```
-lein run
+lein do clean, run
 ```
 
 The application will now be available at [http://localhost:3000](http://localhost:3000).
+
+To start the Figwheel compiler, run the following command in a separate terminal:
+
+```
+lein figwheel
+```
+Figwheel will automatically push cljs changes to the browser.
+
+If you're only doing client-side development then it's sufficient to simply run the
+Figwheel compiler and then browse to [http://localhost:3449](http://localhost:3449)
+once it starts up.
 
 In case of using `+less` option you may also want to run
 ```
