@@ -14,11 +14,27 @@ a batteries included setup for development and deployment.
 The template provides dynamic reloading of Clojure, ClojureScript, and CSS and a browser-connected REPL
 via [Figwheel](https://github.com/bhauman/lein-figwheel).
 
+The server can be started by running:
+
+```
+lein run
+```
+
+The Figwheel compiler can be started by running:
+
+```
+lein figwheel
+```
+
 ### Deployment
 
-The template uses [lein-ring](https://github.com/weavejester/lein-ring) to provide
-support of standalone runnable `jar` or `war` for container deployment. A `Procfile`
-along with the necessary artifacts for Heroku deployment is also provided.
+The project can be packaged for deployment as follows:
+
+```
+lein uberjar
+```
+
+A `Procfile` along with the necessary artifacts for Heroku deployment is also provided.
 
 ### Getting Help
 
@@ -91,7 +107,7 @@ The browser REPL can be started by calling the following command:
 
 ```
 lein cljsbuild clean
-lein ring uberjar
+lein uberjar
 ```
 
 ### Deploying to Heroku
