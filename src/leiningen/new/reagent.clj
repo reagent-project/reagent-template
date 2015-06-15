@@ -91,7 +91,6 @@
               ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
-              ["env/dev/clj/{{sanitized}}/dev.clj" (render "env/dev/clj/reagent/dev.clj" data)]
               ["env/dev/clj/{{sanitized}}/repl.clj" (render "env/dev/clj/reagent/repl.clj" data)]
               ["src/cljs/{{sanitized}}/core.cljs" (render "src/cljs/reagent/core.cljs" data)]
               ["env/dev/cljs/{{sanitized}}/dev.cljs" (render "env/dev/cljs/reagent/dev.cljs" data)]
