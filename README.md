@@ -80,12 +80,6 @@ and stopped by running:
 (stop-server)
 ```
 
-The browser REPL can be started by calling the following command:
-
-```clojure
-(browser-repl)
-```
-
 ### Building for release
 
 ```
