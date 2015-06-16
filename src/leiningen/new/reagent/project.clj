@@ -50,7 +50,7 @@
          :target-path "resources/public/css"}{{/less-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
-                                  :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl{{{nrepl-middleware}}}]}
+                                  :nrepl-middleware [{{{nrepl-middleware}}}]}
 
                    :dependencies [[ring-mock "0.1.5"]
                                   [ring/ring-devel "1.3.2"]
