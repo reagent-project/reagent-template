@@ -33,7 +33,8 @@
 
   :main {{project-ns}}.server
 
-  :clean-targets ^{:protect false} [[:cljsbuild :builds :app :compiler :output-dir]
+  :clean-targets ^{:protect false} [:target-path
+                                    [:cljsbuild :builds :app :compiler :output-dir]
                                     [:cljsbuild :builds :app :compiler :output-to]]
 
   :minify-assets
