@@ -11,7 +11,7 @@
                  [cljsjs/react "0.13.3-0"]
                  [reagent "0.5.0"]
                  [reagent-forms "0.5.1"]
-                 [reagent-utils "0.1.4"]
+                 [reagent-utils "0.1.5"]
                  [ring "1.3.2"]
                  [ring/ring-defaults "0.1.5"]
                  [prone "0.8.2"]
