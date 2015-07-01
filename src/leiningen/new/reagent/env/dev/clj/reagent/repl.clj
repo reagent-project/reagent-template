@@ -1,6 +1,5 @@
 (ns {{name}}.repl
   (:use {{name}}.handler
-        {{project-ns}}.dev
         ring.server.standalone
         [ring.middleware file-info file]))
 
