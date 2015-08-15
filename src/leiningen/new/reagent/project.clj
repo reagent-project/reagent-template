@@ -10,7 +10,7 @@
                  [ring-server "0.4.0"]
                  [cljsjs/react "0.13.3-1"]
                  [reagent "0.5.0"]
-                 [reagent-forms "0.5.4"]
+                 [reagent-forms "0.5.5"]
                  [reagent-utils "0.1.5"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
@@ -18,7 +18,7 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.0"]
-                 [org.clojure/clojurescript "0.0-3308" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.107" :scope "provided"]
                  [secretary "1.2.3"]{{{app-dependencies}}}]
 
   :plugins [[lein-environ "1.0.0"]
@@ -53,7 +53,7 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [{{{nrepl-middleware}}}]}
 
-                   :dependencies [[ring-mock "0.1.5"]
+                   :dependencies [[ring/ring-mock "0.2.0"]
                                   [ring/ring-devel "1.4.0"]
                                   [lein-figwheel "0.3.7"]
                                   [org.clojure/tools.nrepl "0.2.10"]
