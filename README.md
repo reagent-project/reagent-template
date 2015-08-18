@@ -57,6 +57,9 @@ If you're only doing client-side development then it's sufficient to simply run 
 Figwheel compiler and then browse to [http://localhost:3449](http://localhost:3449)
 once it starts up.
 
+Wifwheel also starts `nRREPL` using the value of the `:nrepl-port` in the `:figwheel`
+config found in `project.clj`. By default the port is set to `7002`.
+
 In case of using `+less` option you may also want to run
 ```
 lein less auto
