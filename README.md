@@ -28,17 +28,23 @@ lein new reagent <name> +test
 ```
 To run the tests, please use `lein cljsbuild test`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
 
-To enable [cljx](https://github.com/lynaghk/cljx) support use `+cljx` flag:
-
-```
-lein new reagent <name> +cljx
-```
-When using `cljx` make sure to run `lein cljx` to cross-compile `cljx` namespaces.
-
 
 ### Development mode
 
-To run the Figwheel development server, run:
+To start the Figwheel compiler, run the following command in a separate terminal:
+
+```
+lein figwheel
+```
+
+Figwheel will automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449)
+once Figwheel starts up.
+
+Figwheel also starts `nRREPL` using the value of the `:nrepl-port` in the `:figwheel`
+config found in `project.clj`. By default the port is set to `7002`.
+
+The figwheel server can have unexpected behaviors in some situations such as when using
+websockets. In this case it's recommended to run a standalone instance of a web server as follows:
 
 ```
 lein do clean, run
@@ -46,19 +52,6 @@ lein do clean, run
 
 The application will now be available at [http://localhost:3000](http://localhost:3000).
 
-To start the Figwheel compiler, run the following command in a separate terminal:
-
-```
-lein figwheel
-```
-Figwheel will automatically push cljs changes to the browser.
-
-If you're only doing client-side development then it's sufficient to simply run the
-Figwheel compiler and then browse to [http://localhost:3449](http://localhost:3449)
-once it starts up.
-
-Wifwheel also starts `nRREPL` using the value of the `:nrepl-port` in the `:figwheel`
-config found in `project.clj`. By default the port is set to `7002`.
 
 In case of using `+less` option you may also want to run
 ```
@@ -149,7 +142,6 @@ The template packages everything you need to create a production ready ClojureSc
 
 The template supports the following options:
 
-* `+cljx` - enable cross-compiling of Clojure/Script sources
 * `+test` - ClojureScript testing support
 * `+less` - use [less](https://github.com/montoux/lein-less) for compiling Less CSS files
  
