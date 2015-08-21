@@ -1,11 +1,11 @@
 (ns leiningen.new.reagent
-  (:require [leiningen.new.templates :refer [renderer name-to-path ->files
-                                             sanitize sanitize-ns project-name]]
+  (:require [leiningen.new.templates
+             :refer [renderer name-to-path ->files
+                     sanitize sanitize-ns project-name]]
             [leiningen.core.main :as main]
             [clojure.string :refer [join]]))
 
 (def render (renderer "reagent"))
-
 
 (defn wrap-indent [wrap n list]
   (fn []
@@ -19,7 +19,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+cljx" "+test" "+less"])
+(def valid-opts ["+test" "+less"])
 
 (defn valid-opts? [opts]
   (every? #(some #{%} valid-opts) opts))
@@ -27,7 +27,7 @@
 (defn less? [opts]
   (some #{"+less"} opts))
 
-(def less-plugin "lein-less \"1.7.2\"")
+(def less-plugin "lein-less \"1.7.5\"")
 
 (def less-source-paths "\"resources/public/less\"")
 
@@ -38,27 +38,10 @@
 
 (def test-source-paths "\"src/cljs\" \"test/cljs\"")
 
-(defn cljx? [opts]
-  (some #{"+cljx"} opts))
-
-(def cljx-plugin
-  "com.keminglabs/cljx \"0.6.0\" :exclusions [org.clojure/clojure]")
-
-(def cljx-source-paths
-  " \"target/generated/clj\" \"target/generated/cljx\"")
-
-(defn project-dev-deps [opts]
-  (cond-> [] (cljx? opts) (conj "com.keminglabs/cljx \"0.6.0\"")))
-
 (defn project-plugins [opts]
   (cond-> []
-    (cljx? opts) (conj cljx-plugin)
     (test? opts) (conj test-plugin)
     (less? opts) (conj less-plugin)))
-
-(defn project-nrepl-middleware [opts]
-  (cond-> []
-          (cljx? opts) (conj "cljx.repl-middleware/wrap-cljx")))
 
 (defn template-data [name opts]
   {:full-name name
@@ -67,16 +50,7 @@
    :project-ns (sanitize-ns name)
    :sanitized (name-to-path name)
    :project-dev-plugins (dep-list 29 (project-plugins opts))
-   :nrepl-middleware (indent 53 (project-nrepl-middleware opts))
-   :dev-dependencies (dep-list 34 (project-dev-deps opts))
-
-   ;; cljx
-   :cljx-source-paths (if (cljx? opts) cljx-source-paths "")
-   :cljx-extension (if (cljx? opts) "|\\.cljx")
-   :cljx-cljsbuild-spath (if (cljx? opts) " \"target/generated/cljs\"" "")
-   :cljx-hook? (fn [block] (if (cljx? opts) (str block "\n") ""))
-   :cljx-build? (fn [block] (if (cljx? opts) (str block "\n") ""))
-   :cljx-uberjar-hook (if (cljx? opts) "cljx.hooks " "")
+   :nrepl-middleware (indent 53 opts)
 
    ;; test
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
@@ -88,6 +62,7 @@
   (let [data (template-data name opts)
         args [data
               ["project.clj" (render "project.clj" data)]
+              "src/cljc/{{sanitized}}"
               ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
@@ -98,13 +73,9 @@
               ["LICENSE" (render "LICENSE" data)]
               ["README.md" (render "README.md" data)]
               [".gitignore" (render ".gitignore" data)]
-
              ;; Heroku support
              ["system.properties" (render "system.properties" data)]
               ["Procfile" (render "Procfile" data)]]
-        args (if (cljx? opts)
-               (conj args ["src/cljx/{{sanitized}}/util.cljx" (render "src/cljx/reagent/util.cljx" data)])
-               args)
         args (if (test? opts)
                (conj args ["test/cljs/{{sanitized}}/core_test.cljs" (render "test/cljs/reagent/core_test.cljs" data)]
                      ["test/vendor/console-polyfill.js" (render "test/vendor/console-polyfill.js" data)]

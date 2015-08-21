@@ -4,13 +4,11 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :source-paths ["src/clj" "src/cljs"{{{cljx-source-paths}}}]
-
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [ring-server "0.4.0"]
                  [cljsjs/react "0.13.3-1"]
-                 [reagent "0.5.0"]
-                 [reagent-forms "0.5.5"]
+                 [reagent "0.5.1-rc"]
+                 [reagent-forms "0.5.6"]
                  [reagent-utils "0.1.5"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
@@ -37,11 +35,13 @@
                                     [:cljsbuild :builds :app :compiler :output-dir]
                                     [:cljsbuild :builds :app :compiler :output-to]]
 
+  :source-paths ["src/clj" "src/cljc"]
+
   :minify-assets
   {:assets
     {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
-  :cljsbuild {:builds {:app {:source-paths ["src/cljs"{{{cljx-cljsbuild-spath}}}]
+  :cljsbuild {:builds {:app {:source-paths ["src/cljs" "src/cljc"]
                              :compiler {:output-to     "resources/public/js/app.js"
                                         :output-dir    "resources/public/js/out"
                                         :asset-path   "js/out"
@@ -74,22 +74,11 @@
 
                    :env {:dev true}
 
-                   {{#cljx-hook?}}
-                   :prep-tasks [["cljx" "once"]  "javac" "compile"]
-                   {{/cljx-hook?}}
-                   {{#cljx-build?}}
-                   :cljx {:builds [{:source-paths ["src/cljx"]
-                                    :output-path "target/generated/clj"
-                                    :rules :clj}
-                                   {:source-paths ["src/cljx"]
-                                    :output-path "target/generated/cljs"
-                                    :rules :cljs}]}
-                   {{/cljx-build?}}
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
                                               :compiler {:main "{{name}}.dev"
                                                          :source-map true}}
                                         {{#test-hook?}}
-                                        :test {:source-paths ["src/cljs" {{{cljx-cljsbuild-spath}}} "test/cljs"]
+                                        :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
                                                :compiler {:output-to "target/test.js"
                                                           :optimizations :whitespace
                                                           :pretty-print true}}{{/test-hook?}}}
@@ -100,7 +89,7 @@
                                                        "test/vendor/console-polyfill.js"
                                                        "target/test.js"]}{{/test-hook?}}}}
 
-             :uberjar {:hooks [{{cljx-uberjar-hook}}leiningen.cljsbuild minify-assets.plugin/hooks]
+             :uberjar {:hooks [leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
                        :aot :all
                        :omit-source true
