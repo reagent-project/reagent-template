@@ -50,8 +50,7 @@
   :less {:source-paths ["src/less"]
          :target-path "resources/public/css"}{{/less-hook?}}
 
-  :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
-                                  :nrepl-middleware [{{{nrepl-middleware}}}]}
+  :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
 
                    :dependencies [[ring/ring-mock "0.2.0"]
                                   [ring/ring-devel "1.4.0"]

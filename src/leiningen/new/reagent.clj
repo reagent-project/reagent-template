@@ -50,7 +50,6 @@
    :project-ns (sanitize-ns name)
    :sanitized (name-to-path name)
    :project-dev-plugins (dep-list 29 (project-plugins opts))
-   :nrepl-middleware (indent 53 opts)
 
    ;; test
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
