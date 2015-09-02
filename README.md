@@ -31,7 +31,7 @@ To run the tests, please use `lein cljsbuild test`. For installation instruction
 
 ### Development mode
 
-To start the Figwheel compiler, run the following command in a separate terminal:
+To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
 
 ```
 lein figwheel
