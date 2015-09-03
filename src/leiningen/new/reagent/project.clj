@@ -8,7 +8,7 @@
                  [ring-server "0.4.0"]
                  [cljsjs/react "0.13.3-1"]
                  [reagent "0.5.1-rc"]
-                 [reagent-forms "0.5.6"]
+                 [reagent-forms "0.5.7"]
                  [reagent-utils "0.1.5"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
@@ -16,7 +16,7 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.0"]
-                 [org.clojure/clojurescript "1.7.107" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.122" :scope "provided"]
                  [secretary "1.2.3"]{{{app-dependencies}}}]
 
   :plugins [[lein-environ "1.0.0"]
@@ -54,12 +54,12 @@
 
                    :dependencies [[ring/ring-mock "0.2.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [lein-figwheel "0.3.7"]
+                                  [lein-figwheel "0.3.8"]
                                   [org.clojure/tools.nrepl "0.2.10"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.3.7"]
+                   :plugins [[lein-figwheel "0.3.8"]
                              [lein-cljsbuild "1.0.6"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
