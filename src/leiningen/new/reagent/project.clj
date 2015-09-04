@@ -54,12 +54,12 @@
 
                    :dependencies [[ring/ring-mock "0.2.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [lein-figwheel "0.3.8"]
+                                  [lein-figwheel "0.3.9"]
                                   [org.clojure/tools.nrepl "0.2.10"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.3.8"]
+                   :plugins [[lein-figwheel "0.3.9"]
                              [lein-cljsbuild "1.0.6"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
