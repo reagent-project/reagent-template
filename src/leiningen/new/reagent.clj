@@ -61,17 +61,17 @@
   (let [data (template-data name opts)
         args [data
               ["project.clj" (render "project.clj" data)]
-              "src/cljc/{{sanitized}}"
               ["resources/public/css/site.css" (render "resources/public/css/site.css" data)]
               ["src/clj/{{sanitized}}/handler.clj" (render "src/clj/reagent/handler.clj" data)]
               ["src/clj/{{sanitized}}/server.clj" (render "src/clj/reagent/server.clj" data)]
               ["env/dev/clj/{{sanitized}}/repl.clj" (render "env/dev/clj/reagent/repl.clj" data)]
               ["src/cljs/{{sanitized}}/core.cljs" (render "src/cljs/reagent/core.cljs" data)]
+              ["src/cljc/{{sanitized}}/util.cljc" (render "src/cljc/reagent/util.cljc" data)]
               ["env/dev/cljs/{{sanitized}}/dev.cljs" (render "env/dev/cljs/reagent/dev.cljs" data)]
               ["env/prod/cljs/{{sanitized}}/prod.cljs" (render "env/prod/cljs/reagent/prod.cljs" data)]
               ["LICENSE" (render "LICENSE" data)]
               ["README.md" (render "README.md" data)]
-              [".gitignore" (render ".gitignore" data)]
+              [".gitignore" (render "gitignore" data)]
              ;; Heroku support
              ["system.properties" (render "system.properties" data)]
               ["Procfile" (render "Procfile" data)]]

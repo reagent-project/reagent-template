@@ -1,6 +1,7 @@
 /target
 /classes
 /checkouts
+profiles.clj
 pom.xml
 pom.xml.asc
 *.jar
@@ -11,3 +12,4 @@ pom.xml.asc
 /out
 /.repl
 *.log
+/.env
