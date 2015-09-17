@@ -14,11 +14,11 @@
                  [prone "0.8.2"]
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
-                 [environ "1.0.0"]
+                 [environ "1.0.1"]
                  [org.clojure/clojurescript "1.7.122" :scope "provided"]
                  [secretary "1.2.3"]{{{app-dependencies}}}]
 
-  :plugins [[lein-environ "1.0.0"]
+  :plugins [[lein-environ "1.0.1"]
             [lein-asset-minifier "0.2.2"]]
 
   :ring {:handler {{project-ns}}.handler/app
@@ -51,10 +51,10 @@
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
 
-                   :dependencies [[ring/ring-mock "0.2.0"]
+                   :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
                                   [lein-figwheel "0.4.0"]
-                                  [org.clojure/tools.nrepl "0.2.10"]
+                                  [org.clojure/tools.nrepl "0.2.11"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
