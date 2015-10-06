@@ -7,7 +7,7 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [ring-server "0.4.0"]
                  [reagent "0.5.1"]
-                 [reagent-forms "0.5.10"]
+                 [reagent-forms "0.5.12"]
                  [reagent-utils "0.1.5"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
@@ -55,11 +55,12 @@
                                   [ring/ring-devel "1.4.0"]
                                   [lein-figwheel "0.4.0"]
                                   [org.clojure/tools.nrepl "0.2.11"]
+                                  [com.cemerick/piggieback "0.1.5"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.4.0"]
-                             [lein-cljsbuild "1.0.6"]{{{project-dev-plugins}}}]
+                             [lein-cljsbuild "1.1.0"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
@@ -67,6 +68,7 @@
                    :figwheel {:http-server-root "public"
                               :server-port 3449
                               :nrepl-port 7002
+                              :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"]
                               :css-dirs ["resources/public/css"]
                               :ring-handler {{project-ns}}.handler/app}
 
