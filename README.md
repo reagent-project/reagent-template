@@ -34,6 +34,12 @@ To enable [DevCards](https://github.com/bhauman/devcards), use the `+devcards` f
 lein new reagent <name> +devcards
 ```
 
+To add [CIDER](https://github.com/clojure-emacs/cider) plugin, use the `+cider` flag:
+
+```
+lein new reagent <name> +cider
+```
+
 
 ### Development mode
 
@@ -181,6 +187,3 @@ If you feel that your customizations are general enough to be useful for others 
 Copyright © 2015 Dmitri Sotnikov
 
 Distributed under the The MIT License (MIT).
-
-
-
