@@ -15,7 +15,7 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.1"]
-                 [org.clojure/clojurescript "1.7.122" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.145" :scope "provided"]
                  [secretary "1.2.3"]
                  {{#devcards-hook?}} [devcards "0.2.0-8"] {{/devcards-hook?}}
                  {{{app-dependencies}}}]
@@ -55,13 +55,13 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [lein-figwheel "0.4.0"]
+                                  [lein-figwheel "0.4.1"]
                                   [org.clojure/tools.nrepl "0.2.11"]
                                   [com.cemerick/piggieback "0.1.5"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.4.0"]
+                   :plugins [[lein-figwheel "0.4.1"]
                              [lein-cljsbuild "1.1.0"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
