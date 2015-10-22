@@ -28,6 +28,12 @@ lein new reagent <name> +test
 ```
 To run the tests, please use `lein cljsbuild test`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
 
+To enable [DevCards](https://github.com/bhauman/devcards), use the `+devcards` flag:
+
+```
+lein new reagent <name> +devcards
+```
+
 
 ### Development mode
 
@@ -36,9 +42,15 @@ To start the Figwheel compiler, navigate to the project folder and run the follo
 ```
 lein figwheel
 ```
+To start the DevCards build run
+
+```
+lein figwheel devcards
+```
+
 
 Figwheel will automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449)
-once Figwheel starts up.
+once Figwheel starts up. To view your devcards, type `(switch-to-build devcards)` at the Figwheel REPL and navigate to [http://localhost:3449/cards](http://localhost:3449/cards).
 
 Figwheel also starts `nRREPL` using the value of the `:nrepl-port` in the `:figwheel`
 config found in `project.clj`. By default the port is set to `7002`.
@@ -137,14 +149,14 @@ The template packages everything you need to create a production ready ClojureSc
 * [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
 * [Heroku](https://www.heroku.com/) - the template is setup to work on Heroku out of the box, simply run `git push heroku master`
 * [clojurescript.test](https://github.com/cemerick/clojurescript.test) - a maximal port of clojure.test to ClojureScript
- 
+
 ## Options
 
 The template supports the following options:
 
 * `+test` - ClojureScript testing support
 * `+less` - use [less](https://github.com/montoux/lein-less) for compiling Less CSS files
- 
+
 ## Contributing & Customizing
 
 Take a look at the open issues, especially ones marked as `help wanted`. If you see one you'd like to address don't hesitate to start a discussion or submit a pull request.
@@ -166,7 +178,7 @@ If you feel that your customizations are general enough to be useful for others 
 
 ## License
 
-Copyright © 2015 Dmitri Sotnikov 
+Copyright © 2015 Dmitri Sotnikov
 
 Distributed under the The MIT License (MIT).
 

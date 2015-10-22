@@ -19,7 +19,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+less"])
+(def valid-opts ["+test" "+less" "+devcards"])
 
 (defn valid-opts? [opts]
   (every? #(some #{%} valid-opts) opts))
@@ -38,6 +38,9 @@
 
 (def test-source-paths "\"src/cljs\" \"test/cljs\"")
 
+(defn devcards? [opts]
+  (some #{"+devcards"} opts))
+
 (defn project-plugins [opts]
   (cond-> []
     (test? opts) (conj test-plugin)
@@ -55,7 +58,10 @@
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
 
    ;; less
-   :less-hook? (fn [block] (if (less? opts) (str block "") ""))})
+   :less-hook? (fn [block] (if (less? opts) (str block "") ""))
+
+   ;; devcards
+   :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)
@@ -83,6 +89,9 @@
                args)
         args (if (less? opts)
                (conj args ["src/less/site.less" (render "src/less/site.less" data)])
+               args)
+        args (if (devcards? opts)
+               (conj args ["env/dev/cljs/{{sanitized}}/cards.cljs" (render "env/dev/cljs/reagent/cards.cljs" data)])
                args)]
     args))
 

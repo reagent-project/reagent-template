@@ -16,7 +16,9 @@
                  [hiccup "1.0.5"]
                  [environ "1.0.1"]
                  [org.clojure/clojurescript "1.7.122" :scope "provided"]
-                 [secretary "1.2.3"]{{{app-dependencies}}}]
+                 [secretary "1.2.3"]
+                 {{#devcards-hook?}} [devcards "0.2.0-8"] {{/devcards-hook?}}
+                 {{{app-dependencies}}}]
 
   :plugins [[lein-environ "1.0.1"]
             [lein-asset-minifier "0.2.2"]]
@@ -81,13 +83,23 @@
                                         :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
                                                :compiler {:output-to "target/test.js"
                                                           :optimizations :whitespace
-                                                          :pretty-print true}}{{/test-hook?}}}
+                                                          :pretty-print true}}{{/test-hook?}}
+                                        {{#devcards-hook?}}
+                                        :devcards {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
+                                                   :figwheel {:devcards true}
+                                                   :compiler {:main "{{name}}.cards"
+                                                              :asset-path "js/devcards_out"
+                                                              :output-to "resources/public/js/app_devcards.js"
+                                                              :output-dir "resources/public/js/devcards_out"
+                                                              :source-map-timestamp true}}{{/devcards-hook?}}
+                                        }
                                {{#test-hook?}}
                                :test-commands {"unit" ["phantomjs" :runner
                                                        "test/vendor/es5-shim.js"
                                                        "test/vendor/es5-sham.js"
                                                        "test/vendor/console-polyfill.js"
-                                                       "target/test.js"]}{{/test-hook?}}}}
+                                                       "target/test.js"]}{{/test-hook?}}
+                               }}
 
              :uberjar {:hooks [leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}

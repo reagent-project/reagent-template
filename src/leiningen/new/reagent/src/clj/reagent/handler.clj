@@ -8,6 +8,13 @@
             [ring.middleware.reload :refer [wrap-reload]]
             [environ.core :refer [env]]))
 
+(def mount-target
+  [:div#app
+      [:h3 "ClojureScript has not been compiled!"]
+      [:p "please run "
+       [:b "lein figwheel"]
+       " in order to start the compiler"]])
+
 (def home-page
   (html
    [:html
@@ -17,15 +24,22 @@
              :content "width=device-width, initial-scale=1"}]
      (include-css (if (env :dev) "css/site.css" "css/site.min.css"))]
     [:body
-     [:div#app
-      [:h3 "ClojureScript has not been compiled!"]
-      [:p "please run "
-       [:b "lein figwheel"]
-       " in order to start the compiler"]]
+     mount-target
      (include-js "js/app.js")]]))
+{{#devcards-hook?}}
+
+(def cards-page
+  (html
+   [:html
+    [:head
+     [:meta {:charset "utf-8"}]]
+    [:body
+     mount-target
+     (include-js "js/app_devcards.js")]])){{/devcards-hook?}}
 
 (defroutes routes
   (GET "/" [] home-page)
+  {{#devcards-hook?}}(GET "/cards" [] cards-page){{/devcards-hook?}}
   (resources "/")
   (not-found "Not Found"))
 
