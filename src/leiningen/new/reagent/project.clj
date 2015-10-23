@@ -64,7 +64,7 @@
                    :plugins [[lein-figwheel "0.4.1"]
                              {{#cider-hook?}}
                              [cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                             {{#cider-hook?}}
+                             {{/cider-hook?}}
                              [refactor-nrepl "2.0.0-SNAPSHOT"]
                              [lein-cljsbuild "1.1.0"]{{{project-dev-plugins}}}]
 
@@ -77,7 +77,7 @@
                               :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"
                                                  {{#cider-hook?}}
                                                  "cider.nrepl/cider-middleware"
-                                                 {{#cider-hook?}}
+                                                 {{/cider-hook?}}
                                                  "refactor-nrepl.middleware/wrap-refactor"
                                                  ]
                               :css-dirs ["resources/public/css"]
