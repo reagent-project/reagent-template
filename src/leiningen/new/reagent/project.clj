@@ -64,8 +64,8 @@
                    :plugins [[lein-figwheel "0.4.1"]
                              {{#cider-hook?}}
                              [cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                             {{/cider-hook?}}
                              [refactor-nrepl "2.0.0-SNAPSHOT"]
+                             {{/cider-hook?}}
                              [lein-cljsbuild "1.1.0"]{{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
@@ -77,8 +77,8 @@
                               :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"
                                                  {{#cider-hook?}}
                                                  "cider.nrepl/cider-middleware"
-                                                 {{/cider-hook?}}
                                                  "refactor-nrepl.middleware/wrap-refactor"
+                                                 {{/cider-hook?}}
                                                  ]
                               :css-dirs ["resources/public/css"]
                               :ring-handler {{project-ns}}.handler/app}
