@@ -13,5 +13,5 @@
 
 (reagent/render [:div "This is working"] (.getElementById js/document "app"))
 
-;; remember to run lein figwheel and then browse to
+;; remember to run 'lein figwheel devcards' and then browse to
 ;; http://localhost:3449/cards
