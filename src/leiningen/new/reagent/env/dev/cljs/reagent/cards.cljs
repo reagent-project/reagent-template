@@ -1,6 +1,7 @@
 (ns {{project-ns}}.cards
   (:require [reagent.core :as reagent :refer [atom]]
-            [reagent.session :as session])
+            [reagent.session :as session]
+            [{{project-ns}}.core :as core])
   (:require-macros
    [devcards.core
     :as dc
@@ -11,7 +12,10 @@
 (defcard-rg first-card
   [:div>h1 "This is your first devcard!"])
 
-(reagent/render [:div "This is working"] (.getElementById js/document "app"))
+(defcard-rg home-page-card
+  [core/home-page])
 
-;; remember to run lein figwheel and then browse to
+(reagent/render [:div] (.getElementById js/document "app"))
+
+;; remember to run 'lein figwheel devcards' and then browse to
 ;; http://localhost:3449/cards
