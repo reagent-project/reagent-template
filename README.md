@@ -149,6 +149,7 @@ The template packages everything you need to create a production ready ClojureSc
 * [reagent-forms](https://github.com/reagent-project/reagent-forms) - data binding library for Reagent
 * [reagent-utils](https://github.com/reagent-project/reagent-utils) - utilities such as session and cookie management
 * [Secretary](https://github.com/gf3/secretary) - client-side routing
+* [Accountant](https://github.com/venantius/accountant) - additional setup facilities for client-side routing in SPA way
 * [Hiccup](https://github.com/weavejester/hiccup) - server-side HTML templating
 * [Compojure](https://github.com/weavejester/compojure) - a popular routing library
 * [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
