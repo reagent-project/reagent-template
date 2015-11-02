@@ -97,8 +97,7 @@ and stopped by running:
 ### Building for release
 
 ```
-lein cljsbuild clean
-lein uberjar
+lein do clean, uberjar
 ```
 
 ### Deploying to Heroku
