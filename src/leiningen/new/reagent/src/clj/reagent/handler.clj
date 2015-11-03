@@ -15,7 +15,7 @@
        [:b "lein figwheel"]
        " in order to start the compiler"]])
 
-(def home-page
+(def loading-page
   (html
    [:html
     [:head
@@ -38,7 +38,8 @@
      (include-js "js/app_devcards.js")]])){{/devcards-hook?}}
 
 (defroutes routes
-  (GET "/" [] home-page)
+  (GET "/" [] loading-page)
+  (GET "/about" [] loading-page)
   {{#devcards-hook?}}(GET "/cards" [] cards-page){{/devcards-hook?}}
   (resources "/")
   (not-found "Not Found"))
