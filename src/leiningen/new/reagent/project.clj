@@ -15,7 +15,7 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.1"]
-                 [org.clojure/clojurescript "1.7.166" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.145" :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.4"]
                  {{#devcards-hook?}} [devcards "0.2.0-8"] {{/devcards-hook?}}
