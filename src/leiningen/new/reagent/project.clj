@@ -15,7 +15,7 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.1"]
-                 [org.clojure/clojurescript "1.7.145" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.170" :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.4"]
                  {{#devcards-hook?}} [devcards "0.2.0-8"] {{/devcards-hook?}}
@@ -56,13 +56,13 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [lein-figwheel "0.4.1"]
-                                  [org.clojure/tools.nrepl "0.2.11"]
+                                  [lein-figwheel "0.5.0-SNAPSHOT"]
+                                  [org.clojure/tools.nrepl "0.2.12"]
                                   [com.cemerick/piggieback "0.1.5"]
                                   [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.4.1"]
+                   :plugins [[lein-figwheel "0.5.0-SNAPSHOT"]
                              {{#cider-hook?}}
                              [cider/cider-nrepl "0.10.0-SNAPSHOT"]
                              [refactor-nrepl "2.0.0-SNAPSHOT"]
