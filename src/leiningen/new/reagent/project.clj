@@ -22,6 +22,7 @@
                  {{{app-dependencies}}}]
 
   :plugins [[lein-environ "1.0.1"]
+            [lein-cljsbuild "1.1.1"]
             [lein-asset-minifier "0.2.2"]]
 
   :ring {:handler {{project-ns}}.handler/app
@@ -111,7 +112,8 @@
                                                        "target/test.js"]}{{/test-hook?}}
                                }}
 
-             :uberjar {:hooks [leiningen.cljsbuild minify-assets.plugin/hooks]
+             :uberjar {:hooks [minify-assets.plugin/hooks]
+                       :prep-tasks ["compile" ["cljsbuild" "once"]]
                        :env {:production true}
                        :aot :all
                        :omit-source true
