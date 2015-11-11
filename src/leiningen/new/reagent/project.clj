@@ -69,7 +69,7 @@
                              [cider/cider-nrepl "0.10.0-SNAPSHOT"]
                              [refactor-nrepl "2.0.0-SNAPSHOT"]
                              {{/cider-hook?}}
-                             [lein-cljsbuild "1.1.0"]{{{project-dev-plugins}}}]
+                             {{{project-dev-plugins}}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
