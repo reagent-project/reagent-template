@@ -39,14 +39,15 @@
                                     [:cljsbuild :builds :app :compiler :output-to]]
 
   :source-paths ["src/clj" "src/cljc"]
+  :resource-paths ["resources" "target/cljsbuild"]
 
   :minify-assets
   {:assets
     {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs" "src/cljc"]
-                             :compiler {:output-to     "resources/public/js/app.js"
-                                        :output-dir    "resources/public/js/out"
+                             :compiler {:output-to "target/cljsbuild/public/js/app.js"
+                                        :output-dir "target/cljsbuild/public/js/out"
                                         :asset-path   "js/out"
                                         :optimizations :none
                                         :pretty-print  true}}}}{{#less-hook?}}
