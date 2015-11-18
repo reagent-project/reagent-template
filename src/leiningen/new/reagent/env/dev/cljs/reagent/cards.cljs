@@ -7,8 +7,6 @@
     :as dc
     :refer [defcard defcard-doc defcard-rg deftest]]))
 
-(enable-console-print!)
-
 (defcard-rg first-card
   [:div>h1 "This is your first devcard!"])
 
