@@ -101,8 +101,8 @@
                                                    :figwheel {:devcards true}
                                                    :compiler {:main "{{name}}.cards"
                                                               :asset-path "js/devcards_out"
-                                                              :output-to "resources/public/js/app_devcards.js"
-                                                              :output-dir "resources/public/js/devcards_out"
+                                                              :output-to "target/cljsbuild/public/js/app_devcards.js"
+                                                              :output-dir "target/cljsbuild/public/js/devcards_out"
                                                               :source-map-timestamp true}}{{/devcards-hook?}}
                                         }
                                {{#test-hook?}}
