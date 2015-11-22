@@ -21,6 +21,7 @@
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.5"
                   :exclusions [org.clojure/tools.reader]]
+                 {{{app-dependencies}}}
                  ]
 
   :plugins [[lein-environ "1.0.1"]
@@ -73,6 +74,7 @@
                                   [org.clojure/clojurescript "1.7.170"]
                                   [org.clojure/tools.nrepl "0.2.12"]
                                   [com.cemerick/piggieback "0.2.1"]
+                                   {{#devcards-hook?}} [devcards "0.2.0-8"] {{/devcards-hook?}}
                                   [pjstadig/humane-test-output "0.7.0"]]
 
                    :source-paths ["env/dev/clj"]
