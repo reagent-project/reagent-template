@@ -61,7 +61,7 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [lein-figwheel "0.5.0-1"
+                                  [lein-figwheel "0.5.0-2"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
                                                 org.clojure/clojure
@@ -72,7 +72,7 @@
                                                 org.clojure/core.async
                                                 org.clojure/tools.analyzer.jvm]]
                                   [org.clojure/clojurescript "1.7.170"
-                                    :exclusions [org.clojure/clojure org.clojure/tools.reader]]
+                                   :exclusions [org.clojure/clojure org.clojure/tools.reader]]
                                   [org.clojure/tools.nrepl "0.2.12"]
                                   [com.cemerick/piggieback "0.2.1"]
                                   {{#devcards-hook?}} 
@@ -83,7 +83,7 @@
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.0-1"
+                   :plugins [[lein-figwheel "0.5.0-2"
                               :exclusions [org.clojure/core.memoize
                                            ring/ring-core
                                            org.clojure/clojure
