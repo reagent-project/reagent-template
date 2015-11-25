@@ -96,7 +96,8 @@
                              [org.clojure/clojurescript "1.7.170"]
                              {{#cider-hook?}}
                              [cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                             [org.clojure/tools.namespace "0.3.0-alpha2"]
+                             [org.clojure/tools.namespace "0.3.0-alpha2"
+                              :exclusions [org.clojure/tools.reader]]
                              [refactor-nrepl "2.0.0-SNAPSHOT"
                               :exclusions [org.clojure/clojure]]
                              {{/cider-hook?}}
