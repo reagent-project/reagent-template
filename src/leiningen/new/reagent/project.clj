@@ -6,7 +6,8 @@
 
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [ring-server "0.4.0"]
-                 [reagent "0.5.1"]
+                 [reagent "0.5.1"
+                  :exclusions [org.clojure/tools.reader]]
                  [reagent-forms "0.5.13"]
                  [reagent-utils "0.1.5"]
                  [ring "1.4.0"]
@@ -15,10 +16,13 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.1"]
-                 [org.clojure/clojurescript "1.7.170" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.170" :scope "provided"
+                  :exclusions [org.clojure/tools.reader]]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.1.5"]
-                 {{{app-dependencies}}}]
+                 [venantius/accountant "0.1.5"
+                  :exclusions [org.clojure/tools.reader]]
+                 {{{app-dependencies}}}
+                 ]
 
   :plugins [[lein-environ "1.0.1"]
             [lein-cljsbuild "1.1.1"]
@@ -57,17 +61,39 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [lein-figwheel "0.5.0"]
+                                  [lein-figwheel "0.5.0-1"
+                                   :exclusions [org.clojure/core.memoize
+                                                ring/ring-core
+                                                org.clojure/clojure
+                                                org.ow2.asm/asm-all
+                                                org.clojure/data.priority-map
+                                                org.clojure/tools.reader
+                                                org.clojure/clojurescript
+                                                org.clojure/core.async
+                                                org.clojure/tools.analyzer.jvm]]
+                                  [org.clojure/clojurescript "1.7.170"]
                                   [org.clojure/tools.nrepl "0.2.12"]
-                                  [com.cemerick/piggieback "0.1.5"]
-                                  {{#devcards-hook?}} [devcards "0.2.0-8"] {{/devcards-hook?}}
-                                  [pjstadig/humane-test-output "0.7.0"]{{{dev-dependencies}}}]
+                                  [com.cemerick/piggieback "0.2.1"]
+                                   {{#devcards-hook?}} [devcards "0.2.0-8"] {{/devcards-hook?}}
+                                  [pjstadig/humane-test-output "0.7.0"]
+                                  {{dev-dependencies}}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.0"]
+                   :plugins [[lein-figwheel "0.5.0-1"
+                              :exclusions [org.clojure/core.memoize
+                                           ring/ring-core
+                                           org.clojure/clojure
+                                           org.ow2.asm/asm-all
+                                           org.clojure/data.priority-map
+                                           org.clojure/tools.reader
+                                           org.clojure/clojurescript
+                                           org.clojure/core.async
+                                           org.clojure/tools.analyzer.jvm]]
+                             [org.clojure/clojurescript "1.7.170"]
                              {{#cider-hook?}}
                              [cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                             [refactor-nrepl "2.0.0-SNAPSHOT"]
+                             [refactor-nrepl "2.0.0-SNAPSHOT"
+                              :exclusions [org.clojure/clojure]]
                              {{/cider-hook?}}
                              {{{project-dev-plugins}}}]
 
