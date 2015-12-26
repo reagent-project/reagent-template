@@ -9,16 +9,15 @@
                  [reagent "0.5.1"
                   :exclusions [org.clojure/tools.reader]]
                  [reagent-forms "0.5.13"]
-                 [reagent-utils "0.1.5"]
+                 [reagent-utils "0.1.7"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
-                 [prone "0.8.2"]
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.1"]
                  [org.clojure/clojurescript "1.7.170" :scope "provided"]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.1.5"
+                 [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]
                  {{{app-dependencies}}}
                  ]
@@ -61,6 +60,7 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
+                                  [prone "0.8.3"]
                                   [lein-figwheel "0.5.0-2"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
@@ -79,7 +79,7 @@
                                   [devcards "0.2.0-8"
                                    :exclusions [org.clojure/tools.reader]]
                                   {{/devcards-hook?}}
-                                  [pjstadig/humane-test-output "0.7.0"]
+                                  [pjstadig/humane-test-output "0.7.1"]
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
@@ -146,6 +146,7 @@
                                }}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
+                       :source-paths ["env/prod/clj"]
                        :prep-tasks ["compile" ["cljsbuild" "once"]]
                        :env {:production true}
                        :aot :all
