@@ -34,8 +34,6 @@
 (defn test? [opts]
   (some #{"+test"} opts))
 
-(def test-plugin "com.cemerick/clojurescript.test \"0.3.3\"")
-
 (def test-source-paths "\"src/cljs\" \"test/cljs\"")
 
 (defn devcards? [opts]
@@ -46,7 +44,6 @@
 
 (defn project-plugins [opts]
   (cond-> []
-    (test? opts) (conj test-plugin)
     (less? opts) (conj less-plugin)))
 
 (defn template-data [name opts]

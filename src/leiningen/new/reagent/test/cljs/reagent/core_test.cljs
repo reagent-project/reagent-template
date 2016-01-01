@@ -1,5 +1,5 @@
 (ns {{project-ns}}.core-test
-  (:require [cemerick.cljs.test :refer-macros [is are deftest testing use-fixtures done]]
+  (:require [cljs.test :refer-macros [is are deftest testing use-fixtures done]]
             [reagent.core :as reagent :refer [atom]]
             [{{project-ns}}.core :as rc]))
 
