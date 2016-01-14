@@ -19,10 +19,12 @@
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]
+                 [speclj "3.3.1"]
                  {{{app-dependencies}}}
                  ]
 
-  :plugins [[lein-environ "1.0.1"]
+  :plugins [[speclj "3.3.1"]
+            [lein-environ "1.0.1"]
             [lein-cljsbuild "1.1.1"]
             [lein-asset-minifier "0.2.4"
              :exclusions [org.clojure/clojure]]
@@ -42,6 +44,7 @@
                                     [:cljsbuild :builds :app :compiler :output-to]]
 
   :source-paths ["src/clj" "src/cljc"]
+  :test-paths ["spec/cljs"]
   :resource-paths ["resources" "target/cljsbuild"]
 
   :minify-assets
@@ -125,7 +128,7 @@
                                               :compiler {:main "{{name}}.dev"
                                                          :source-map true}}
                                         {{#test-hook?}}
-                                        :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
+                                        :test {:source-paths ["src/cljs" "src/cljc" "spec/cljs"]
                                                :compiler {:output-to "target/test.js"
                                                           :optimizations :whitespace
                                                           :pretty-print true}}{{/test-hook?}}
@@ -139,11 +142,8 @@
                                                               :source-map-timestamp true}}{{/devcards-hook?}}
                                         }
                                {{#test-hook?}}
-                               :test-commands {"unit" ["phantomjs" :runner
-                                                       "test/vendor/es5-shim.js"
-                                                       "test/vendor/es5-sham.js"
-                                                       "test/vendor/console-polyfill.js"
-                                                       "target/test.js"]}{{/test-hook?}}
+                               :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
+                               {{/test-hook?}}
                                }}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]

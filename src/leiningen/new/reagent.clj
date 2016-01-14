@@ -34,7 +34,7 @@
 (defn test? [opts]
   (some #{"+test"} opts))
 
-(def test-source-paths "\"src/cljs\" \"test/cljs\"")
+(def test-source-paths "\"src/cljs\" \"spec/cljs\"")
 
 (defn devcards? [opts]
   (some #{"+devcards"} opts))
@@ -80,6 +80,7 @@
               ["src/cljc/{{sanitized}}/util.cljc" (render "src/cljc/reagent/util.cljc" data)]
               ["env/dev/cljs/{{sanitized}}/dev.cljs" (render "env/dev/cljs/reagent/dev.cljs" data)]
               ["env/prod/cljs/{{sanitized}}/prod.cljs" (render "env/prod/cljs/reagent/prod.cljs" data)]
+              ["runners/speclj" (render "runners/speclj" data)]
               ["LICENSE" (render "LICENSE" data)]
               ["README.md" (render "README.md" data)]
               [".gitignore" (render "gitignore" data)]
@@ -87,10 +88,10 @@
              ["system.properties" (render "system.properties" data)]
               ["Procfile" (render "Procfile" data)]]
         args (if (test? opts)
-               (conj args ["test/cljs/{{sanitized}}/core_test.cljs" (render "test/cljs/reagent/core_test.cljs" data)]
-                     ["test/vendor/console-polyfill.js" (render "test/vendor/console-polyfill.js" data)]
-                     ["test/vendor/es5-sham.js" (render "test/vendor/es5-sham.js" data)]
-                     ["test/vendor/es5-shim.js" (render "test/vendor/es5-shim.js" data)])
+               (conj args ["spec/cljs/{{sanitized}}/core_spec.cljs" (render "spec/cljs/reagent/core_spec.cljs" data)]
+                     ["spec/vendor/console-polyfill.js" (render "spec/vendor/console-polyfill.js" data)]
+                     ["spec/vendor/es5-sham.js" (render "spec/vendor/es5-sham.js" data)]
+                     ["spec/vendor/es5-shim.js" (render "spec/vendor/es5-shim.js" data)])
                args)
         args (if (less? opts)
                (conj args ["src/less/site.less" (render "src/less/site.less" data)])
