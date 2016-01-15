@@ -19,7 +19,6 @@
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]
-                 {{{app-dependencies}}}
                  ]
 
   :plugins [[lein-environ "1.0.1"]
