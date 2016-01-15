@@ -20,7 +20,6 @@
                  [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]
                  [speclj "3.3.1"]
-                 {{{app-dependencies}}}
                  ]
 
   :plugins [[speclj "3.3.1"]
