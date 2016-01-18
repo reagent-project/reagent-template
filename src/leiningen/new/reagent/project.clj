@@ -47,7 +47,7 @@
 
   :source-paths ["src/clj" "src/cljc"]
   {{#spec-hook?}}
-  :test-paths ["spec/cljs"]
+  :test-paths ["spec/clj"]
   {{/spec-hook?}}
   :resource-paths ["resources" "target/cljsbuild"]
 
