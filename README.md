@@ -28,6 +28,13 @@ lein new reagent <name> +test
 ```
 To run the tests, please use `lein cljsbuild test`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
 
+To enable [speclj](https://github.com/slagyr/speclj) with [PhantomJS](http://phantomjs.org/), use `+spec` flag:
+
+```
+lein new reagent <name> +spec
+```
+To run the tests, please use `lein cljsbuild test`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
+
 To enable [DevCards](https://github.com/bhauman/devcards), use the `+devcards` flag:
 
 ```
@@ -161,6 +168,7 @@ The template packages everything you need to create a production ready ClojureSc
 The template supports the following options:
 
 * `+test` - ClojureScript testing support
+* `+spec` - use [speclj](https://github.com/slagyr/speclj) for TDD/BDD
 * `+less` - use [less](https://github.com/montoux/lein-less) for compiling Less CSS files
 
 ## Contributing & Customizing
