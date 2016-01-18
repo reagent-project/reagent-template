@@ -72,7 +72,7 @@
    :less-hook? (fn [block] (if (less? opts) (str block "") ""))
 
    ;; sass
-   :sass-hook? (fn [block] (if (less? opts) (str block "") ""))
+   :sass-hook? (fn [block] (if (sass? opts) (str block "") ""))
 
    ;; devcards
    :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))
