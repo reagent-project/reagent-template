@@ -29,12 +29,8 @@
 
 (def less-plugin "lein-less \"1.7.5\"")
 
-(def less-source-paths "\"resources/public/less\"")
-
 (defn test? [opts]
   (some #{"+test"} opts))
-
-(def test-source-paths "\"src/cljs\" \"test/cljs\"")
 
 (defn spec? [opts]
   (some #{"+spec"} opts))
