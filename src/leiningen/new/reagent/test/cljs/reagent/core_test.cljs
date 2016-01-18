@@ -1,6 +1,5 @@
-(ns {{project-ns}}.core-spec
-  (:require-macros [speclj.core :refer [describe it should= should should-not]])
-  (:require [speclj.core]
+(ns {{project-ns}}.core-test
+  (:require [cljs.test :refer-macros [is are deftest testing use-fixtures]]
             [reagent.core :as reagent :refer [atom]]
             [{{project-ns}}.core :as rc]))
 
@@ -34,8 +33,7 @@
           false))))
 
 
-(describe "test home"
-  (it "contains 'Welcome to' in home page"
-      (with-mounted-component (rc/home-page)
-        (fn [c div]
-          (should (found-in #"Welcome to" div))))))
+(deftest test-home
+  (with-mounted-component (rc/home-page)
+    (fn [c div]
+      (is (found-in #"Welcome to" div)))))

@@ -99,7 +99,7 @@
                      ["test/vendor/es5-shim.js" (render "test/vendor/es5-shim.js" data)])
                args)
         args (if (spec? opts)
-               (conj args ["spec/cljs/{{sanitized}}/core_spec.cljs" (render "spec/cljs/reagent/core_spec.cljs" data)]
+               (conj args ["spec/cljs/{{sanitized}}/core_test.cljs" (render "spec/cljs/reagent/core_test.cljs" data)]
                      ["spec/vendor/console-polyfill.js" (render "spec/vendor/console-polyfill.js" data)]
                      ["spec/vendor/es5-sham.js" (render "spec/vendor/es5-sham.js" data)]
                      ["spec/vendor/es5-shim.js" (render "spec/vendor/es5-shim.js" data)]
