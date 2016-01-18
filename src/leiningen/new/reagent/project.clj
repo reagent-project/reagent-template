@@ -60,9 +60,16 @@
                                         :output-dir "target/cljsbuild/public/js/out"
                                         :asset-path   "js/out"
                                         :optimizations :none
-                                        :pretty-print  true}}}}{{#less-hook?}}
+                                        :pretty-print  true}}}}
+  {{#less-hook?}}
   :less {:source-paths ["src/less"]
-         :target-path "resources/public/css"}{{/less-hook?}}
+         :target-path "resources/public/css"}
+  {{/less-hook?}}
+
+  {{#sass-hook?}}
+  :sass {:src "src/sass"
+         :dst "resources/public/css"}
+  {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
 

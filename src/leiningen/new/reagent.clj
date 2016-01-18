@@ -19,7 +19,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+spec" "+less" "+devcards" "+cider"])
+(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider"])
 
 (defn valid-opts? [opts]
   (every? #(some #{%} valid-opts) opts))
@@ -27,7 +27,11 @@
 (defn less? [opts]
   (some #{"+less"} opts))
 
+(defn sass? [opts]
+  (some #{"+sass"} opts))
+
 (def less-plugin "lein-less \"1.7.5\"")
+(def sass-plugin "lein-sassy \"1.0.7\"")
 
 (def less-source-paths "\"resources/public/less\"")
 
@@ -47,7 +51,8 @@
 
 (defn project-plugins [opts]
   (cond-> []
-    (less? opts) (conj less-plugin)))
+    (less? opts) (conj less-plugin)
+    (sass? opts) (conj sass-plugin)))
 
 (defn template-data [name opts]
   {:full-name name
@@ -65,6 +70,9 @@
 
    ;; less
    :less-hook? (fn [block] (if (less? opts) (str block "") ""))
+
+   ;; sass
+   :sass-hook? (fn [block] (if (less? opts) (str block "") ""))
 
    ;; devcards
    :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))
