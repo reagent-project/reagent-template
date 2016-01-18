@@ -77,6 +77,12 @@ lein less auto
 ```
 to autocompile less files.
 
+In case of using `+sass` option you may also want to run
+```
+lein sass watch
+```
+to autocompile sass/scss files.
+
 #### Optional development tools
 
 Start the browser REPL:
@@ -162,6 +168,7 @@ The template supports the following options:
 
 * `+test` - ClojureScript testing support
 * `+less` - use [less](https://github.com/montoux/lein-less) for compiling Less CSS files
+* `+sass` - use [sass](https://github.com/vladh/lein-sassy) for compiling Sass/Scss CSS files
 
 ## Contributing & Customizing
 
