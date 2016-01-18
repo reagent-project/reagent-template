@@ -19,7 +19,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+less" "+devcards" "+cider"])
+(def valid-opts ["+test" "+spec" "+less" "+devcards" "+cider"])
 
 (defn valid-opts? [opts]
   (every? #(some #{%} valid-opts) opts))
@@ -35,6 +35,9 @@
   (some #{"+test"} opts))
 
 (def test-source-paths "\"src/cljs\" \"test/cljs\"")
+
+(defn spec? [opts]
+  (some #{"+spec"} opts))
 
 (defn devcards? [opts]
   (some #{"+devcards"} opts))
@@ -56,6 +59,9 @@
 
    ;; test
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
+
+   ;; spec
+   :spec-hook? (fn [block] (if (spec? opts) (str block "") ""))
 
    ;; less
    :less-hook? (fn [block] (if (less? opts) (str block "") ""))
@@ -88,9 +94,16 @@
               ["Procfile" (render "Procfile" data)]]
         args (if (test? opts)
                (conj args ["test/cljs/{{sanitized}}/core_test.cljs" (render "test/cljs/reagent/core_test.cljs" data)]
-                     ["test/vendor/console-polyfill.js" (render "test/vendor/console-polyfill.js" data)]
-                     ["test/vendor/es5-sham.js" (render "test/vendor/es5-sham.js" data)]
-                     ["test/vendor/es5-shim.js" (render "test/vendor/es5-shim.js" data)])
+                     ["test/vendor/console-polyfill.js" (render "vendor/console-polyfill.js" data)]
+                     ["test/vendor/es5-sham.js" (render "vendor/es5-sham.js" data)]
+                     ["test/vendor/es5-shim.js" (render "vendor/es5-shim.js" data)])
+               args)
+        args (if (spec? opts)
+               (conj args ["spec/cljs/{{sanitized}}/core_test.cljs" (render "spec/cljs/reagent/core_spec.cljs" data)]
+                     ["spec/vendor/console-polyfill.js" (render "vendor/console-polyfill.js" data)]
+                     ["spec/vendor/es5-sham.js" (render "vendor/es5-sham.js" data)]
+                     ["spec/vendor/es5-shim.js" (render "vendor/es5-shim.js" data)]
+                     ["runners/speclj" (render "runners/speclj" data)])
                args)
         args (if (less? opts)
                (conj args ["src/less/site.less" (render "src/less/site.less" data)])
