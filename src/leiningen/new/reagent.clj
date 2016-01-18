@@ -116,6 +116,11 @@
         args (if (less? opts)
                (conj args ["src/less/site.less" (render "src/less/site.less" data)])
                args)
+        args (if (sass? opts)
+               (conj args
+                     ["src/sass/index.sass" (render "src/sass/index.sass" data)]
+                     ["src/sass/profile.scss" (render "src/sass/profile.scss" data)])
+               args)
         args (if (devcards? opts)
                (conj args ["env/dev/cljs/{{sanitized}}/cards.cljs" (render "env/dev/cljs/reagent/cards.cljs" data)])
                args)]
