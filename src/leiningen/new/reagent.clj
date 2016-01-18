@@ -19,7 +19,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+less" "+devcards" "+cider"])
+(def valid-opts ["+test" "+spec" "+less" "+devcards" "+cider"])
 
 (defn valid-opts? [opts]
   (every? #(some #{%} valid-opts) opts))
@@ -99,7 +99,7 @@
                      ["test/vendor/es5-shim.js" (render "test/vendor/es5-shim.js" data)])
                args)
         args (if (spec? opts)
-               (conj args ["spec/cljs/{{sanitized}}/core_test.cljs" (render "spec/cljs/reagent/core_test.cljs" data)]
+               (conj args ["spec/cljs/{{sanitized}}/core_test.cljs" (render "spec/cljs/reagent/core_spec.cljs" data)]
                      ["spec/vendor/console-polyfill.js" (render "spec/vendor/console-polyfill.js" data)]
                      ["spec/vendor/es5-sham.js" (render "spec/vendor/es5-sham.js" data)]
                      ["spec/vendor/es5-shim.js" (render "spec/vendor/es5-shim.js" data)]

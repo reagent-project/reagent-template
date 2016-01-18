@@ -137,7 +137,7 @@
                                                           :optimizations :whitespace
                                                           :pretty-print true}}{{/test-hook?}}
                                         {{#spec-hook?}}
-                                        :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
+                                        :test {:source-paths ["src/cljs" "src/cljc" "spec/cljs"]
                                                :compiler {:output-to "target/test.js"
                                                           :optimizations :whitespace
                                                           :pretty-print true}}{{/spec-hook?}}
