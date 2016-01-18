@@ -34,10 +34,10 @@
 (defn test? [opts]
   (some #{"+test"} opts))
 
+(def test-source-paths "\"src/cljs\" \"test/cljs\"")
+
 (defn spec? [opts]
   (some #{"+spec"} opts))
-
-(def test-source-paths "\"src/cljs\" \"test/cljs\" \"spec/cljs\"")
 
 (defn devcards? [opts]
   (some #{"+devcards"} opts))

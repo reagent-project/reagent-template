@@ -19,14 +19,18 @@
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]
+                 {{#spec-hook?}}
                  [speclj "3.3.1"]
+                 {{/spec-hook?}}
                  ]
 
-  :plugins [[speclj "3.3.1"]
-            [lein-environ "1.0.1"]
+  :plugins [[lein-environ "1.0.1"]
             [lein-cljsbuild "1.1.1"]
             [lein-asset-minifier "0.2.4"
-             :exclusions [org.clojure/clojure]]]
+             :exclusions [org.clojure/clojure]]
+            {{#spec-hook?}}
+            [speclj "3.3.1"]
+            {{/spec-hook?}}]
 
   :ring {:handler {{project-ns}}.handler/app
          :uberwar-name "{{name}}.war"}
@@ -42,7 +46,9 @@
                                     [:cljsbuild :builds :app :compiler :output-to]]
 
   :source-paths ["src/clj" "src/cljc"]
+  {{#spec-hook?}}
   :test-paths ["spec/cljs"]
+  {{/spec-hook?}}
   :resource-paths ["resources" "target/cljsbuild"]
 
   :minify-assets
@@ -126,10 +132,15 @@
                                               :compiler {:main "{{name}}.dev"
                                                          :source-map true}}
                                         {{#test-hook?}}
-                                        :test {:source-paths ["src/cljs" "src/cljc" "spec/cljs"]
+                                        :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
                                                :compiler {:output-to "target/test.js"
                                                           :optimizations :whitespace
                                                           :pretty-print true}}{{/test-hook?}}
+                                        {{#spec-hook?}}
+                                        :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
+                                               :compiler {:output-to "target/test.js"
+                                                          :optimizations :whitespace
+                                                          :pretty-print true}}{{/spec-hook?}}
                                         {{#devcards-hook?}}
                                         :devcards {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
                                                    :figwheel {:devcards true}
@@ -140,8 +151,14 @@
                                                               :source-map-timestamp true}}{{/devcards-hook?}}
                                         }
                                {{#test-hook?}}
+                               :test-commands {"unit" ["phantomjs" :runner
+                                                       "test/vendor/es5-shim.js"
+                                                       "test/vendor/es5-sham.js"
+                                                       "test/vendor/console-polyfill.js"
+                                                       "target/test.js"]}{{/test-hook?}}
+                               {{#spec-hook?}}
                                :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
-                               {{/test-hook?}}
+                               {{/spec-hook?}}
                                }}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
