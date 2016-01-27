@@ -76,7 +76,7 @@
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
                                   [prone "1.0.1"]
-                                  [lein-figwheel "0.5.0-3"
+                                  [lein-figwheel "0.5.0-5"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
                                                 org.clojure/clojure
@@ -98,7 +98,7 @@
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.0-3"
+                   :plugins [[lein-figwheel "0.5.0-5"
                               :exclusions [org.clojure/core.memoize
                                            ring/ring-core
                                            org.clojure/clojure
