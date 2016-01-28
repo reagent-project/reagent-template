@@ -14,7 +14,7 @@
                  [ring/ring-defaults "0.1.5"]
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
-                 [environ "1.0.1"]
+                 [environ "1.0.2"]
                  [org.clojure/clojurescript "1.7.228" :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
@@ -24,7 +24,7 @@
                  {{/spec-hook?}}
                  ]
 
-  :plugins [[lein-environ "1.0.1"]
+  :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
             [lein-asset-minifier "0.2.4"
              :exclusions [org.clojure/clojure]]
@@ -76,7 +76,7 @@
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
                                   [prone "1.0.1"]
-                                  [lein-figwheel "0.5.0-5"
+                                  [lein-figwheel "0.5.0-6"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
                                                 org.clojure/clojure
