@@ -21,12 +21,12 @@ Create a new application project:
 lein new reagent <name>
 ```
 
-To enable [clojurescript testing](https://github.com/cemerick/clojurescript.test) with [PhantomJS](http://phantomjs.org/), use `+test` flag:
+To enable [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/main/cljs/cljs/test.cljs) and [doo](https://github.com/bensu/doo) with [PhantomJS](http://phantomjs.org/), use `+test` flag:
 
 ```
 lein new reagent <name> +test
 ```
-To run the tests, please use `lein cljsbuild test`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
+To run the tests, please use `lein doo phantom test once`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
 
 To enable [speclj](https://github.com/slagyr/speclj) with [PhantomJS](http://phantomjs.org/), use `+spec` flag:
 
@@ -167,7 +167,6 @@ The template packages everything you need to create a production ready ClojureSc
 * [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
 * [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
 * [Heroku](https://www.heroku.com/) - the template is setup to work on Heroku out of the box, simply run `git push heroku master`
-* [clojurescript.test](https://github.com/cemerick/clojurescript.test) - a maximal port of clojure.test to ClojureScript
 
 ## Options
 
