@@ -18,26 +18,12 @@
                  [org.clojure/clojurescript "1.7.228" :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
-                  :exclusions [org.clojure/tools.reader]]
-                 {{#test-hook?}}
-                 [lein-doo "0.1.6"]
-                 {{/test-hook?}}
-                 {{#spec-hook?}}
-                 [speclj "3.3.1"]
-                 {{/spec-hook?}}
-                 ]
+                  :exclusions [org.clojure/tools.reader]]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
             [lein-asset-minifier "0.2.4"
-             :exclusions [org.clojure/clojure]]
-            {{#test-hook?}}
-            [lein-doo "0.1.6"]
-            {{/test-hook?}}
-            {{#spec-hook?}}
-            [speclj "3.3.1"]
-            {{/spec-hook?}}
-            ]
+             :exclusions [org.clojure/clojure]]]
 
   :ring {:handler {{project-ns}}.handler/app
          :uberwar-name "{{name}}.war"}
@@ -97,6 +83,12 @@
                                    :exclusions [org.clojure/clojure org.clojure/tools.reader]]
                                   [org.clojure/tools.nrepl "0.2.12"]
                                   [com.cemerick/piggieback "0.2.1"]
+                                  {{#test-hook?}}
+                                  [lein-doo "0.1.6"]
+                                  {{/test-hook?}}
+                                  {{#spec-hook?}}
+                                  [speclj "3.3.1"]
+                                  {{/spec-hook?}}
                                   {{#devcards-hook?}}
                                   [devcards "0.2.0-8"
                                    :exclusions [org.clojure/tools.reader]]
@@ -115,7 +107,13 @@
                                            org.clojure/clojurescript
                                            org.clojure/core.async
                                            org.clojure/tools.analyzer.jvm]]
-                             [org.clojure/clojurescript "1.7.170"]
+                             [org.clojure/clojurescript "1.7.228"]
+                             {{#test-hook?}}
+                             [lein-doo "0.1.6"]
+                             {{/test-hook?}}
+                             {{#spec-hook?}}
+                             [speclj "3.3.1"]
+                             {{/spec-hook?}}
                              {{#cider-hook?}}
                              [cider/cider-nrepl "0.10.0-SNAPSHOT"]
                              [org.clojure/tools.namespace "0.3.0-alpha2"
