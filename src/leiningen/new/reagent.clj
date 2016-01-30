@@ -98,9 +98,7 @@
               ["Procfile" (render "Procfile" data)]]
         args (if (test? opts)
                (conj args ["test/cljs/{{sanitized}}/core_test.cljs" (render "test/cljs/reagent/core_test.cljs" data)]
-                     ["test/vendor/console-polyfill.js" (render "vendor/console-polyfill.js" data)]
-                     ["test/vendor/es5-sham.js" (render "vendor/es5-sham.js" data)]
-                     ["test/vendor/es5-shim.js" (render "vendor/es5-shim.js" data)])
+                     ["test/cljs/{{sanitized}}/doo_runner.cljs" (render "runners/doo_runner.cljs" data)])
                args)
         args (if (spec? opts)
                (conj args ["spec/cljs/{{sanitized}}/core_test.cljs" (render "spec/cljs/reagent/core_spec.cljs" data)]
