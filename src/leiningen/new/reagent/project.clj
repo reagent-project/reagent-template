@@ -19,6 +19,9 @@
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]
+                 {{#test-hook?}}
+                 [lein-doo "0.1.6"]
+                 {{/test-hook?}}
                  {{#spec-hook?}}
                  [speclj "3.3.1"]
                  {{/spec-hook?}}
@@ -28,9 +31,13 @@
             [lein-cljsbuild "1.1.1"]
             [lein-asset-minifier "0.2.4"
              :exclusions [org.clojure/clojure]]
+            {{#test-hook?}}
+            [lein-doo "0.1.6"]
+            {{/test-hook?}}
             {{#spec-hook?}}
             [speclj "3.3.1"]
-            {{/spec-hook?}}]
+            {{/spec-hook?}}
+            ]
 
   :ring {:handler {{project-ns}}.handler/app
          :uberwar-name "{{name}}.war"}
@@ -141,6 +148,7 @@
                                         {{#test-hook?}}
                                         :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
                                                :compiler {:output-to "target/test.js"
+                                                          :main {{project-ns}}.doo-runner
                                                           :optimizations :whitespace
                                                           :pretty-print true}}{{/test-hook?}}
                                         {{#spec-hook?}}
@@ -157,12 +165,6 @@
                                                               :output-dir "target/cljsbuild/public/js/devcards_out"
                                                               :source-map-timestamp true}}{{/devcards-hook?}}
                                         }
-                               {{#test-hook?}}
-                               :test-commands {"unit" ["phantomjs" :runner
-                                                       "test/vendor/es5-shim.js"
-                                                       "test/vendor/es5-sham.js"
-                                                       "test/vendor/console-polyfill.js"
-                                                       "target/test.js"]}{{/test-hook?}}
                                {{#spec-hook?}}
                                :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
                                {{/spec-hook?}}
