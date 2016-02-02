@@ -8,7 +8,7 @@
                  [ring-server "0.4.0"]
                  [reagent "0.5.1"
                   :exclusions [org.clojure/tools.reader]]
-                 [reagent-forms "0.5.13"]
+                 [reagent-forms "0.5.15"]
                  [reagent-utils "0.1.7"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
