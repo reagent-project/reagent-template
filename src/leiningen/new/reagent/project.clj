@@ -22,7 +22,7 @@
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
-            [lein-asset-minifier "0.2.4"
+            [lein-asset-minifier "0.2.5"
              :exclusions [org.clojure/clojure]]]
 
   :ring {:handler {{project-ns}}.handler/app
@@ -68,7 +68,7 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [prone "1.0.1"]
+                                  [prone "1.0.2"]
                                   [lein-figwheel "0.5.0-6"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
