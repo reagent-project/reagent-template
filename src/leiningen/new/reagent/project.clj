@@ -79,8 +79,6 @@
                                                 org.clojure/clojurescript
                                                 org.clojure/core.async
                                                 org.clojure/tools.analyzer.jvm]]
-                                  [org.clojure/clojurescript "1.7.170"
-                                   :exclusions [org.clojure/clojure org.clojure/tools.reader]]
                                   [org.clojure/tools.nrepl "0.2.12"]
                                   [com.cemerick/piggieback "0.2.1"]
                                   {{#test-hook?}}
@@ -107,7 +105,6 @@
                                            org.clojure/clojurescript
                                            org.clojure/core.async
                                            org.clojure/tools.analyzer.jvm]]
-                             [org.clojure/clojurescript "1.7.228"]
                              {{#test-hook?}}
                              [lein-doo "0.1.6"]
                              {{/test-hook?}}
