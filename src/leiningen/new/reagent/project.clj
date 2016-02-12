@@ -15,7 +15,8 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.2"]
-                 [org.clojure/clojurescript "1.7.228" :scope "provided"]
+                 [org.clojure/clojurescript "1.7.228"
+                  :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.6"
                   :exclusions [org.clojure/tools.reader]]]
