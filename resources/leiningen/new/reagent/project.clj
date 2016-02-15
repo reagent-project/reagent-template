@@ -23,7 +23,7 @@
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
-            [lein-asset-minifier "0.2.4"
+            [lein-asset-minifier "0.2.6"
              :exclusions [org.clojure/clojure]]]
 
   :ring {:handler {{project-ns}}.handler/app
