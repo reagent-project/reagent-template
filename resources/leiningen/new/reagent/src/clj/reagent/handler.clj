@@ -18,10 +18,10 @@
      [:meta {:charset "utf-8"}]
      [:meta {:name "viewport"
              :content "width=device-width, initial-scale=1"}]
-     (include-css (if (env :dev) "css/site.css" "css/site.min.css"))]
+     (include-css (if (env :dev) "/css/site.css" "/css/site.min.css"))]
     [:body
      mount-target
-     (include-js "js/app.js")]))
+     (include-js "/js/app.js")]))
 {{#devcards-hook?}}
 
 (def cards-page
@@ -30,7 +30,7 @@
      [:meta {:charset "utf-8"}]]
     [:body
      mount-target
-     (include-js "js/app_devcards.js")])){{/devcards-hook?}}
+     (include-js "/js/app_devcards.js")])){{/devcards-hook?}}
 
 (defroutes routes
   (GET "/" [] loading-page)
