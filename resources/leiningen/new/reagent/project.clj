@@ -8,7 +8,7 @@
                  [ring-server "0.4.0"]
                  [reagent "0.5.1"
                   :exclusions [org.clojure/tools.reader]]
-                 [reagent-forms "0.5.15"]
+                 [reagent-forms "0.5.21"]
                  [reagent-utils "0.1.7"]
                  [ring "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
@@ -18,12 +18,12 @@
                  [org.clojure/clojurescript "1.7.228"
                   :scope "provided"]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.1.6"
+                 [venantius/accountant "0.1.7"
                   :exclusions [org.clojure/tools.reader]]]
 
   :plugins [[lein-environ "1.0.2"]
             [lein-cljsbuild "1.1.1"]
-            [lein-asset-minifier "0.2.6"
+            [lein-asset-minifier "0.2.7"
              :exclusions [org.clojure/clojure]]]
 
   :ring {:handler {{project-ns}}.handler/app
