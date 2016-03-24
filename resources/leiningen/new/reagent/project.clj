@@ -8,14 +8,14 @@
                  [ring-server "0.4.0"]
                  [reagent "0.5.1"
                   :exclusions [org.clojure/tools.reader]]
-                 [reagent-forms "0.5.21"]
+                 [reagent-forms "0.5.22"]
                  [reagent-utils "0.1.7"]
                  [ring "1.4.0"]
-                 [ring/ring-defaults "0.1.5"]
+                 [ring/ring-defaults "0.2.0"]
                  [compojure "1.5.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.2"]
-                 [org.clojure/clojurescript "1.7.228"
+                 [org.clojure/clojurescript "1.8.34"
                   :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.7"
@@ -35,9 +35,10 @@
 
   :main {{project-ns}}.server
 
-  :clean-targets ^{:protect false} [:target-path
-                                    [:cljsbuild :builds :app :compiler :output-dir]
-                                    [:cljsbuild :builds :app :compiler :output-to]]
+  :clean-targets ^{:protect false} 
+  [:target-path
+   [:cljsbuild :builds :app :compiler :output-dir]
+   [:cljsbuild :builds :app :compiler :output-to]]
 
   :source-paths ["src/clj" "src/cljc"]
   {{#spec-hook?}}
@@ -69,8 +70,8 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [prone "1.0.2"]
-                                  [lein-figwheel "0.5.0-6"
+                                  [prone "1.1.0"]
+                                  [lein-figwheel "0.5.1"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
                                                 org.clojure/clojure
@@ -92,7 +93,7 @@
                                   [devcards "0.2.0-8"
                                    :exclusions [org.clojure/tools.reader]]
                                   {{/devcards-hook?}}
-                                  [pjstadig/humane-test-output "0.7.1"]
+                                  [pjstadig/humane-test-output "0.8.0"]
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
