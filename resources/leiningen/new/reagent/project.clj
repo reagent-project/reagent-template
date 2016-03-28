@@ -15,7 +15,7 @@
                  [compojure "1.5.0"]
                  [hiccup "1.0.5"]
                  [environ "1.0.2"]
-                 [org.clojure/clojurescript "1.8.34"
+                 [org.clojure/clojurescript "1.8.40"
                   :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.1.7"
@@ -97,7 +97,7 @@
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.0-6"
+                   :plugins [[lein-figwheel "0.5.1"
                               :exclusions [org.clojure/core.memoize
                                            ring/ring-core
                                            org.clojure/clojure
