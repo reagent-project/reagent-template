@@ -70,7 +70,7 @@
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
-                                  [prone "1.1.0"]
+                                  [prone "1.1.1"]
                                   [lein-figwheel "0.5.2"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
