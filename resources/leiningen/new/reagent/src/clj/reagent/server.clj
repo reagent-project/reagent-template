@@ -1,6 +1,6 @@
 (ns {{project-ns}}.server
   (:require [{{project-ns}}.handler :refer [app]]
-            [environ.core :refer [env]]
+            [config.core :refer [env]]
             [ring.adapter.jetty :refer [run-jetty]])
   (:gen-class))
 

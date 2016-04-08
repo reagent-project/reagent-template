@@ -14,7 +14,7 @@
                  [ring/ring-defaults "0.2.0"]
                  [compojure "1.5.0"]
                  [hiccup "1.0.5"]
-                 [environ "1.0.2"]
+                 [yogthos/config "0.8"]
                  [org.clojure/clojurescript "1.8.40"
                   :scope "provided"]
                  [secretary "1.2.3"]
@@ -35,7 +35,7 @@
 
   :main {{project-ns}}.server
 
-  :clean-targets ^{:protect false} 
+  :clean-targets ^{:protect false}
   [:target-path
    [:cljsbuild :builds :app :compiler :output-dir]
    [:cljsbuild :builds :app :compiler :output-to]]

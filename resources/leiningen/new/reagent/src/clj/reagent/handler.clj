@@ -3,7 +3,7 @@
             [compojure.route :refer [not-found resources]]
             [hiccup.page :refer [include-js include-css html5]]
             [{{name}}.middleware :refer [wrap-middleware]]
-            [environ.core :refer [env]]))
+            [config.core :refer [env]]))
 
 (def mount-target
   [:div#app
