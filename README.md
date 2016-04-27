@@ -47,6 +47,12 @@ To add [CIDER](https://github.com/clojure-emacs/cider) plugin, use the `+cider` 
 lein new reagent <name> +cider
 ```
 
+To add  [less](https://github.com/montoux/lein-less)/[sass](https://github.com/vladh/lein-sassy) support
+use `+less` or `+sass` flags:
+
+```
+lein new reagent <name> +less
+```
 
 ### Development mode
 
