@@ -182,6 +182,8 @@ The template supports the following options:
 * `+spec` - use [speclj](https://github.com/slagyr/speclj) for TDD/BDD
 * `+less` - use [less](https://github.com/montoux/lein-less) for compiling Less CSS files
 * `+sass` - use [sass](https://github.com/vladh/lein-sassy) for compiling Sass/Scss CSS files
+* `+devcards` - add [Devcards](https://github.com/bhauman/devcards) support
+* `+cider` - add [CIDER](https://github.com/clojure-emacs/cider) support
 
 ## Contributing & Customizing
 
