@@ -90,7 +90,7 @@
                                   [speclj "3.3.1"]
                                   {{/spec-hook?}}
                                   {{#devcards-hook?}}
-                                  [devcards "0.2.1-7"
+                                  [devcards "0.2.0-8"
                                    :exclusions [org.clojure/tools.reader]]
                                   {{/devcards-hook?}}
                                   [pjstadig/humane-test-output "0.8.0"]
