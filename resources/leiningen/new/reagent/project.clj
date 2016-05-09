@@ -71,7 +71,7 @@
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.4.0"]
                                   [prone "1.1.1"]
-                                  [lein-figwheel "0.5.2"
+                                  [lein-figwheel "0.5.3-1"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
                                                 org.clojure/clojure
@@ -90,14 +90,14 @@
                                   [speclj "3.3.1"]
                                   {{/spec-hook?}}
                                   {{#devcards-hook?}}
-                                  [devcards "0.2.0-8"
+                                  [devcards "0.2.1-7"
                                    :exclusions [org.clojure/tools.reader]]
                                   {{/devcards-hook?}}
                                   [pjstadig/humane-test-output "0.8.0"]
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.2"
+                   :plugins [[lein-figwheel "0.5.3-1"
                               :exclusions [org.clojure/core.memoize
                                            ring/ring-core
                                            org.clojure/clojure
