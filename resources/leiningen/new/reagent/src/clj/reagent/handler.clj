@@ -22,7 +22,7 @@
 (def loading-page
   (html5
     (head)
-    [:body
+    [:body {:class "body-container"}
      mount-target
      (include-js "/js/app.js")]))
 {{#devcards-hook?}}
