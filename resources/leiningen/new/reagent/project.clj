@@ -50,12 +50,55 @@
   {:assets
    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
 
-  :cljsbuild {:builds {:app {:source-paths ["src/cljs" "src/cljc"]
-                             :compiler {:output-to "target/cljsbuild/public/js/app.js"
-                                        :output-dir "target/cljsbuild/public/js/out"
-                                        :asset-path   "/js/out"
-                                        :optimizations :none
-                                        :pretty-print  true}}}}
+  :cljsbuild
+  {:builds {:min
+            {:source-paths ["src/cljs" "src/cljc" "env/prod/cljs"]
+             :compiler
+             {:output-to "target/cljsbuild/public/js/app.js"
+              :output-dir "target/uberjar"
+              :optimizations :advanced
+              :pretty-print  false}}
+            :app
+            {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
+             :compiler
+             {:main "{{name}}.dev"
+              :asset-path   "/js/out"
+              :output-to "target/cljsbuild/public/js/app.js"
+              :output-dir "target/cljsbuild/public/js/out"
+              :source-map true
+              :optimizations :none
+              :pretty-print  true}}
+            {{#test-hook?}}
+            :test
+            {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
+             :compiler {:main {{project-ns}}.doo-runner
+                        :asset-path   "/js/out"
+                        :output-to "target/test.js"
+                        :output-dir "target/cljsbuild/public/js/out"
+                        :optimizations :whitespace
+                        :pretty-print true}}{{/test-hook?}}
+            {{#spec-hook?}}
+            :test
+            {:source-paths ["src/cljs" "src/cljc" "spec/cljs"]
+             :compiler {:output-to "target/test.js"
+                        :optimizations :whitespace
+                        :pretty-print true}}{{/spec-hook?}}
+            {{#devcards-hook?}}
+            :devcards
+            {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
+             :figwheel {:devcards true}
+             :compiler {:main "{{name}}.cards"
+                        :asset-path "js/devcards_out"
+                        :output-to "target/cljsbuild/public/js/app_devcards.js"
+                        :output-dir "target/cljsbuild/public/js/devcards_out"
+                        :source-map-timestamp true
+                        :optimizations :none
+                        :pretty-print true}}{{/devcards-hook?}}
+            }
+   {{#spec-hook?}}
+   :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
+   {{/spec-hook?}}
+   }
   {{#less-hook?}}
   :less {:source-paths ["src/less"]
          :target-path "resources/public/css"}
@@ -137,45 +180,11 @@
                               :css-dirs ["resources/public/css"]
                               :ring-handler {{project-ns}}.handler/app}
 
-                   :env {:dev true}
-
-                   :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {:main "{{name}}.dev"
-                                                         :source-map true}}
-                                        {{#test-hook?}}
-                                        :test {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
-                                               :compiler {:output-to "target/test.js"
-                                                          :main {{project-ns}}.doo-runner
-                                                          :optimizations :whitespace
-                                                          :pretty-print true}}{{/test-hook?}}
-                                        {{#spec-hook?}}
-                                        :test {:source-paths ["src/cljs" "src/cljc" "spec/cljs"]
-                                               :compiler {:output-to "target/test.js"
-                                                          :optimizations :whitespace
-                                                          :pretty-print true}}{{/spec-hook?}}
-                                        {{#devcards-hook?}}
-                                        :devcards {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
-                                                   :figwheel {:devcards true}
-                                                   :compiler {:main "{{name}}.cards"
-                                                              :asset-path "js/devcards_out"
-                                                              :output-to "target/cljsbuild/public/js/app_devcards.js"
-                                                              :output-dir "target/cljsbuild/public/js/devcards_out"
-                                                              :source-map-timestamp true}}{{/devcards-hook?}}
-                                        }
-                               {{#spec-hook?}}
-                               :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
-                               {{/spec-hook?}}
-                               }}
+                   :env {:dev true}}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
                        :source-paths ["env/prod/clj"]
-                       :prep-tasks ["compile" ["cljsbuild" "once"]]
+                       :prep-tasks ["compile" ["cljsbuild" "once" "min"]]
                        :env {:production true}
                        :aot :all
-                       :omit-source true
-                       :cljsbuild {:jar true
-                                   :builds {:app
-                                            {:source-paths ["env/prod/cljs"]
-                                             :compiler
-                                             {:optimizations :advanced
-                                              :pretty-print false}}}}}})
+                       :omit-source true}})
