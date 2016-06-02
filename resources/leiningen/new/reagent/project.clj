@@ -99,6 +99,20 @@
    :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
    {{/spec-hook?}}
    }
+
+  :figwheel
+  {:http-server-root "public"
+   :server-port 3449
+   :nrepl-port 7002
+   :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"
+                      {{#cider-hook?}}
+                      "cider.nrepl/cider-middleware"
+                      "refactor-nrepl.middleware/wrap-refactor"
+                      {{/cider-hook?}}
+                      ]
+   :css-dirs ["resources/public/css"]
+   :ring-handler {{project-ns}}.handler/app}
+
   {{#less-hook?}}
   :less {:source-paths ["src/less"]
          :target-path "resources/public/css"}
@@ -167,18 +181,6 @@
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
-
-                   :figwheel {:http-server-root "public"
-                              :server-port 3449
-                              :nrepl-port 7002
-                              :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"
-                                                 {{#cider-hook?}}
-                                                 "cider.nrepl/cider-middleware"
-                                                 "refactor-nrepl.middleware/wrap-refactor"
-                                                 {{/cider-hook?}}
-                                                 ]
-                              :css-dirs ["resources/public/css"]
-                              :ring-handler {{project-ns}}.handler/app}
 
                    :env {:dev true}}
 
