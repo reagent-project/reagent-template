@@ -62,7 +62,7 @@
             {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
              :compiler
              {:main "{{name}}.dev"
-              :asset-path   "/js/out"
+              :asset-path "/js/out"
               :output-to "target/cljsbuild/public/js/app.js"
               :output-dir "target/cljsbuild/public/js/out"
               :source-map true
@@ -72,9 +72,9 @@
             :test
             {:source-paths ["src/cljs" "src/cljc" "test/cljs"]
              :compiler {:main {{project-ns}}.doo-runner
-                        :asset-path   "/js/out"
+                        :asset-path "/js/out"
                         :output-to "target/test.js"
-                        :output-dir "target/cljsbuild/public/js/out"
+                        :output-dir "target/cljstest/public/js/out"
                         :optimizations :whitespace
                         :pretty-print true}}{{/test-hook?}}
             {{#spec-hook?}}
@@ -99,6 +99,10 @@
    :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
    {{/spec-hook?}}
    }
+
+  {{#spec-hook?}}
+   :doo {:build "test"}
+   {{/spec-hook?}}
 
   :figwheel
   {:http-server-root "public"
