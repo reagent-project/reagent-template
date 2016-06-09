@@ -7,10 +7,10 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring-server "0.4.0"]
                  [reagent "0.6.0-rc"]
-                 [reagent-forms "0.5.23"]
+                 [reagent-forms "0.5.24"]
                  [reagent-utils "0.1.8"]
-                 [ring "1.4.0"]
-                 [ring/ring-defaults "0.2.0"]
+                 [ring "1.5.0"]
+                 [ring/ring-defaults "0.2.1"]
                  [compojure "1.5.0"]
                  [hiccup "1.0.5"]
                  [yogthos/config "0.8"]
@@ -129,9 +129,9 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
 
                    :dependencies [[ring/ring-mock "0.3.0"]
-                                  [ring/ring-devel "1.4.0"]
+                                  [ring/ring-devel "1.5.0"]
                                   [prone "1.1.1"]
-                                  [lein-figwheel "0.5.3-1"
+                                  [lein-figwheel "0.5.4-SNAPSHOT"
                                    :exclusions [org.clojure/core.memoize
                                                 ring/ring-core
                                                 org.clojure/clojure
@@ -142,7 +142,7 @@
                                                 org.clojure/core.async
                                                 org.clojure/tools.analyzer.jvm]]
                                   [org.clojure/tools.nrepl "0.2.12"]
-                                  [com.cemerick/piggieback "0.2.1"]
+                                  [com.cemerick/piggieback "0.2.2-SNAPSHOT"]
                                   {{#test-hook?}}
                                   [lein-doo "0.1.6"]
                                   {{/test-hook?}}
@@ -157,7 +157,7 @@
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.3-1"
+                   :plugins [[lein-figwheel "0.5.4-SNAPSHOT"
                               :exclusions [org.clojure/core.memoize
                                            ring/ring-core
                                            org.clojure/clojure
