@@ -19,7 +19,7 @@
            :content "width=device-width, initial-scale=1"}]
    (include-css (if (env :dev) "/css/site.css" "/css/site.min.css"))])
 
-(def loading-page
+(defn loading-page []
   (html5
     (head)
     [:body {:class "body-container"}
@@ -27,7 +27,7 @@
      (include-js "/js/app.js")]))
 {{#devcards-hook?}}
 
-(def cards-page
+(defn cards-page []
   (html5
     (head)
     [:body
@@ -35,9 +35,9 @@
      (include-js "/js/app_devcards.js")])){{/devcards-hook?}}
 
 (defroutes routes
-  (GET "/" [] loading-page)
-  (GET "/about" [] loading-page)
-  {{#devcards-hook?}}(GET "/cards" [] cards-page){{/devcards-hook?}}
+  (GET "/" [] (loading-page))
+  (GET "/about" [] (loading-page))
+  {{#devcards-hook?}}(GET "/cards" [] (cards-page)){{/devcards-hook?}}
   (resources "/")
   (not-found "Not Found"))
 
