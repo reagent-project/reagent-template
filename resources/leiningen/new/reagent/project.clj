@@ -7,7 +7,6 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring-server "0.4.0"]
                  [reagent "0.6.0"]
-                 [reagent-forms "0.5.25"]
                  [reagent-utils "0.2.0"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
@@ -132,7 +131,7 @@
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.5.0"]
                                   [prone "1.1.2"]
-                                  [figwheel-sidecar "0.5.7"]
+                                  [figwheel-sidecar "0.5.8"]
                                   [org.clojure/tools.nrepl "0.2.12"]
                                   [com.cemerick/piggieback "0.2.2-SNAPSHOT"]
                                   {{#test-hook?}}
@@ -148,7 +147,7 @@
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.7"]
+                   :plugins [[lein-figwheel "0.5.8"]
                              {{#test-hook?}}
                              [lein-doo "0.1.6"]
                              {{/test-hook?}}
