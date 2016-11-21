@@ -99,7 +99,7 @@
    {{/spec-hook?}}
    }
 
-  {{#spec-hook?}}
+{{#spec-hook?}}
    :doo {:build "test"}
    {{/spec-hook?}}
 
@@ -126,7 +126,8 @@
          :dst "resources/public/css"}
   {{/sass-hook?}}
 
-  :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
+  :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
+                                  :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.5.0"]
