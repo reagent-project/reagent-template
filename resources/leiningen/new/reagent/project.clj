@@ -134,9 +134,6 @@
                                   [figwheel-sidecar "0.5.8"]
                                   [org.clojure/tools.nrepl "0.2.12"]
                                   [com.cemerick/piggieback "0.2.2-SNAPSHOT"]
-                                  {{#test-hook?}}
-                                  [lein-doo "0.1.6"]
-                                  {{/test-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.1"]
                                   {{/spec-hook?}}
