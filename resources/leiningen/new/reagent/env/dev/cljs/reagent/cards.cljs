@@ -1,7 +1,8 @@
 (ns {{project-ns}}.cards
   (:require [reagent.core :as reagent :refer [atom]]
             [reagent.session :as session]
-            [{{project-ns}}.core :as core])
+            [{{project-ns}}.core :as core]
+            [devcards.core :as dc])
   (:require-macros
    [devcards.core
     :as dc
