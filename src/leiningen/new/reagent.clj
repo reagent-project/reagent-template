@@ -112,6 +112,7 @@
                args)
         args (if (sass? opts)
                (conj args
+                     ["src/sass/site.scss" (render "src/sass/site.scss" data)]
                      ["src/sass/index.sass" (render "src/sass/index.sass" data)]
                      ["src/sass/profile.scss" (render "src/sass/profile.scss" data)])
                args)
