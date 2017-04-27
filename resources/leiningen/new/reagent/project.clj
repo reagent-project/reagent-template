@@ -13,10 +13,10 @@
                  [compojure "1.5.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "0.8"]
-                 [org.clojure/clojurescript "1.9.495"
+                 [org.clojure/clojurescript "1.9.521"
                   :scope "provided"]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.1.9"
+                 [venantius/accountant "0.2.0"
                   :exclusions [org.clojure/tools.reader]]]
 
   :plugins [[lein-environ "1.0.2"]
@@ -131,8 +131,8 @@
                    :dependencies [[ring/ring-mock "0.3.0"]
                                   [ring/ring-devel "1.5.1"]
                                   [prone "1.1.4"]
-                                  [figwheel-sidecar "0.5.9"]
-                                  [org.clojure/tools.nrepl "0.2.12"]
+                                  [figwheel-sidecar "0.5.10"]
+                                  [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2-SNAPSHOT"]
                                   {{#spec-hook?}}
                                   [speclj "3.3.1"]
@@ -144,7 +144,7 @@
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.9"]
+                   :plugins [[lein-figwheel "0.5.10"]
                              {{#test-hook?}}
                              [lein-doo "0.1.6"]
                              {{/test-hook?}}
