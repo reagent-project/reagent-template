@@ -58,6 +58,7 @@
               :pretty-print  false}}
             :app
             {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
+             :figwheel {:on-jsload "{{project-ns}}.core/mount-root"}
              :compiler
              {:main "{{name}}.dev"
               :asset-path "/js/out"
