@@ -1,6 +1,5 @@
 (ns ^:figwheel-no-load {{project-ns}}.dev
-  (:require [{{project-ns}}.core :as core]
-            [figwheel.client :as figwheel :include-macros true]))
+  (:require [{{project-ns}}.core :as core]))
 
 (enable-console-print!)
 
