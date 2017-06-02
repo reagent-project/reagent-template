@@ -6,14 +6,14 @@
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring-server "0.4.0"]
-                 [reagent "0.6.1"]
+                 [reagent "0.6.2"]
                  [reagent-utils "0.2.1"]
-                 [ring "1.5.1"]
-                 [ring/ring-defaults "0.2.3"]
-                 [compojure "1.5.2"]
+                 [ring "1.6.1"]
+                 [ring/ring-defaults "0.3.0"]
+                 [compojure "1.6.0"]
                  [hiccup "1.0.5"]
                  [yogthos/config "0.8"]
-                 [org.clojure/clojurescript "1.9.521"
+                 [org.clojure/clojurescript "1.9.562"
                   :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.2.0"
@@ -130,7 +130,7 @@
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
                    :dependencies [[ring/ring-mock "0.3.0"]
-                                  [ring/ring-devel "1.5.1"]
+                                  [ring/ring-devel "1.6.1"]
                                   [prone "1.1.4"]
                                   [figwheel-sidecar "0.5.10"]
                                   [org.clojure/tools.nrepl "0.2.13"]
@@ -139,9 +139,9 @@
                                   [speclj "3.3.1"]
                                   {{/spec-hook?}}
                                   {{#devcards-hook?}}
-                                  [devcards "0.2.1-7"]
+                                  [devcards "0.2.3" :exclusions [cljsjs/react]]
                                   {{/devcards-hook?}}
-                                  [pjstadig/humane-test-output "0.8.1"]
+                                  [pjstadig/humane-test-output "0.8.2"]
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]

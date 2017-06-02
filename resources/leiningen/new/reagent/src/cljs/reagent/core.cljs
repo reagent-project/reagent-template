@@ -1,6 +1,5 @@
 (ns {{project-ns}}.core
     (:require [reagent.core :as reagent :refer [atom]]
-              [reagent.session :as session]
               [secretary.core :as secretary :include-macros true]
               [accountant.core :as accountant]))
 
@@ -15,17 +14,19 @@
   [:div [:h2 "About {{name}}"]
    [:div [:a {:href "/"} "go to the home page"]]])
 
-(defn current-page []
-  [:div [(session/get :current-page)]])
-
 ;; -------------------------
 ;; Routes
 
+(def page (atom #'home-page))
+
+(defn current-page []
+  [:div [@page]])
+
 (secretary/defroute "/" []
-  (session/put! :current-page #'home-page))
+  (reset! page #'home-page))
 
 (secretary/defroute "/about" []
-  (session/put! :current-page #'about-page))
+  (reset! page #'about-page))
 
 ;; -------------------------
 ;; Initialize app
