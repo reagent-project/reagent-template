@@ -6,14 +6,14 @@
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring-server "0.4.0"]
-                 [reagent "0.6.2"]
+                 [reagent "0.7.0"]
                  [reagent-utils "0.2.1"]
                  [ring "1.6.1"]
                  [ring/ring-defaults "0.3.0"]
                  [compojure "1.6.0"]
                  [hiccup "1.0.5"]
                  [yogthos/config "0.8"]
-                 [org.clojure/clojurescript "1.9.562"
+                 [org.clojure/clojurescript "1.9.660"
                   :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.2.0"
