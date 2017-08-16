@@ -8,11 +8,11 @@
                  [ring-server "0.4.0"]
                  [reagent "0.7.0"]
                  [reagent-utils "0.2.1"]
-                 [ring "1.6.1"]
-                 [ring/ring-defaults "0.3.0"]
+                 [ring "1.6.2"]
+                 [ring/ring-defaults "0.3.1"]
                  [compojure "1.6.0"]
                  [hiccup "1.0.5"]
-                 [yogthos/config "0.8"]
+                 [yogthos/config "0.9"]
                  [org.clojure/clojurescript "1.9.854"
                   :scope "provided"]
                  [secretary "1.2.3"]
@@ -132,9 +132,9 @@
 
                    :dependencies [[binaryage/devtools "0.9.4"]
                                   [ring/ring-mock "0.3.1"]
-                                  [ring/ring-devel "1.6.1"]
+                                  [ring/ring-devel "1.6.2"]
                                   [prone "1.1.4"]
-                                  [figwheel-sidecar "0.5.11"]
+                                  [figwheel-sidecar "0.5.12"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]
                                   {{#spec-hook?}}
@@ -147,7 +147,7 @@
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.11"]
+                   :plugins [[lein-figwheel "0.5.12"]
                              {{#test-hook?}}
                              [lein-doo "0.1.6"]
                              {{/test-hook?}}
