@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [ring-server "0.4.0"]
+                 [ring-server "0.5.0"]
                  [reagent "0.7.0"]
                  [reagent-utils "0.2.1"]
                  [ring "1.6.2"]
@@ -13,7 +13,7 @@
                  [compojure "1.6.0"]
                  [hiccup "1.0.5"]
                  [yogthos/config "0.9"]
-                 [org.clojure/clojurescript "1.9.908"
+                 [org.clojure/clojurescript "1.9.946"
                   :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.2.0"
@@ -130,11 +130,11 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
-                   :dependencies [[binaryage/devtools "0.9.4"]
+                   :dependencies [[binaryage/devtools "0.9.7"]
                                   [ring/ring-mock "0.3.1"]
                                   [ring/ring-devel "1.6.2"]
                                   [prone "1.1.4"]
-                                  [figwheel-sidecar "0.5.13"]
+                                  [figwheel-sidecar "0.5.14"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]
                                   {{#spec-hook?}}
@@ -143,11 +143,11 @@
                                   {{#devcards-hook?}}
                                   [devcards "0.2.3" :exclusions [cljsjs/react]]
                                   {{/devcards-hook?}}
-                                  [pjstadig/humane-test-output "0.8.2"]
+                                  [pjstadig/humane-test-output "0.8.3"]
                                   {{dev-dependencies}}]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.13"]
+                   :plugins [[lein-figwheel "0.5.14"]
                              {{#test-hook?}}
                              [lein-doo "0.1.6"]
                              {{/test-hook?}}
