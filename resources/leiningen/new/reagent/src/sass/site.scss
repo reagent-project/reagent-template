@@ -1,5 +1,7 @@
-// Uncomment to import other sass or scss files
-// @import 'index';
+// Files not starting with _ are consided entrypoints, i.e. they are compiled to .css files
+// Partials (files starting with _) can be inclued using @import:
+// (import path can include _ but it is not needed)
+
 // @import 'profile';
 
 // You can use any sass features, like variables, for instance:

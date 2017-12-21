@@ -47,7 +47,7 @@ To add [CIDER](https://github.com/clojure-emacs/cider) plugin, use the `+cider` 
 lein new reagent <name> +cider
 ```
 
-To add  [less](https://github.com/montoux/lein-less)/[sass](https://github.com/vladh/lein-sassy) support
+To add  [less](https://github.com/Deraen/less4clj)/[sass](https://github.com/Deraen/sass4clj) support
 use `+less` or `+sass` flags:
 
 ```
@@ -86,13 +86,13 @@ The application will now be available at [http://localhost:3000](http://localhos
 
 In case of using `+less` option you may also want to run
 ```
-lein less auto
+lein less4j auto
 ```
 to autocompile less files.
 
 In case of using `+sass` option you may also want to run
 ```
-lein sass watch
+lein sass4clj watch
 ```
 to autocompile sass/scss files.
 
@@ -180,8 +180,8 @@ The template supports the following options:
 
 * `+test` - ClojureScript testing support
 * `+spec` - use [speclj](https://github.com/slagyr/speclj) for TDD/BDD
-* `+less` - use [less](https://github.com/montoux/lein-less) for compiling Less CSS files
-* `+sass` - use [sass](https://github.com/vladh/lein-sassy) for compiling Sass/Scss CSS files
+* `+less` - use [less](https://github.com/Deraen/less4clj) for compiling Less CSS files
+* `+sass` - use [sass](https://github.com/Deraen/sass4clj) for compiling Sass/Scss CSS files
 * `+devcards` - add [Devcards](https://github.com/bhauman/devcards) support
 * `+cider` - add [CIDER](https://github.com/clojure-emacs/cider) support
 

@@ -13,9 +13,6 @@
          (map #(str "\n" (apply str (repeat n " ")) (wrap %)))
          (join ""))))
 
-(defn dep-list [n list]
-  (wrap-indent #(str "[" % "]") n list))
-
 (defn indent [n list]
   (wrap-indent identity n list))
 
@@ -26,9 +23,6 @@
 
 (defn sass? [opts]
   (some #{"+sass"} opts))
-
-(def less-plugin "lein-less \"1.7.5\"")
-(def sass-plugin "lein-sassy \"1.0.7\"")
 
 (defn test? [opts]
   (some #{"+test"} opts))
@@ -51,18 +45,12 @@
 
       (and (test? opts) (spec? opts)) "Both +test and +spec options can't be used together, select one.")))
 
-(defn project-plugins [opts]
-  (cond-> []
-    (less? opts) (conj less-plugin)
-    (sass? opts) (conj sass-plugin)))
-
 (defn template-data [name opts]
   {:full-name name
    :name (project-name name)
    :project-goog-module (sanitize (sanitize-ns name))
    :project-ns (sanitize-ns name)
    :sanitized (name-to-path name)
-   :project-dev-plugins (dep-list 29 (project-plugins opts))
 
    ;; test
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
@@ -114,13 +102,15 @@
                      ["runners/speclj" (render "runners/speclj" data)])
                args)
         args (if (less? opts)
-               (conj args ["src/less/site.less" (render "src/less/site.less" data)])
+               (conj args
+                     ["src/less/site.main.less" (render "src/less/site.main.less" data)]
+                     ["src/less/profile.less" (render "src/less/profile.less" data)]
+                     )
                args)
         args (if (sass? opts)
                (conj args
                      ["src/sass/site.scss" (render "src/sass/site.scss" data)]
-                     ["src/sass/index.sass" (render "src/sass/index.sass" data)]
-                     ["src/sass/profile.scss" (render "src/sass/profile.scss" data)])
+                     ["src/sass/_profile.scss" (render "src/sass/_profile.scss" data)])
                args)
         args (if (devcards? opts)
                (conj args ["env/dev/cljs/{{sanitized}}/cards.cljs" (render "env/dev/cljs/reagent/cards.cljs" data)])

@@ -123,8 +123,8 @@
   {{/less-hook?}}
 
   {{#sass-hook?}}
-  :sass {:src "src/sass"
-         :dst "resources/public/css"}
+  :sass {:source-paths ["src/sass"]
+         :target-path "resources/public/css"}
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
@@ -144,7 +144,15 @@
                                   [devcards "0.2.3" :exclusions [cljsjs/react]]
                                   {{/devcards-hook?}}
                                   [pjstadig/humane-test-output "0.8.3"]
-                                  {{dev-dependencies}}]
+                                  {{dev-dependencies}}
+                                  {{#less-hook?}}
+                                  ;; To silence warnings from less4clj dependecies about missing logger implementation
+                                  [org.slf4j/slf4j-nop "1.7.25"]
+                                  {{/less-hook?}}
+                                  {{#sass-hook?}}
+                                  ;; To silence warnings from sass4clj dependecies about missing logger implementation
+                                  [org.slf4j/slf4j-nop "1.7.25"]
+                                  {{/sass-hook?}} ]
 
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.5.14"]
@@ -161,7 +169,12 @@
                              [refactor-nrepl "2.3.1"
                               :exclusions [org.clojure/clojure]]
                              {{/cider-hook?}}
-                             {{{project-dev-plugins}}}]
+                             {{#less-hook?}}
+                             [deraen/lein-less4j "0.6.2"]
+                             {{/less-hook?}}
+                             {{#sass-hook?}}
+                             [deraen/lein-sass4clj "0.3.1"]
+                             {{/sass-hook?}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]
