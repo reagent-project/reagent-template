@@ -61,7 +61,7 @@ To start the Figwheel compiler, navigate to the project folder and run the follo
 ```
 lein figwheel
 ```
-To start the DevCards build run
+To start the [DevCards](https://github.com/bhauman/devcards) (if enabled with `+devcards` flag) build run
 
 ```
 lein figwheel devcards
