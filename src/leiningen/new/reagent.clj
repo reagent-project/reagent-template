@@ -21,9 +21,6 @@
 
 (def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider"])
 
-(defn valid-opts? [opts]
-  (every? #(some #{%} valid-opts) opts))
-
 (defn less? [opts]
   (some #{"+less"} opts))
 
@@ -44,6 +41,15 @@
 
 (defn cider? [opts]
   (some #{"+cider"} opts))
+
+(defn validate-opts [opts]
+  (let [invalid-opts (remove (set valid-opts) opts)]
+    (cond
+      (seq invalid-opts)
+      (str "invalid options supplied: " (clojure.string/join " " invalid-opts)
+           "\nvalid options are: " (join " " valid-opts))
+
+      (and (test? opts) (spec? opts)) "Both +test and +spec options can't be used together, select one.")))
 
 (defn project-plugins [opts]
   (cond-> []
@@ -123,7 +129,6 @@
 
 (defn reagent [name & opts]
   (main/info "Generating fresh 'lein new' Reagent project.")
-  (if-not (valid-opts? opts)
-    (println "invalid options supplied:" (clojure.string/join " " opts)
-             "\nvalid options are:" (join " " valid-opts))
+  (if-let [error (validate-opts opts)]
+    (println error )
     (apply ->files (format-files-args name opts))))
