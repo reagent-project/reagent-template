@@ -4,11 +4,11 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.9.0"]
                  [ring-server "0.5.0"]
                  [reagent "0.7.0"]
                  [reagent-utils "0.2.1"]
-                 [ring "1.6.2"]
+                 [ring "1.6.3"]
                  [ring/ring-defaults "0.3.1"]
                  [compojure "1.6.0"]
                  [hiccup "1.0.5"]
@@ -16,11 +16,11 @@
                  [org.clojure/clojurescript "1.9.946"
                   :scope "provided"]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.2.0"
+                 [venantius/accountant "0.2.3"
                   :exclusions [org.clojure/tools.reader]]]
 
-  :plugins [[lein-environ "1.0.2"]
-            [lein-cljsbuild "1.1.5"]
+  :plugins [[lein-environ "1.1.0"]
+            [lein-cljsbuild "1.1.7"]
             [lein-asset-minifier "0.2.7"
              :exclusions [org.clojure/clojure]]]
 
@@ -130,15 +130,15 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
-                   :dependencies [[binaryage/devtools "0.9.7"]
-                                  [ring/ring-mock "0.3.1"]
-                                  [ring/ring-devel "1.6.2"]
+                   :dependencies [[binaryage/devtools "0.9.8"]
+                                  [ring/ring-mock "0.3.2"]
+                                  [ring/ring-devel "1.6.3"]
                                   [prone "1.1.4"]
                                   [figwheel-sidecar "0.5.14"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]
                                   {{#spec-hook?}}
-                                  [speclj "3.3.1"]
+                                  [speclj "3.3.2"]
                                   {{/spec-hook?}}
                                   {{#devcards-hook?}}
                                   [devcards "0.2.3" :exclusions [cljsjs/react]]
@@ -149,16 +149,16 @@
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.5.14"]
                              {{#test-hook?}}
-                             [lein-doo "0.1.6"]
+                             [lein-doo "0.1.8"]
                              {{/test-hook?}}
                              {{#spec-hook?}}
-                             [speclj "3.3.1"]
+                             [speclj "3.3.2"]
                              {{/spec-hook?}}
                              {{#cider-hook?}}
-                             [cider/cider-nrepl "0.10.0-SNAPSHOT"]
-                             [org.clojure/tools.namespace "0.3.0-alpha2"
+                             [cider/cider-nrepl "0.15.1"]
+                             [org.clojure/tools.namespace "0.3.0-alpha4"
                               :exclusions [org.clojure/tools.reader]]
-                             [refactor-nrepl "2.0.0-SNAPSHOT"
+                             [refactor-nrepl "2.3.1"
                               :exclusions [org.clojure/clojure]]
                              {{/cider-hook?}}
                              {{{project-dev-plugins}}}]
