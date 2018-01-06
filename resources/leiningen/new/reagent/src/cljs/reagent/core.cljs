@@ -17,7 +17,7 @@
 ;; -------------------------
 ;; Routes
 
-(def page (atom #'home-page))
+(defonce page (atom #'home-page))
 
 (defn current-page []
   [:div [@page]])
