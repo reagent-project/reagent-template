@@ -92,7 +92,7 @@ to autocompile less files.
 
 In case of using `+sass` option you may also want to run
 ```
-lein sass4clj watch
+lein sass4clj auto
 ```
 to autocompile sass/scss files.
 
