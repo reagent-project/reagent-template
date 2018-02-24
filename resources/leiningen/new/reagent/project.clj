@@ -7,7 +7,7 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [ring-server "0.5.0"]
                  [reagent "0.7.0"]
-                 [reagent-utils "0.2.1"]
+                 [reagent-utils "0.3.1"]
                  [ring "1.6.3"]
                  [ring/ring-defaults "0.3.1"]
                  [compojure "1.6.0"]
@@ -16,7 +16,7 @@
                  [org.clojure/clojurescript "1.9.946"
                   :scope "provided"]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.2.3"
+                 [venantius/accountant "0.2.4"
                   :exclusions [org.clojure/tools.reader]]]
 
   :plugins [[lein-environ "1.1.0"]
@@ -130,10 +130,10 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
-                   :dependencies [[binaryage/devtools "0.9.8"]
+                   :dependencies [[binaryage/devtools "0.9.9"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
-                                  [prone "1.1.4"]
+                                  [prone "1.5.0"]
                                   [figwheel-sidecar "0.5.14"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]
