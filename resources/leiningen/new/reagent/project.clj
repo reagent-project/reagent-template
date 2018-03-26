@@ -13,7 +13,7 @@
                  [compojure "1.6.0"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1"]
-                 [org.clojure/clojurescript "1.9.946"
+                 [org.clojure/clojurescript "1.10.238"
                   :scope "provided"]
                  [secretary "1.2.3"]
                  [venantius/accountant "0.2.4"
@@ -157,7 +157,7 @@
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.5.15"]
                              {{#test-hook?}}
-                             [lein-doo "0.1.8"]
+                             [lein-doo "0.1.10"]
                              {{/test-hook?}}
                              {{#spec-hook?}}
                              [speclj "3.3.2"]
