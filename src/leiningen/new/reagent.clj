@@ -58,11 +58,17 @@
    ;; spec
    :spec-hook? (fn [block] (if (spec? opts) (str block "") ""))
 
+   :test-or-spec-hook?
+    (fn [block] (if (or (test? opts) (spec? opts)) (str block "") ""))
+
    ;; less
    :less-hook? (fn [block] (if (less? opts) (str block "") ""))
 
    ;; sass
    :sass-hook? (fn [block] (if (sass? opts) (str block "") ""))
+
+   :less-or-sass-hook?
+     (fn [block] (if (or (less? opts) (sass? opts)) (str block "") ""))
 
    ;; devcards
    :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))
