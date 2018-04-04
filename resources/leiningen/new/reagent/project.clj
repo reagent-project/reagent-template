@@ -12,7 +12,7 @@
                  [ring/ring-defaults "0.3.1"]
                  [compojure "1.6.0"]
                  [hiccup "1.0.5"]
-                 [yogthos/config "1.1"]
+                 [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.238"
                   :scope "provided"]
                  [secretary "1.2.3"]
@@ -133,7 +133,7 @@
                    :dependencies [[binaryage/devtools "0.9.9"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
-                                  [prone "1.5.0"]
+                                  [prone "1.5.1"]
                                   [figwheel-sidecar "0.5.15"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]
