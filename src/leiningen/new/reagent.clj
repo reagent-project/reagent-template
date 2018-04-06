@@ -45,6 +45,11 @@
 
       (and (test? opts) (spec? opts)) "Both +test and +spec options can't be used together, select one.")))
 
+(defn jvm>8? []
+  (try
+    (> (Double/parseDouble (subs (System/getProperty "java.version") 0 3)) 1.8)
+    (catch Exception _)))
+
 (defn template-data [name opts]
   {:full-name name
    :name (project-name name)
@@ -52,6 +57,7 @@
    :project-ns (sanitize-ns name)
    :sanitized (name-to-path name)
 
+   :jvm-opts-hook? (fn [block] (if (jvm>8?) (str block "") ""))
    ;; test
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
 

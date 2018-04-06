@@ -28,11 +28,11 @@
          :uberwar-name "{{name}}.war"}
 
   :min-lein-version "2.5.0"
-
   :uberjar-name "{{name}}.jar"
-
   :main {{project-ns}}.server
-
+  {{#jvm-opts-hook?}}
+  :jvm-opts ["--add-modules" "java.xml.bind"]
+  {{/jvm-opts-hook?}}
   :clean-targets ^{:protect false}
   [:target-path
    [:cljsbuild :builds :app :compiler :output-dir]
