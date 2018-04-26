@@ -72,7 +72,7 @@ and stopped by running:
 To run [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/main/cljs/cljs/test.cljs) tests, please use
 
 ```
-lein doo phantom test once
+lein doo
 ```
 {{/test-hook?}}
 {{#spec-hook?}}

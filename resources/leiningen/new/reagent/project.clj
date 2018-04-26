@@ -10,7 +10,7 @@
                  [reagent-utils "0.3.1"]
                  [ring "1.6.3"]
                  [ring/ring-defaults "0.3.1"]
-                 [compojure "1.6.0"]
+                 [compojure "1.6.1"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.238"
@@ -99,7 +99,10 @@
    :test-commands {"unit" ["phantomjs" "runners/speclj" "target/test.js"]}
    {{/spec-hook?}}
    }
-
+{{#test-hook?}}
+   :doo {:build "test"
+         :alias {:default [:chrome]}}
+{{/test-hook?}}
 {{#spec-hook?}}
    :doo {:build "test"}
    {{/spec-hook?}}
@@ -130,10 +133,10 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
-                   :dependencies [[binaryage/devtools "0.9.9"]
+                   :dependencies [[binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
-                                  [prone "1.5.1"]
+                                  [prone "1.5.2"]
                                   [figwheel-sidecar "0.5.15"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]

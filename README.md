@@ -21,7 +21,7 @@ Create a new application project:
 lein new reagent <name>
 ```
 
-To enable [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/main/cljs/cljs/test.cljs) and [doo](https://github.com/bensu/doo) with [PhantomJS](http://phantomjs.org/), use `+test` flag:
+To enable [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/main/cljs/cljs/test.cljs) and [doo](https://github.com/bensu/doo) use `+test` flag:
 
 ```
 lein new reagent <name> +test
