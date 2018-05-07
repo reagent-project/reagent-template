@@ -137,7 +137,7 @@
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
                                   [prone "1.5.2"]
-                                  [figwheel-sidecar "0.5.15"]
+                                  [figwheel-sidecar "0.5.16"]
                                   [org.clojure/tools.nrepl "0.2.13"]
                                   [com.cemerick/piggieback "0.2.2"]
                                   {{#spec-hook?}}
@@ -158,7 +158,7 @@
                                   {{/sass-hook?}} ]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.15"]
+                   :plugins [[lein-figwheel "0.5.16"]
                              {{#test-hook?}}
                              [lein-doo "0.1.10"]
                              {{/test-hook?}}
