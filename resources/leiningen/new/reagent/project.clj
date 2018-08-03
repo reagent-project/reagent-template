@@ -111,10 +111,11 @@
   {:http-server-root "public"
    :server-port 3449
    :nrepl-port 7002
-   :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"
+   :nrepl-middleware [cider/wrap-cljs-repl
+                      cider.piggieback/wrap-cljs-repl
                       {{#cider-hook?}}
-                      "cider.nrepl/cider-middleware"
-                      "refactor-nrepl.middleware/wrap-refactor"
+                      cider.nrepl/cider-middleware
+                      refactor-nrepl.middleware/wrap-refactor
                       {{/cider-hook?}}
                       ]
    :css-dirs ["resources/public/css"]
@@ -138,8 +139,8 @@
                                   [ring/ring-devel "1.6.3"]
                                   [prone "1.5.2"]
                                   [figwheel-sidecar "0.5.16"]
-                                  [org.clojure/tools.nrepl "0.2.13"]
-                                  [com.cemerick/piggieback "0.2.2"]
+                                  [nrepl "0.4.4"]
+                                  [cider/piggieback "0.3.8"]
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
                                   {{/spec-hook?}}
