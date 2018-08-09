@@ -111,8 +111,7 @@
   {:http-server-root "public"
    :server-port 3449
    :nrepl-port 7002
-   :nrepl-middleware [cider/wrap-cljs-repl
-                      cider.piggieback/wrap-cljs-repl
+   :nrepl-middleware [cider.piggieback/wrap-cljs-repl
                       {{#cider-hook?}}
                       cider.nrepl/cider-middleware
                       refactor-nrepl.middleware/wrap-refactor
@@ -131,10 +130,8 @@
          :target-path "resources/public/css"}
   {{/sass-hook?}}
 
-  :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
-                                  :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
-
-                   :dependencies [[com.cemerick/piggieback "0.2.0"]
+  :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
+                   :dependencies [[cider/piggieback "0.3.8"]
                                   [binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
