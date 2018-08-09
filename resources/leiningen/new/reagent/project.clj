@@ -134,7 +134,8 @@
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
-                   :dependencies [[binaryage/devtools "0.9.10"]
+                   :dependencies [[com.cemerick/piggieback "0.2.0"]
+                                  [binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
                                   [prone "1.5.2"]
