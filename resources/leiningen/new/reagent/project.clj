@@ -131,14 +131,13 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.3.8"]
+                   :dependencies [[cider/piggieback "0.3.9"]
                                   [binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.6.3"]
                                   [prone "1.5.2"]
                                   [figwheel-sidecar "0.5.16"]
-                                  [nrepl "0.4.4"]
-                                  [cider/piggieback "0.3.8"]
+                                  [nrepl "0.4.5"]
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
                                   {{/spec-hook?}}
@@ -165,10 +164,10 @@
                              [speclj "3.3.2"]
                              {{/spec-hook?}}
                              {{#cider-hook?}}
-                             [cider/cider-nrepl "0.15.1"]
+                             [cider/cider-nrepl "0.18.0"]
                              [org.clojure/tools.namespace "0.3.0-alpha4"
                               :exclusions [org.clojure/tools.reader]]
-                             [refactor-nrepl "2.3.1"
+                             [refactor-nrepl "2.4.0"
                               :exclusions [org.clojure/clojure]]
                              {{/cider-hook?}}
                              {{#less-hook?}}
