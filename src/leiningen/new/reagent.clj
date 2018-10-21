@@ -16,7 +16,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider"])
+(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider" "+bidi"])
 
 (defn less? [opts]
   (some #{"+less"} opts))
@@ -35,6 +35,9 @@
 
 (defn cider? [opts]
   (some #{"+cider"} opts))
+
+(defn bidi? [opts]
+  (some #{"+bidi"} opts))
 
 (defn validate-opts [opts]
   (let [invalid-opts (remove (set valid-opts) opts)]
@@ -58,29 +61,35 @@
    :sanitized (name-to-path name)
 
    :jvm-opts-hook? (fn [block] (if (jvm>8?) (str block "") ""))
-   ;; test
+     ;; test
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
 
-   ;; spec
+     ;; spec
    :spec-hook? (fn [block] (if (spec? opts) (str block "") ""))
 
    :test-or-spec-hook?
-    (fn [block] (if (or (test? opts) (spec? opts)) (str block "") ""))
+   (fn [block] (if (or (test? opts) (spec? opts)) (str block "") ""))
 
-   ;; less
+     ;; less
    :less-hook? (fn [block] (if (less? opts) (str block "") ""))
 
-   ;; sass
+     ;; sass
    :sass-hook? (fn [block] (if (sass? opts) (str block "") ""))
 
    :less-or-sass-hook?
-     (fn [block] (if (or (less? opts) (sass? opts)) (str block "") ""))
+   (fn [block] (if (or (less? opts) (sass? opts)) (str block "") ""))
 
-   ;; devcards
+     ;; devcards
    :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))
 
-   ;; cider
-   :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))})
+     ;; cider
+   :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))
+
+     ;; bidi
+   :bidi-hook? (fn [block] (if (bidi? opts) (str block "") ""))
+
+     ;; default to secretary if not bidi
+   :secretary-hook? (fn [block] (if-not (bidi? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)
@@ -101,7 +110,7 @@
               ["README.md" (render "README.md" data)]
               [".gitignore" (render "gitignore" data)]
              ;; Heroku support
-             ["system.properties" (render "system.properties" data)]
+              ["system.properties" (render "system.properties" data)]
               ["Procfile" (render "Procfile" data)]]
         args (if (test? opts)
                (conj args ["test/cljs/{{sanitized}}/core_test.cljs" (render "test/cljs/reagent/core_test.cljs" data)]
@@ -117,8 +126,7 @@
         args (if (less? opts)
                (conj args
                      ["src/less/site.main.less" (render "src/less/site.main.less" data)]
-                     ["src/less/profile.less" (render "src/less/profile.less" data)]
-                     )
+                     ["src/less/profile.less" (render "src/less/profile.less" data)])
                args)
         args (if (sass? opts)
                (conj args
@@ -133,5 +141,5 @@
 (defn reagent [name & opts]
   (main/info "Generating fresh 'lein new' Reagent project.")
   (if-let [error (validate-opts opts)]
-    (println error )
+    (println error)
     (apply ->files (format-files-args name opts))))
