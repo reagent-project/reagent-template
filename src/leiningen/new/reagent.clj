@@ -89,7 +89,10 @@
    :bidi-hook? (fn [block] (if (bidi? opts) (str block "") ""))
 
      ;; default to secretary if not bidi
-   :secretary-hook? (fn [block] (if-not (bidi? opts) (str block "") ""))})
+   :secretary-hook? (fn [block] (if-not (bidi? opts) (str block "") ""))
+   
+     ;; also default to compojure if not bidi
+   :compojure-hook? (fn [block] (if-not (bidi? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)

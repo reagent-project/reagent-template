@@ -1,6 +1,12 @@
 (ns {{project-ns}}.handler
-  (:require [compojure.core :refer [GET defroutes]]
+  (:require {{#compojure-hook?}}
+            [compojure.core :refer [GET defroutes]]
             [compojure.route :refer [not-found resources]]
+            {{/compojure-hook?}}
+            {{#bidi-hook?}}
+            [bidi.ring :refer [make-handler]]
+            [ring.util.response :as res]
+            {{/bidi-hook?}}
             [hiccup.page :refer [include-js include-css html5]]
             [{{name}}.middleware :refer [wrap-middleware]]
             [config.core :refer [env]]))
@@ -34,6 +40,7 @@
      mount-target
      (include-js "/js/app_devcards.js")])){{/devcards-hook?}}
 
+{{#compojure-hook?}}
 (defroutes routes
   (GET "/" [] (loading-page))
   (GET "/about" [] (loading-page))
@@ -42,3 +49,25 @@
   (not-found "Not Found"))
 
 (def app (wrap-middleware #'routes))
+{{/compojure-hook?}}
+
+{{#bidi-hook?}}
+(defn index-handler
+  [request]
+  (-> (loading-page)
+      (res/response)
+      (res/content-type "text/html")))
+
+(def about-handler index-handler)
+(def items-handler index-handler)
+(def item-handler index-handler)
+
+(def handler
+  (make-handler ["/" {"" index-handler
+                      "items" {"" items-handler
+                               ["/item-" :item-id] item-handler}
+                      "about" about-handler}
+                 true (res/not-found "Not found")]))
+
+(def app (wrap-middleware handler))
+{{/bidi-hook?}}
