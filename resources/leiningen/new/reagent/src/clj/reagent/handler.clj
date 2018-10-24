@@ -4,7 +4,7 @@
             [compojure.route :refer [not-found resources]]
             {{/compojure-hook?}}
             {{#bidi-hook?}}
-            [bidi.ring :refer [make-handler]]
+            [bidi.ring :as bidi-ring]
             [ring.util.response :as res]
             {{/bidi-hook?}}
             [hiccup.page :refer [include-js include-css html5]]
@@ -62,12 +62,23 @@
 (def items-handler index-handler)
 (def item-handler index-handler)
 
+{{#devcards-hook?}}
+(defn cards-handler
+  [request]
+  (-> (cards-page)
+      (res/response)
+      (res/content-type "text/html")))
+{{/devcards-hook?}}
 (def handler
-  (make-handler ["/" {"" index-handler
-                      "items" {"" items-handler
-                               ["/item-" :item-id] item-handler}
-                      "about" about-handler}
-                 true (res/not-found "Not found")]))
+  (bidi-ring/make-handler ["/" {"" index-handler
+                                "items" {"" items-handler
+                                         ["/item-" :item-id] item-handler}
+                                "about" about-handler}
+                           "/" (bidi-ring/resources-maybe {:prefix "public/"})
+                           {{#devcards-hook?}}
+                           "/cards" cards-handler
+                           {{/devcards-hook?}}
+                           true (res/not-found "Not found")]))
 
 (def app (wrap-middleware handler))
 {{/bidi-hook?}}

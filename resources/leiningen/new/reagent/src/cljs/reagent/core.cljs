@@ -35,17 +35,14 @@
 (secretary/defroute "/about" []
   (reset! page #'about-page))
 {{/secretary-hook?}}
-
 {{#bidi-hook?}}
-
-
 ;; -------------------------
 ;; Routes
 
 (def app-routes
   ["/" {"" :index
         "items" {"" :items
-                     ["/item-" :item-id] :item}
+                 ["/item-" :item-id] :item}
         "about" :about
         "missing-route" :missing-route
         true :four-o-four}])
@@ -54,10 +51,8 @@
 ;; -------------------------
 ;; Page components
 
-(defmulti page-contents identity)
 
-
-(defmethod page-contents :index []
+(defn home-page []
   (fn []
     [:span.main
      [:h1 "Welcome to {{name}}"]
@@ -67,7 +62,8 @@
       [:li [:a {:href "/borken/link"} "Borken link"]]]]))
 
 
-(defmethod page-contents :items []
+
+(defn items-page []
   (fn []
     [:span.main
      [:h1 "The items of {{name}}"]
@@ -77,7 +73,7 @@
                (range 1 6))]]))
 
 
-(defmethod page-contents :item []
+(defn item-page []
   (fn []
     (let [routing-data (session/get :route)
           item (get-in routing-data [:route-params :item-id])]
@@ -86,12 +82,12 @@
        [:p [:a {:href (bidi/path-for app-routes :items)} "Back to the list of items"]]])))
 
 
-(defmethod page-contents :about []
+(defn about-page []
   (fn [] [:span.main
           [:h1 "About {{name}}"]]))
 
 
-(defmethod page-contents :four-o-four []
+(defn four-o-four-page []
   "Non-existing routes go here"
   (fn []
     [:span.main
@@ -103,7 +99,7 @@ How could I have,
 what does not exist?"]]))
 
 
-(defmethod page-contents :default []
+(defn default-page []
   "Configured routes, missing an implementation, go here"
   (fn []
     [:span.main
@@ -111,6 +107,19 @@ what does not exist?"]]))
      [:pre.verse
       "This page should be here,
 but it is not."]]))
+
+
+;; -------------------------
+;; Translate routes -> page components
+
+(defn page-for [route]
+  (case route
+    :index #'home-page
+    :about #'about-page
+    :items #'items-page
+    :item #'item-page
+    :four-o-four #'four-o-four-page
+    #'default-page))
 
 
 ;; -------------------------
@@ -123,7 +132,7 @@ but it is not."]]))
        [:header
         [:p [:a {:href (bidi/path-for app-routes :index)} "Go home"] " | "
          [:a {:href (bidi/path-for app-routes :about)} "See about"]]]
-       ^{:key page} [page-contents page]
+       [page]
        [:footer
         [:p "(Using "
          [:a {:href "https://reagent-project.github.io/"} "Reagent"] ", "
@@ -131,7 +140,6 @@ but it is not."]]))
          [:a {:href "https://github.com/venantius/accountant"} "Accountant"]
          ")"]]])))
 {{/bidi-hook?}}
-
 
 ;; -------------------------
 ;; Initialize app
@@ -150,7 +158,7 @@ but it is not."]]))
        (let [match (bidi/match-route app-routes path)
              current-page (:handler match)
              route-params (:route-params match)]
-         (session/put! :route {:current-page current-page
+         (session/put! :route {:current-page (page-for current-page)
                                :route-params route-params})))
        {{/bidi-hook?}}
      :path-exists?
