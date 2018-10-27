@@ -38,11 +38,8 @@
   {:status 200
    :headers {"Content-Type" "text/html"}
    :body (loading-page)})
+ {{#devcards-hook?}}
 
-(def about-handler index-handler)
-(def items-handler index-handler)
-(def item-handler index-handler)
-{{#devcards-hook?}}
 (defn cards-handler
   [_]
   {:status 200 :body (cards-page)})
@@ -53,13 +50,13 @@
    (reitit-ring/router
     [["/" {:get {:handler index-handler}}]
      ["/items"
-      ["" {:get {:handler items-handler}}]
-      ["/:item-id" {:get {:handler item-handler
+      ["" {:get {:handler index-handler}}]
+      ["/:item-id" {:get {:handler index-handler
                           :parameters {:path {:item-id int?}}}}]]
       {{#devcards-hook?}}
       ["cards" {:get {:handler cards-handler}}]
       {{/devcards-hook?}}
-     ["/about" {:get {:handler about-handler}}]]
+     ["/about" {:get {:handler index-handler}}]]
     {:data {:middleware middleware}})
    (reitit-ring/routes
     (reitit-ring/create-resource-handler {:path "/" :root "/public"})

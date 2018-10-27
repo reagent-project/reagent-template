@@ -8,8 +8,8 @@
                  [ring-server "0.5.0"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.1"]
-                 [ring "1.6.3"]
-                 [ring/ring-defaults "0.3.1"]
+                 [ring "1.7.0"]
+                 [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.339"
@@ -130,12 +130,12 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.3.9"]
+                   :dependencies [[cider/piggieback "0.3.10"]
                                   [binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
-                                  [ring/ring-devel "1.6.3"]
-                                  [prone "1.5.2"]
-                                  [figwheel-sidecar "0.5.16"]
+                                  [ring/ring-devel "1.7.0"]
+                                  [prone "1.6.1"]
+                                  [figwheel-sidecar "0.5.17"]
                                   [nrepl "0.4.5"]
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
@@ -155,7 +155,7 @@
                                   {{/sass-hook?}} ]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.16"]
+                   :plugins [[lein-figwheel "0.5.17"]
                              {{#test-hook?}}
                              [lein-doo "0.1.10"]
                              {{/test-hook?}}
