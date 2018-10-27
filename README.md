@@ -54,12 +54,6 @@ use `+less` or `+sass` flags:
 lein new reagent <name> +less
 ```
 
-To use [bidi](https://github.com/juxt/bidi) instead of [secretary](https://github.com/gf3/secretary), use the `+bidi` flag:
-
-```bash
-lein new reagent <name> +bidi
-```
-
 ### Development mode
 
 To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
@@ -172,12 +166,9 @@ The template packages everything you need to create a production ready ClojureSc
 * [Reagent](https://github.com/reagent-project/reagent) - ClojureScript interface to Facebook's React
 * [reagent-forms](https://github.com/reagent-project/reagent-forms) - data binding library for Reagent
 * [reagent-utils](https://github.com/reagent-project/reagent-utils) - utilities such as session and cookie management
-* Client side routing, choose between:
-    * [Secretary](https://github.com/gf3/secretary)
-    * [Bidi](https://github.com/juxt/bidi)
+* [Reitit](https://metosin.github.io/reitit/) - Routing, server and client side
 * [Accountant](https://github.com/venantius/accountant) - additional setup facilities for client-side routing in SPA way
 * [Hiccup](https://github.com/weavejester/hiccup) - server-side HTML templating
-* [Compojure](https://github.com/weavejester/compojure) - a popular routing library
 * [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
 * [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
 * [Heroku](https://www.heroku.com/) - the template is setup to work on Heroku out of the box, simply run `git push heroku master`
@@ -192,7 +183,6 @@ The template supports the following options:
 * `+sass` - use [sass](https://github.com/Deraen/sass4clj) for compiling Sass/Scss CSS files
 * `+devcards` - add [Devcards](https://github.com/bhauman/devcards) support
 * `+cider` - add [CIDER](https://github.com/clojure-emacs/cider) support
-* `+bidi` - use [bidi](https://github.com/juxt/bidi) instead of Secretary
 
 ## Contributing & Customizing
 

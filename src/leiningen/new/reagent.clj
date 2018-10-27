@@ -16,7 +16,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider" "+bidi"])
+(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider" "+reitit"])
 
 (defn less? [opts]
   (some #{"+less"} opts))
@@ -35,9 +35,6 @@
 
 (defn cider? [opts]
   (some #{"+cider"} opts))
-
-(defn bidi? [opts]
-  (some #{"+bidi"} opts))
 
 (defn validate-opts [opts]
   (let [invalid-opts (remove (set valid-opts) opts)]
@@ -83,13 +80,7 @@
    :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))
 
      ;; cider
-   :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))
-
-     ;; bidi
-   :bidi-hook? (fn [block] (if (bidi? opts) (str block "") ""))
-
-     ;; default to secretary if not bidi
-   :secretary-hook? (fn [block] (if-not (bidi? opts) (str block "") ""))})
+   :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)
