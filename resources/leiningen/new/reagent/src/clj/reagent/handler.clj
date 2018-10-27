@@ -1,22 +1,14 @@
-(ns {{project-ns}}.handler
-  (:require {{#compojure-hook?}}
-            [compojure.core :refer [GET defroutes]]
-            [compojure.route :refer [not-found resources]]
-            {{/compojure-hook?}}
-            {{#bidi-hook?}}
-            [bidi.ring :as bidi-ring]
-            [ring.util.response :as res]
-            {{/bidi-hook?}}
+(ns {{name}}.handler
+  (:require [reitit.ring :as reitit-ring]
+            [{{name}}.middleware :refer [middleware]]
             [hiccup.page :refer [include-js include-css html5]]
-            [{{name}}.middleware :refer [wrap-middleware]]
             [config.core :refer [env]]))
 
 (def mount-target
   [:div#app
-      [:h3 "ClojureScript has not been compiled!"]
-      [:p "please run "
-       [:b "lein figwheel"]
-       " in order to start the compiler"]])
+   [:h2 "Welcome to {{name}}"]
+   [:p "please wait while Figwheel is waking up ..."]
+   [:p "(Check the js console for hints if nothing exiting happens.)"]])
 
 (defn head []
   [:head
@@ -27,10 +19,10 @@
 
 (defn loading-page []
   (html5
-    (head)
-    [:body {:class "body-container"}
-     mount-target
-     (include-js "/js/app.js")]))
+   (head)
+   [:body {:class "body-container"}
+    mount-target
+    (include-js "/js/app.js")]))
 {{#devcards-hook?}}
 
 (defn cards-page []
@@ -38,47 +30,37 @@
     (head)
     [:body
      mount-target
-     (include-js "/js/app_devcards.js")])){{/devcards-hook?}}
+     (include-js "/js/app_devcards.js")]))
+{{/devcards-hook?}}
 
-{{#compojure-hook?}}
-(defroutes routes
-  (GET "/" [] (loading-page))
-  (GET "/about" [] (loading-page))
-  {{#devcards-hook?}}(GET "/cards" [] (cards-page)){{/devcards-hook?}}
-  (resources "/")
-  (not-found "Not Found"))
-
-(def app (wrap-middleware #'routes))
-{{/compojure-hook?}}
-
-{{#bidi-hook?}}
 (defn index-handler
-  [request]
-  (-> (loading-page)
-      (res/response)
-      (res/content-type "text/html")))
+  [_request]
+  {:status 200
+   :headers {"Content-Type" "text/html"}
+   :body (loading-page)})
 
 (def about-handler index-handler)
 (def items-handler index-handler)
 (def item-handler index-handler)
-
 {{#devcards-hook?}}
 (defn cards-handler
-  [request]
-  (-> (cards-page)
-      (res/response)
-      (res/content-type "text/html")))
+  [_]
+  {:status 200 :body (cards-page)})
 {{/devcards-hook?}}
-(def handler
-  (bidi-ring/make-handler ["/" {"" index-handler
-                                "items" {"" items-handler
-                                         ["/item-" :item-id] item-handler}
-                                "about" about-handler}
-                           "/" (bidi-ring/resources-maybe {:prefix "public/"})
-                           {{#devcards-hook?}}
-                           "/cards" cards-handler
-                           {{/devcards-hook?}}
-                           true (res/not-found "Not found")]))
 
-(def app (wrap-middleware handler))
-{{/bidi-hook?}}
+(def app
+  (reitit-ring/ring-handler
+   (reitit-ring/router
+    [["/" {:get {:handler index-handler}}]
+     ["/items"
+      ["" {:get {:handler items-handler}}]
+      ["/:item-id" {:get {:handler item-handler
+                          :parameters {:path {:item-id int?}}}}]]
+      {{#devcards-hook?}}
+      ["cards" {:get {:handler cards-handler}}]
+      {{/devcards-hook?}}
+     ["/about" {:get {:handler about-handler}}]]
+    {:data {:middleware middleware}})
+   (reitit-ring/routes
+    (reitit-ring/create-resource-handler {:path "/" :root "/public"})
+    (reitit-ring/create-default-handler))))
