@@ -167,7 +167,8 @@ The template packages everything you need to create a production ready ClojureSc
 * [reagent-forms](https://github.com/reagent-project/reagent-forms) - data binding library for Reagent
 * [reagent-utils](https://github.com/reagent-project/reagent-utils) - utilities such as session and cookie management
 * [Reitit](https://metosin.github.io/reitit/) - Routing, server and client side
-* [Accountant](https://github.com/venantius/accountant) - additional setup facilities for client-side routing in SPA way
+* [Accountant](https://github.com/venantius/accountant) - HTML5 history management, enabling href navigation in SPAs
+* [Clerk](https://github.com/PEZ/clerk) - In page navigation for SPAs. Scroll restoration, anchor targeting, and such.
 * [Hiccup](https://github.com/weavejester/hiccup) - server-side HTML templating
 * [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
 * [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
@@ -183,6 +184,7 @@ The template supports the following options:
 * `+sass` - use [sass](https://github.com/Deraen/sass4clj) for compiling Sass/Scss CSS files
 * `+devcards` - add [Devcards](https://github.com/bhauman/devcards) support
 * `+cider` - add [CIDER](https://github.com/clojure-emacs/cider) support
+* `-clerk` - do not add [Clerk](https://github.com/PEZ/clerk) support
 
 ## Contributing & Customizing
 

@@ -15,6 +15,9 @@
                  [org.clojure/clojurescript "1.10.339"
                   :scope "provided"]
                  [metosin/reitit "0.2.4"]
+                 {{#clerk-hook?}}
+                 [pez/clerk "1.0.0"]
+                 {{/clerk-hook?}}
                  [venantius/accountant "0.2.4"
                   :exclusions [org.clojure/tools.reader]]]
 
