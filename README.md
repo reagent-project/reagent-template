@@ -169,7 +169,6 @@ The template packages everything you need to create a production ready ClojureSc
 * [Reitit](https://metosin.github.io/reitit/) - Routing, server and client side
 * [Accountant](https://github.com/venantius/accountant) - additional setup facilities for client-side routing in SPA way
 * [Hiccup](https://github.com/weavejester/hiccup) - server-side HTML templating
-* [Compojure](https://github.com/weavejester/compojure) - a popular routing library
 * [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
 * [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
 * [Heroku](https://www.heroku.com/) - the template is setup to work on Heroku out of the box, simply run `git push heroku master`
