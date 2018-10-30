@@ -16,7 +16,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider" "+reitit"])
+(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider" "-clerk"])
 
 (defn less? [opts]
   (some #{"+less"} opts))
@@ -35,6 +35,9 @@
 
 (defn cider? [opts]
   (some #{"+cider"} opts))
+
+(defn clerk? [opts]
+  (not (some #{"-clerk"} opts)))
 
 (defn validate-opts [opts]
   (let [invalid-opts (remove (set valid-opts) opts)]
@@ -56,31 +59,28 @@
    :project-goog-module (sanitize (sanitize-ns name))
    :project-ns (sanitize-ns name)
    :sanitized (name-to-path name)
-
+  
    :jvm-opts-hook? (fn [block] (if (jvm>8?) (str block "") ""))
-     ;; test
+  
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
-
-     ;; spec
+  
    :spec-hook? (fn [block] (if (spec? opts) (str block "") ""))
-
+  
    :test-or-spec-hook?
    (fn [block] (if (or (test? opts) (spec? opts)) (str block "") ""))
-
-     ;; less
+  
    :less-hook? (fn [block] (if (less? opts) (str block "") ""))
-
-     ;; sass
+  
    :sass-hook? (fn [block] (if (sass? opts) (str block "") ""))
-
+  
    :less-or-sass-hook?
    (fn [block] (if (or (less? opts) (sass? opts)) (str block "") ""))
-
-     ;; devcards
+  
    :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))
-
-     ;; cider
-   :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))})
+  
+   :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))
+  
+   :clerk-hook? (fn [block] (if (clerk? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
   (let [data (template-data name opts)

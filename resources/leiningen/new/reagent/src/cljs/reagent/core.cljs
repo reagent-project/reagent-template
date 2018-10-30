@@ -2,6 +2,9 @@
     (:require [reagent.core :as reagent :refer [atom]]
               [reagent.session :as session]
               [reitit.frontend :as reitit]
+              {{#clerk-hook?}}
+              [clerk.core :as clerk]
+              {{/clerk-hook?}}
               [accountant.core :as accountant]))
 
 ;; -------------------------
@@ -41,7 +44,7 @@
      [:ul (map (fn [item-id]
                  [:li {:name (str "item-" item-id) :key (str "item-" item-id)}
                   [:a {:href (path-for :item {:item-id item-id})} "Item: " item-id]])
-               (range 1 6))]]))
+               (range 1 60))]]))
 
 
 (defn item-page []
@@ -91,17 +94,25 @@
   (reagent/render [current-page] (.getElementById js/document "app")))
 
 (defn init! []
+  {{#clerk-hook?}}
+  (clerk/initialize!)
+  {{/clerk-hook?}}
   (accountant/configure-navigation!
    {:nav-handler
     (fn [path]
       (let [match (reitit/match-by-path router path)
             current-page (:name (:data  match))
             route-params (:path-params match)]
+        {{#clerk-hook?}}
+        (reagent/after-render clerk/after-render!)
+        {{/clerk-hook?}}
         (session/put! :route {:current-page (page-for current-page)
-                              :route-params route-params})))
+                              :route-params route-params})
+        {{#clerk-hook?}}
+        (clerk/navigate-page! path)
+        {{/clerk-hook?}}))
     :path-exists?
     (fn [path]
-      (boolean (reitit/match-by-path router path)))
-    :reload-same-path? true})
+      (boolean (reitit/match-by-path router path)))})
   (accountant/dispatch-current!)
   (mount-root))
