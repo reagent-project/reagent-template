@@ -8,13 +8,13 @@
                  [ring-server "0.5.0"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.1"]
-                 [ring "1.7.0"]
+                 [ring "1.7.1"]
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.439"
                   :scope "provided"]
-                 [metosin/reitit "0.2.4"]
+                 [metosin/reitit "0.2.6"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
@@ -32,9 +32,6 @@
   :min-lein-version "2.5.0"
   :uberjar-name "{{name}}.jar"
   :main {{project-ns}}.server
-  {{#jvm-opts-hook?}}
-  :jvm-opts ["--add-modules" "java.xml.bind"]
-  {{/jvm-opts-hook?}}
   :clean-targets ^{:protect false}
   [:target-path
    [:cljsbuild :builds :app :compiler :output-dir]
@@ -136,7 +133,7 @@
                    :dependencies [[cider/piggieback "0.3.10"]
                                   [binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
-                                  [ring/ring-devel "1.7.0"]
+                                  [ring/ring-devel "1.7.1"]
                                   [prone "1.6.1"]
                                   [figwheel-sidecar "0.5.17"]
                                   [nrepl "0.4.5"]
@@ -146,7 +143,7 @@
                                   {{#devcards-hook?}}
                                   [devcards "0.2.3" :exclusions [cljsjs/react]]
                                   {{/devcards-hook?}}
-                                  [pjstadig/humane-test-output "0.8.3"]
+                                  [pjstadig/humane-test-output "0.9.0"]
                                   {{dev-dependencies}}
                                   {{#less-hook?}}
                                   ;; To silence warnings from less4clj dependecies about missing logger implementation

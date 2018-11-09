@@ -59,11 +59,8 @@
    :project-goog-module (sanitize (sanitize-ns name))
    :project-ns (sanitize-ns name)
    :sanitized (name-to-path name)
-  
-   :jvm-opts-hook? (fn [block] (if (jvm>8?) (str block "") ""))
-  
+
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
-  
    :spec-hook? (fn [block] (if (spec? opts) (str block "") ""))
   
    :test-or-spec-hook?
