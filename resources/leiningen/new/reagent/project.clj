@@ -141,7 +141,7 @@
                                   [speclj "3.3.2"]
                                   {{/spec-hook?}}
                                   {{#devcards-hook?}}
-                                  [devcards "0.2.3" :exclusions [cljsjs/react]]
+                                  [devcards "0.2.6" :exclusions [cljsjs/react]]
                                   {{/devcards-hook?}}
                                   [pjstadig/humane-test-output "0.9.0"]
                                   {{dev-dependencies}}
