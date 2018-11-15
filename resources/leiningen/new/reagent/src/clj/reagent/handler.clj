@@ -42,7 +42,9 @@
 
 (defn cards-handler
   [_]
-  {:status 200 :body (cards-page)})
+  {:status 200
+   :headers {"Content-Type" "text/html"}
+   :body (cards-page)})
 {{/devcards-hook?}}
 
 (def app
@@ -54,7 +56,7 @@
       ["/:item-id" {:get {:handler index-handler
                           :parameters {:path {:item-id int?}}}}]]
       {{#devcards-hook?}}
-      ["cards" {:get {:handler cards-handler}}]
+      ["/cards" {:get {:handler cards-handler}}]
       {{/devcards-hook?}}
      ["/about" {:get {:handler index-handler}}]]
     {:data {:middleware middleware}})
