@@ -14,7 +14,7 @@
                  [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.439"
                   :scope "provided"]
-                 [metosin/reitit "0.2.6"]
+                 [metosin/reitit "0.2.9"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
