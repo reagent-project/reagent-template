@@ -4,17 +4,17 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.9.0"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
                  [ring-server "0.5.0"]
                  [reagent "0.8.1"]
-                 [reagent-utils "0.3.1"]
+                 [reagent-utils "0.3.2"]
                  [ring "1.7.1"]
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.439"
                   :scope "provided"]
-                 [metosin/reitit "0.2.9"]
+                 [metosin/reitit "0.2.10"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
@@ -135,8 +135,8 @@
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.7.1"]
                                   [prone "1.6.1"]
-                                  [figwheel-sidecar "0.5.17"]
-                                  [nrepl "0.4.5"]
+                                  [figwheel-sidecar "0.5.18"]
+                                  [nrepl "0.5.3"]
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
                                   {{/spec-hook?}}
@@ -155,7 +155,7 @@
                                   {{/sass-hook?}} ]
 
                    :source-paths ["env/dev/clj"]
-                   :plugins [[lein-figwheel "0.5.17"]
+                   :plugins [[lein-figwheel "0.5.18"]
                              {{#test-hook?}}
                              [lein-doo "0.1.10"]
                              {{/test-hook?}}
@@ -163,7 +163,7 @@
                              [speclj "3.3.2"]
                              {{/spec-hook?}}
                              {{#cider-hook?}}
-                             [cider/cider-nrepl "0.18.0"]
+                             [cider/cider-nrepl "0.19.0"]
                              [org.clojure/tools.namespace "0.3.0-alpha4"
                               :exclusions [org.clojure/tools.reader]]
                              [refactor-nrepl "2.4.0"
