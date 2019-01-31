@@ -5,7 +5,8 @@
               [ring.middleware.reload :refer [wrap-reload]]
               [ring.middleware.defaults :refer [site-defaults wrap-defaults]]))
 
-(def middleware
-  [#(wrap-defaults % site-defaults)
-   wrap-exceptions
-   wrap-reload])
+(defn wrap-middleware [handler]
+  (-> handler
+      (wrap-defaults site-defaults)
+      (wrap-exceptions)
+      (wrap-reload)))
