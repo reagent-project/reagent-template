@@ -1,11 +1,10 @@
 (ns {{name}}.core
-    (:require [reagent.core :as reagent :refer [atom]]
-              [reagent.session :as session]
-              [reitit.frontend :as reitit]
-              {{#clerk-hook?}}
-              [clerk.core :as clerk]
-              {{/clerk-hook?}}
-              [accountant.core :as accountant]))
+  (:require
+   [reagent.core :as reagent :refer [atom]]
+   [reagent.session :as session]
+   [reitit.frontend :as reitit]
+   {{#clerk-hook?}}[clerk.core :as clerk]{{/clerk-hook?}}
+   [accountant.core :as accountant]))
 
 ;; -------------------------
 ;; Routes
