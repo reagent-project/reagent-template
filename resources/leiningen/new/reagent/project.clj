@@ -137,7 +137,7 @@
                                   [ring/ring-devel "1.7.1"]
                                   [prone "1.6.1"]
                                   [figwheel-sidecar "0.5.18"]
-                                  [nrepl "0.5.3"]
+                                  [nrepl "0.6.0"]
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
                                   {{/spec-hook?}}
