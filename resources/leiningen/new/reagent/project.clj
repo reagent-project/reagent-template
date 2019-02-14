@@ -12,7 +12,7 @@
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.1"]
-                 [org.clojure/clojurescript "1.10.516"
+                 [org.clojure/clojurescript "1.10.520"
                   :scope "provided"]
                  [metosin/reitit "0.2.10"]
                  {{#clerk-hook?}}
@@ -131,7 +131,7 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.3.10"]
+                   :dependencies [[cider/piggieback "0.4.0"]
                                   [binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.7.1"]
