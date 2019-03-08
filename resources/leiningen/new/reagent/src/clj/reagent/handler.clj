@@ -9,7 +9,7 @@
   [:div#app
    [:h2 "Welcome to {{name}}"]
    [:p "please wait while Figwheel is waking up ..."]
-   [:p "(Check the js console for hints if nothing exсiting happens.)"]])
+   [:p "(Check the js console for hints if nothing exciting happens.)"]])
 
 (defn head []
   [:head
