@@ -14,7 +14,7 @@
                  [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.520"
                   :scope "provided"]
-                 [metosin/reitit "0.2.13"]
+                 [metosin/reitit "0.3.1"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
@@ -23,7 +23,7 @@
 
   :plugins [[lein-environ "1.1.0"]
             [lein-cljsbuild "1.1.7"]
-            [lein-asset-minifier "0.2.7"
+            [lein-asset-minifier "0.4.6"
              :exclusions [org.clojure/clojure]]]
 
   :ring {:handler {{project-ns}}.handler/app
@@ -44,9 +44,9 @@
   :resource-paths ["resources" "target/cljsbuild"]
 
   :minify-assets
-  {:assets
-   {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
-
+  [[:css {:source "resources/public/css/site.css"
+          :target "resources/public/css/site.min.css"}]]
+  
   :cljsbuild
   {:builds {:min
             {:source-paths ["src/cljs" "src/cljc" "env/prod/cljs"]
