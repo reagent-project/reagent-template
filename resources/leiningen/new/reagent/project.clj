@@ -164,7 +164,7 @@
                              [speclj "3.3.2"]
                              {{/spec-hook?}}
                              {{#cider-hook?}}
-                             [cider/cider-nrepl "0.19.0"]
+                             [cider/cider-nrepl "0.21.1"]
                              [org.clojure/tools.namespace "0.3.0-alpha4"
                               :exclusions [org.clojure/tools.reader]]
                              [refactor-nrepl "2.4.0"
