@@ -1,7 +1,7 @@
-(ns {{name}}.handler
+(ns {{project-ns}}.handler
   (:require
    [reitit.ring :as reitit-ring]
-   [{{name}}.middleware :refer [middleware]]
+   [{{project-ns}}.middleware :refer [middleware]]
    [hiccup.page :refer [include-js include-css html5]]
    [config.core :refer [env]]))
 

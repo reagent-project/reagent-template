@@ -1,4 +1,4 @@
-(ns {{name}}.core
+(ns {{project-ns}}.core
   (:require
    [reagent.core :as reagent :refer [atom]]
    [reagent.session :as session]

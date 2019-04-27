@@ -1,5 +1,5 @@
-(ns {{name}}.repl
-  (:use {{name}}.handler
+(ns {{project-ns}}.repl
+  (:use {{project-ns}}.handler
         figwheel-sidecar.repl-api
         ring.server.standalone
         [ring.middleware file-info file]))

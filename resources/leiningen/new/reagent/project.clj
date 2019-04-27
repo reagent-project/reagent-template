@@ -46,7 +46,7 @@
   :minify-assets
   [[:css {:source "resources/public/css/site.css"
           :target "resources/public/css/site.min.css"}]]
-  
+
   :cljsbuild
   {:builds {:min
             {:source-paths ["src/cljs" "src/cljc" "env/prod/cljs"]
@@ -135,7 +135,7 @@
                                   [binaryage/devtools "0.9.10"]
                                   [ring/ring-mock "0.3.2"]
                                   [ring/ring-devel "1.7.1"]
-                                  [prone "1.6.1"]
+                                  [prone "1.6.3"]
                                   [figwheel-sidecar "0.5.18"]
                                   [nrepl "0.6.0"]
                                   {{#spec-hook?}}

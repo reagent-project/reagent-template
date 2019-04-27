@@ -1,4 +1,4 @@
-(ns {{name}}.middleware
+(ns {{project-ns}}.middleware
   (:require
    [ring.middleware.defaults :refer [site-defaults wrap-defaults]]))
 

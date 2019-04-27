@@ -3,7 +3,7 @@
              :refer [renderer name-to-path ->files
                      sanitize sanitize-ns project-name]]
             [leiningen.core.main :as main]
-            [clojure.string :refer [join]]))
+            [clojure.string :as string]))
 
 (def render (renderer "reagent"))
 
@@ -11,7 +11,7 @@
   (fn []
     (->> list
          (map #(str "\n" (apply str (repeat n " ")) (wrap %)))
-         (join ""))))
+         (string/join ""))))
 
 (defn indent [n list]
   (wrap-indent identity n list))
@@ -43,8 +43,8 @@
   (let [invalid-opts (remove (set valid-opts) opts)]
     (cond
       (seq invalid-opts)
-      (str "invalid options supplied: " (clojure.string/join " " invalid-opts)
-           "\nvalid options are: " (join " " valid-opts))
+      (str "invalid options supplied: " (string/join " " invalid-opts)
+           "\nvalid options are: " (string/join " " valid-opts))
 
       (and (test? opts) (spec? opts)) "Both +test and +spec options can't be used together, select one.")))
 
@@ -62,21 +62,21 @@
 
    :test-hook? (fn [block] (if (test? opts) (str block "") ""))
    :spec-hook? (fn [block] (if (spec? opts) (str block "") ""))
-  
+
    :test-or-spec-hook?
    (fn [block] (if (or (test? opts) (spec? opts)) (str block "") ""))
-  
+
    :less-hook? (fn [block] (if (less? opts) (str block "") ""))
-  
+
    :sass-hook? (fn [block] (if (sass? opts) (str block "") ""))
-  
+
    :less-or-sass-hook?
    (fn [block] (if (or (less? opts) (sass? opts)) (str block "") ""))
-  
+
    :devcards-hook? (fn [block] (if (devcards? opts) (str block "") ""))
-  
+
    :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))
-  
+
    :clerk-hook? (fn [block] (if (clerk? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]
