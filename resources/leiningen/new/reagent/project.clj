@@ -13,7 +13,9 @@
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.1"]
                  [org.clojure/clojurescript "1.10.520"
-                  :scope "provided"]
+                  :scope "provided"]{{#shadow-cljs-hook?}}
+                 [com.google.javascript/closure-compiler-unshaded "v20190325"]
+                 [org.clojure/google-closure-library "0.0-20190213-2033d5d9"]{{/shadow-cljs-hook?}}
                  [metosin/reitit "0.3.1"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
@@ -37,7 +39,7 @@
    [:cljsbuild :builds :app :compiler :output-dir]
    [:cljsbuild :builds :app :compiler :output-to]]
 
-  :source-paths ["src/clj" "src/cljc"]
+  :source-paths ["src/clj" "src/cljc" "src/cljs"]
   {{#spec-hook?}}
   :test-paths ["spec/clj"]
   {{/spec-hook?}}
@@ -138,6 +140,9 @@
                                   [prone "1.6.3"]
                                   [figwheel-sidecar "0.5.18"]
                                   [nrepl "0.6.0"]
+                                  {{#shadow-cljs-hook?}}
+                                  [thheller/shadow-cljs "2.8.36"]
+                                  {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
                                   {{/spec-hook?}}

@@ -8,7 +8,7 @@
 (def mount-target
   [:div#app
    [:h2 "Welcome to {{name}}"]
-   [:p "please wait while Figwheel is waking up ..."]
+   [:p "please wait while Figwheel{{#shadow-cljs-hook?}}/shadow-cljs{{/shadow-cljs-hook?}} is waking up ..."]
    [:p "(Check the js console for hints if nothing exciting happens.)"]])
 
 (defn head []
@@ -23,7 +23,9 @@
    (head)
    [:body {:class "body-container"}
     mount-target
-    (include-js "/js/app.js")]))
+    (include-js "/js/app.js"){{#shadow-cljs-hook?}}
+    [:script "{{project-ns}}.core.init_BANG_()"]{{/shadow-cljs-hook?}}]))
+
 {{#devcards-hook?}}
 
 (defn cards-page []
