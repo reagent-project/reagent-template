@@ -32,7 +32,7 @@
      [:h1 "Welcome to {{name}}"]
      [:ul
       [:li [:a {:href (path-for :items)} "Items of {{name}}"]]
-      [:li [:a {:href "/borken/link"} "Borken link"]]]]))
+      [:li [:a {:href "/borken/link"} "Broken link"]]]]))
 
 
 
