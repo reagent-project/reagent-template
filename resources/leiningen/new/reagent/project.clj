@@ -4,19 +4,19 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.10.0"]
+  :dependencies [[org.clojure/clojure "1.10.1"]
                  [ring-server "0.5.0"]
                  [reagent "0.8.1"]
-                 [reagent-utils "0.3.2"]
+                 [reagent-utils "0.3.3"]
                  [ring "1.7.1"]
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
-                 [yogthos/config "1.1.1"]
+                 [yogthos/config "1.1.2"]
                  [org.clojure/clojurescript "1.10.520"
                   :scope "provided"]{{#shadow-cljs-hook?}}
                  [com.google.javascript/closure-compiler-unshaded "v20190325"]
                  [org.clojure/google-closure-library "0.0-20190213-2033d5d9"]{{/shadow-cljs-hook?}}
-                 [metosin/reitit "0.3.1"]
+                 [metosin/reitit "0.3.7"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
@@ -133,9 +133,9 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.4.0"]
+                   :dependencies [[cider/piggieback "0.4.1"]
                                   [binaryage/devtools "0.9.10"]
-                                  [ring/ring-mock "0.3.2"]
+                                  [ring/ring-mock "0.4.0"]
                                   [ring/ring-devel "1.7.1"]
                                   [prone "1.6.3"]
                                   [figwheel-sidecar "0.5.18"]
