@@ -11,7 +11,7 @@
                  [ring "1.7.1"]
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
-                 [yogthos/config "1.1.2"]
+                 [yogthos/config "1.1.3"]
                  [org.clojure/clojurescript "1.10.520"
                   :scope "provided"]{{#shadow-cljs-hook?}}
                  [com.google.javascript/closure-compiler-unshaded "v20190325"]
