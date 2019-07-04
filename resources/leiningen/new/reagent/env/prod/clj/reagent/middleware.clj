@@ -3,4 +3,4 @@
    [ring.middleware.defaults :refer [site-defaults wrap-defaults]]))
 
 (def middleware
-  [site-defaults])
+  [#(wrap-defaults %site-defaults)])
