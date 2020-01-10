@@ -24,7 +24,7 @@
    [:body {:class "body-container"}
     mount-target
     (include-js "/js/app.js"){{#shadow-cljs-hook?}}
-    [:script "{{project-ns}}.core.init_BANG_()"]{{/shadow-cljs-hook?}}]))
+    [:script "{{project-goog-module}}.core.init_BANG_()"]{{/shadow-cljs-hook?}}]))
 
 {{#devcards-hook?}}
 
