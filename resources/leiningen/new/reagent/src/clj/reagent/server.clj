@@ -7,4 +7,4 @@
 
 (defn -main [& args]
   (let [port (or (env :port) 3000)]
-    (run-jetty app {:port port :join? false})))
+    (run-jetty #'app {:port port :join? false})))
