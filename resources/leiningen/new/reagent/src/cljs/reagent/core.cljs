@@ -1,6 +1,7 @@
 (ns {{project-ns}}.core
   (:require
    [reagent.core :as reagent :refer [atom]]
+   [reagent.dom :as rdom]
    [reagent.session :as session]
    [reitit.frontend :as reitit]
    {{#clerk-hook?}}[clerk.core :as clerk]{{/clerk-hook?}}
@@ -89,7 +90,7 @@
 ;; Initialize app
 
 (defn mount-root []
-  (reagent/render [current-page] (.getElementById js/document "app")))
+  (rdom/render [current-page] (.getElementById js/document "app")))
 
 (defn init! []
   {{#clerk-hook?}}
