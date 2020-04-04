@@ -2,6 +2,7 @@
   (:require
    [cljs.test :refer-macros [is are deftest testing use-fixtures]]
    [reagent.core :as reagent :refer [atom]]
+   [reagent.dom :as rdom]
    [{{project-ns}}.core :as rc]))
 
 
@@ -20,9 +21,9 @@
 (defn with-mounted-component [comp f]
   (when isClient
     (let [div (add-test-div "_testreagent")]
-      (let [comp (reagent/render-component comp div #(f comp div))]
-        (reagent/unmount-component-at-node div)
-        (reagent/flush)
+      (let [comp (rdom/render comp div #(f comp div))]
+        (rdom/unmount-component-at-node div)
+        (rflush)
         (.removeChild (.-body js/document) div)))))
 
 
