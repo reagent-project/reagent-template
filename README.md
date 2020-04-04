@@ -26,7 +26,7 @@ To enable [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/m
 ```
 lein new reagent <name> +test
 ```
-To run the tests, please use `lein doo phantom test once`. For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
+To run the tests using headless chrome first install karma and its plugins `npm install -g karma-cli && npm install karma karma-cljs-test karma-chrome-launcher --save-dev`, then use `lein doo chrome-headless test once`. For other environments please check [doo's documentation](https://github.com/bensu/doo#setting-up-environments).
 
 To enable [speclj](https://github.com/slagyr/speclj) with [PhantomJS](http://phantomjs.org/), use `+spec` flag:
 

@@ -69,11 +69,16 @@ and stopped by running:
 ## Running the tests
 {{/test-or-spec-hook?}}
 {{#test-hook?}}
-To run [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/main/cljs/cljs/test.cljs) tests, please use
+To run [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/main/cljs/cljs/test.cljs) tests using headless chrome install karma and its plugins:
 
 ```
-lein doo
+npm install -g karma-cli
+npm install karma karma-cljs-test karma-chrome-launcher --save-dev
+lein doo chrome-headless test once
 ```
+
+For other environments please check [doo's documentation](https://github.com/bensu/doo#setting-up-environments).
+
 {{/test-hook?}}
 {{#spec-hook?}}
 
