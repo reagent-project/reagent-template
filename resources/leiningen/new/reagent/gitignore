@@ -13,3 +13,4 @@ pom.xml.asc
 *.log
 /.env
 /.sass-cache
+/node_modules
