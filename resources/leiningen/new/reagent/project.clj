@@ -139,7 +139,7 @@
                                   [ring/ring-devel "1.8.0"]
                                   [prone "2020-01-17"]
                                   [figwheel-sidecar "0.5.19"]
-                                  [nrepl "0.6.0"]
+                                  [nrepl "0.7.0"]
                                   {{#shadow-cljs-hook?}}
                                   [thheller/shadow-cljs "2.8.37"]
                                   {{/shadow-cljs-hook?}}
