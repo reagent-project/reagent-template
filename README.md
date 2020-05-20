@@ -143,7 +143,7 @@ shadow-cljs release app
 
 ### Deploying to Heroku
 
-Make sure you have [Git](http://git-scm.com/downloads) and [Heroku toolbelt](https://toolbelt.heroku.com/) installed, then simply follow the steps below.
+The project generates a `system.properties` used for Heroku deployments. Make sure you have [Git](http://git-scm.com/downloads) and [Heroku toolbelt](https://toolbelt.heroku.com/) installed, then simply follow the steps below.
 
 Optionally, test that your application runs locally with foreman by running.
 
