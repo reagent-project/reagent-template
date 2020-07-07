@@ -12,7 +12,7 @@
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.7"]
-                 [org.clojure/clojurescript "1.10.764"
+                 [org.clojure/clojurescript "1.10.773"
                   :scope "provided"]{{#shadow-cljs-hook?}}
                  [com.google.javascript/closure-compiler-unshaded "v20190325"]
                  [org.clojure/google-closure-library "0.0-20190213-2033d5d9"]{{/shadow-cljs-hook?}}
@@ -135,7 +135,7 @@
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
                    :dependencies [[cider/piggieback "0.5.0"]
-                                  [binaryage/devtools "1.0.0"]
+                                  [binaryage/devtools "1.0.2"]
                                   [ring/ring-mock "0.4.0"]
                                   [ring/ring-devel "1.8.1"]
                                   [prone "2020-01-17"]
