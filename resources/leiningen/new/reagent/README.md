@@ -9,14 +9,14 @@ To start the Figwheel compiler, navigate to the project folder and run the follo
 ```
 lein figwheel
 ```
-{{#devcards?}}
+{{#devcards-hook?}}
 
 To start the [DevCards](https://github.com/bhauman/devcards) build, run
 
 ```
 lein figwheel devcards
 ```
-{{/devcards?}}
+{{/devcards-hook?}}
 
 Figwheel will automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449) once Figwheel starts up. {{#devcards-hook?}} To view your devcards, type `(switch-to-build devcards)` at the Figwheel REPL and navigate to [http://localhost:3449/cards](http://localhost:3449/cards). {{/devcards-hook?}}
 
