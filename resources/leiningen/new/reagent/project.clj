@@ -134,13 +134,13 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.5.0"]
+                   :dependencies [[cider/piggieback "0.5.1"]
                                   [binaryage/devtools "1.0.2"]
                                   [ring/ring-mock "0.4.0"]
                                   [ring/ring-devel "1.8.1"]
                                   [prone "2020-01-17"]
                                   [figwheel-sidecar "0.5.20"]
-                                  [nrepl "0.7.0"]
+                                  [nrepl "0.8.0"]
                                   {{#shadow-cljs-hook?}}
                                   [thheller/shadow-cljs "2.8.37"]
                                   {{/shadow-cljs-hook?}}
