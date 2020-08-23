@@ -11,7 +11,7 @@ a batteries included setup for development and deployment.
 
 ### Getting Help
 
-For any questions or discussion please come join us at the [Reagent Google Group](https://groups.google.com/forum/#!forum/reagent-project).
+For any questions or discussion please come join us in the #reagent channel on the [Clojurians Slack](http://clojurians.net/).
 
 ## Usage
 
