@@ -145,10 +145,11 @@ shadow-cljs release app
 
 The project generates a `system.properties` used for Heroku deployments. Make sure you have [Git](http://git-scm.com/downloads) and [Heroku toolbelt](https://toolbelt.heroku.com/) installed, then simply follow the steps below.
 
-Optionally, test that your application runs locally with foreman by running.
+Optionally, test that your application runs locally by running.
 
 ```
-foreman start
+lein do clean, uberjar
+heroku local
 ```
 
 Now, you can initialize your git repo and commit your application.
