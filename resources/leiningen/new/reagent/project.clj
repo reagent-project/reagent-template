@@ -6,18 +6,15 @@
 
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [ring-server "0.5.0"]
-                 [reagent "0.10.0"]
+                 [reagent "1.0.0"]
                  [reagent-utils "0.3.3"]
-                 [ring "1.8.1"]
+                 [ring "1.8.2"]
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.7"]
                  [org.clojure/clojurescript "1.10.773"
-                  :scope "provided"]{{#shadow-cljs-hook?}}
-                 [com.google.javascript/closure-compiler-unshaded "v20190325"]
-                 [org.clojure/google-closure-library "0.0-20190213-2033d5d9"]{{/shadow-cljs-hook?}}
-                 [metosin/reitit "0.5.1"]
-                 [metosin/jsonista "0.2.6"]
+                  :scope "provided"]
+                 [metosin/reitit "0.5.10"]                 
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
@@ -134,15 +131,15 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.5.1"]
+                   :dependencies [[cider/piggieback "0.5.2"]
                                   [binaryage/devtools "1.0.2"]
                                   [ring/ring-mock "0.4.0"]
-                                  [ring/ring-devel "1.8.1"]
+                                  [ring/ring-devel "1.8.2"]
                                   [prone "2020-01-17"]
                                   [figwheel-sidecar "0.5.20"]
-                                  [nrepl "0.8.0"]
+                                  [nrepl "0.8.3"]
                                   {{#shadow-cljs-hook?}}
-                                  [thheller/shadow-cljs "2.8.37"]
+                                  [thheller/shadow-cljs "2.11.9"]
                                   {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]

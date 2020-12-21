@@ -54,12 +54,21 @@ use `+less` or `+sass` flags:
 lein new reagent <name> +less
 ```
 
-To add [shadow-cljs](https://github.com/thheller/shadow-cljs), use the `+shadow-cljs` flag:
+To add [figwheel](https://github.com/bhauman/lein-figwheel/) (legacy), use the `+figwheel` flag:
 ```
-lein new reagent <name> +shadow-cljs
+lein new reagent <name> +figwheel
 ```
 
-### Development mode
+#### Development mode with [shadow-cljs](https://github.com/thheller/shadow-cljs)
+
+To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) (if enabled with `+shadow-cljs` flag) compiler run
+```
+shadow-cljs watch app
+```
+
+Shadow-cljs also automatically pushes cljs changes to the browser. The application will now be available at [http://localhost:3000](http://localhost:3000).
+
+### Development mode with Figwheel
 
 To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
 
@@ -71,7 +80,6 @@ To start the [DevCards](https://github.com/bhauman/devcards) (if enabled with `+
 ```
 lein figwheel devcards
 ```
-
 
 Figwheel will automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449)
 once Figwheel starts up. To view your devcards, type `(switch-to-build devcards)` at the Figwheel REPL and navigate to [http://localhost:3449/cards](http://localhost:3449/cards).
@@ -101,16 +109,6 @@ lein sass4clj auto
 ```
 to autocompile sass/scss files.
 
-#### Development mode with [shadow-cljs](https://github.com/thheller/shadow-cljs)
-
-To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) (if enabled with `+shadow-cljs` flag) compiler run
-```
-shadow-cljs watch app
-```
-
-Similarly to Figwheel, shadow-cljs also automatically pushes cljs changes to the browser
-
-The application will now be available at [http://localhost:3000](http://localhost:3000).
 
 #### Optional development tools
 

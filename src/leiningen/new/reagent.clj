@@ -16,7 +16,7 @@
 (defn indent [n list]
   (wrap-indent identity n list))
 
-(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider" "+shadow-cljs" "-clerk"])
+(def valid-opts ["+test" "+spec" "+less" "+sass" "+devcards" "+cider" "+figwheel" "-clerk"])
 
 (defn less? [opts]
   (some #{"+less"} opts))
@@ -36,8 +36,8 @@
 (defn cider? [opts]
   (some #{"+cider"} opts))
 
-(defn shadow-cljs? [opts]
-  (some #{"+shadow-cljs"} opts))
+(defn figwheel? [opts]
+  (some #{"+figwheel"} opts))
 
 (defn clerk? [opts]
   (not (some #{"-clerk"} opts)))
@@ -80,7 +80,7 @@
 
    :cider-hook? (fn [block] (if (cider? opts) (str block "") ""))
 
-   :shadow-cljs-hook? (fn [block] (if (shadow-cljs? opts) (str block "") ""))
+   :shadow-cljs-hook? (fn [block] (if (figwheel? opts) "" (str block "")))
 
    :clerk-hook? (fn [block] (if (clerk? opts) (str block "") ""))})
 
@@ -129,11 +129,11 @@
         args (if (devcards? opts)
                (conj args ["env/dev/cljs/{{sanitized}}/cards.cljs" (render "env/dev/cljs/reagent/cards.cljs" data)])
                args)
-        args (if (shadow-cljs? opts)
+        args (if (figwheel? opts)
+               args
                (conj args
                      ["shadow-cljs.edn" (render "shadow-cljs.edn" data)]
-                     ["package.json" (render "package.json" data)])
-               args)]
+                     ["package.json" (render "package.json" data)]))]
     args))
 
 (defn reagent [name & opts]
