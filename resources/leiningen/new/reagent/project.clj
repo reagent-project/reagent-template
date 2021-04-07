@@ -12,7 +12,7 @@
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.7"]
-                 [org.clojure/clojurescript "1.10.773"
+                 [org.clojure/clojurescript "1.10.844"
                   :scope "provided"]
                  [metosin/reitit "0.5.12"]                 
                  {{#clerk-hook?}}
@@ -141,7 +141,7 @@
                                   [figwheel-sidecar "0.5.20"]
                                   [nrepl "0.8.3"]
                                   {{#shadow-cljs-hook?}}
-                                  [thheller/shadow-cljs "2.11.22"]
+                                  [thheller/shadow-cljs "2.12.1"]
                                   {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
