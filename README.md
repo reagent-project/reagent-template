@@ -59,18 +59,18 @@ To add [figwheel](https://github.com/bhauman/lein-figwheel/) (legacy), use the `
 lein new reagent <name> +figwheel
 ```
 
-#### Development mode with [shadow-cljs](https://github.com/thheller/shadow-cljs)
+### Development mode with [shadow-cljs](https://github.com/thheller/shadow-cljs)
 
-To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) (if enabled with `+shadow-cljs` flag) compiler run
+To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) compiler run
 ```
 shadow-cljs watch app
 ```
 
-Shadow-cljs also automatically pushes cljs changes to the browser. The application will now be available at [http://localhost:3000](http://localhost:3000).
+Shadow-cljs automatically pushes cljs changes to the browser. The application will now be available at [http://localhost:3000](http://localhost:3000).
 
 ### Development mode with Figwheel
 
-To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
+To start the Figwheel compiler (if enabled with `+figwheel` flag), navigate to the project folder and run the following command in the terminal:
 
 ```
 lein figwheel
@@ -81,7 +81,7 @@ To start the [DevCards](https://github.com/bhauman/devcards) (if enabled with `+
 lein figwheel devcards
 ```
 
-Figwheel will automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449)
+Figwheel will also automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449)
 once Figwheel starts up. To view your devcards, type `(switch-to-build devcards)` at the Figwheel REPL and navigate to [http://localhost:3449/cards](http://localhost:3449/cards).
 
 Figwheel also starts `nREPL` using the value of the `:nrepl-port` in the `:figwheel`
@@ -133,8 +133,7 @@ and stopped by running:
 lein do clean, uberjar
 ```
 
-#### Building for release with [shadow-cljs](https://github.com/thheller/shadow-cljs) 
-(if enabled with `+shadow-cljs` flag)
+#### Building for release with [shadow-cljs](https://github.com/thheller/shadow-cljs)
 ```
 shadow-cljs release app
 ```
