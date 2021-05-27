@@ -99,7 +99,7 @@
               ["src/cljc/{{sanitized}}/util.cljc" (render "src/cljc/reagent/util.cljc" data)]
               ["env/dev/cljs/{{sanitized}}/dev.cljs" (render "env/dev/cljs/reagent/dev.cljs" data)]
               ["env/prod/cljs/{{sanitized}}/prod.cljs" (render "env/prod/cljs/reagent/prod.cljs" data)]
-              ["LICENSE" (render "LICENSE" data)]
+              #_["LICENSE" (render "LICENSE" data)]
               ["README.md" (render "README.md" data)]
               [".gitignore" (render "gitignore" data)]
              ;; Heroku support
