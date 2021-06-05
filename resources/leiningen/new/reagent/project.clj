@@ -6,8 +6,10 @@
 
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [ring-server "0.5.0"]
-                 [reagent "1.0.0"]
+                 [reagent "1.1.0"]
                  [reagent-utils "0.3.3"]
+                 [cljsjs/react "17.0.2-0"]
+                 [cljsjs/react-dom "17.0.2-0"]
                  [ring "1.8.1"]
                  [ring/ring-defaults "0.3.2"]
                  [hiccup "1.0.5"]
