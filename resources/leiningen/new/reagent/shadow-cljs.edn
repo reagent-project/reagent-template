@@ -1,4 +1,4 @@
-{:lein         true
+{:lein         {:profile "+shadow-cljs"}
  :builds       {:app {:target     :browser
                       :output-dir "resources/public/js"
                       :asset-path "/js"

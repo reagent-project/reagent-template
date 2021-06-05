@@ -16,6 +16,7 @@
                  [yogthos/config "1.1.7"]
                  [org.clojure/clojurescript "1.10.866"
                   :scope "provided"]
+                 [com.google.javascript/closure-compiler-unshaded "v20210302"]
                  [metosin/reitit "0.5.12"]                 
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
@@ -143,7 +144,7 @@
                                   [figwheel-sidecar "0.5.20"]
                                   [nrepl "0.8.3"]
                                   {{#shadow-cljs-hook?}}
-                                  [thheller/shadow-cljs "2.12.1"]
+                                  [thheller/shadow-cljs "2.14.3"]
                                   {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
@@ -188,6 +189,10 @@
                                 (pjstadig.humane-test-output/activate!)]
 
                    :env {:dev true}}
+
+             {{#shadow-cljs-hook?}}
+             :shadow-cljs {:dependencies [[com.google.javascript/closure-compiler-unshaded "v20210505"]]}
+             {{/shadow-cljs-hook?}}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
                        :source-paths ["env/prod/clj"]
