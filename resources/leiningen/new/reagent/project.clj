@@ -16,7 +16,6 @@
                  [yogthos/config "1.1.7"]
                  [org.clojure/clojurescript "1.10.866"
                   :scope "provided"]
-                 [com.google.javascript/closure-compiler-unshaded "v20210302"]
                  [metosin/reitit "0.5.12"]                 
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
