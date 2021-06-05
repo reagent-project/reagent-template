@@ -63,6 +63,7 @@ lein new reagent <name> +figwheel
 
 To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) compiler run
 ```
+npm install
 shadow-cljs watch app
 ```
 
