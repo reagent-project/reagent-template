@@ -143,7 +143,7 @@
                                   [figwheel-sidecar "0.5.20"]
                                   [nrepl "0.8.3"]
                                   {{#shadow-cljs-hook?}}
-                                  [thheller/shadow-cljs "2.14.3"]
+                                  [thheller/shadow-cljs "2.16.5"]
                                   {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
