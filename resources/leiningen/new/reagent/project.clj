@@ -7,16 +7,16 @@
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [ring-server "0.5.0"]
                  [reagent "1.1.0"]
-                 [reagent-utils "0.3.3"]
+                 [reagent-utils "0.3.4"]
                  [cljsjs/react "17.0.2-0"]
                  [cljsjs/react-dom "17.0.2-0"]
-                 [ring "1.8.1"]
-                 [ring/ring-defaults "0.3.2"]
+                 [ring "1.9.4"]
+                 [ring/ring-defaults "0.3.3"]
                  [hiccup "1.0.5"]
-                 [yogthos/config "1.1.7"]
-                 [org.clojure/clojurescript "1.10.891"
+                 [yogthos/config "1.1.8"]
+                 [org.clojure/clojurescript "1.10.896"
                   :scope "provided"]
-                 [metosin/reitit "0.5.12"]                 
+                 [metosin/reitit "0.5.15"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
@@ -135,15 +135,15 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.5.2"]
-                                  [binaryage/devtools "1.0.2"]
+                   :dependencies [[cider/piggieback "0.5.3"]
+                                  [binaryage/devtools "1.0.4"]
                                   [ring/ring-mock "0.4.0"]
-                                  [ring/ring-devel "1.9.1"]
-                                  [prone "2020-01-17"]
+                                  [ring/ring-devel "1.9.4"]
+                                  [prone "2021-04-23"]
                                   [figwheel-sidecar "0.5.20"]
                                   [nrepl "0.8.3"]
                                   {{#shadow-cljs-hook?}}
-                                  [thheller/shadow-cljs "2.16.5"]
+                                  [thheller/shadow-cljs "2.16.7"]
                                   {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
@@ -151,7 +151,7 @@
                                   {{#devcards-hook?}}
                                   [devcards "0.2.6" :exclusions [cljsjs/react]]
                                   {{/devcards-hook?}}
-                                  [pjstadig/humane-test-output "0.10.0"]
+                                  [pjstadig/humane-test-output "0.11.0"]
                                   {{dev-dependencies}}
                                   {{#less-hook?}}
                                   ;; To silence warnings from less4clj dependecies about missing logger implementation
@@ -190,7 +190,7 @@
                    :env {:dev true}}
 
              {{#shadow-cljs-hook?}}
-             :shadow-cljs {:dependencies [[com.google.javascript/closure-compiler-unshaded "v20210505"]]}
+             :shadow-cljs {:dependencies [[com.google.javascript/closure-compiler-unshaded "v20211201"]]}
              {{/shadow-cljs-hook?}}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
