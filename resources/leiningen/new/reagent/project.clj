@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.10.3"]
+  :dependencies [[org.clojure/clojure "1.11.1"]
                  [ring-server "0.5.0"]
                  [reagent "1.1.0"]
                  [reagent-utils "0.3.4"]
@@ -14,7 +14,7 @@
                  [ring/ring-defaults "0.3.3"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.8"]
-                 [org.clojure/clojurescript "1.10.896"
+                 [org.clojure/clojurescript "1.11.51"
                   :scope "provided"]
                  [metosin/reitit "0.5.15"]
                  {{#clerk-hook?}}
