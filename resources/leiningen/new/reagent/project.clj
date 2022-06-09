@@ -6,17 +6,17 @@
 
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [ring-server "0.5.0"]
-                 [reagent "1.1.0"]
+                 [reagent "1.1.1"]
                  [reagent-utils "0.3.4"]
                  [cljsjs/react "17.0.2-0"]
                  [cljsjs/react-dom "17.0.2-0"]
-                 [ring "1.9.4"]
+                 [ring "1.9.5"]
                  [ring/ring-defaults "0.3.3"]
                  [hiccup "1.0.5"]
-                 [yogthos/config "1.1.8"]
-                 [org.clojure/clojurescript "1.11.51"
+                 [yogthos/config "1.2.0"]
+                 [org.clojure/clojurescript "1.11.54"
                   :scope "provided"]
-                 [metosin/reitit "0.5.15"]
+                 [metosin/reitit "0.5.18"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
@@ -136,12 +136,12 @@
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
                    :dependencies [[cider/piggieback "0.5.3"]
-                                  [binaryage/devtools "1.0.4"]
+                                  [binaryage/devtools "1.0.6"]
                                   [ring/ring-mock "0.4.0"]
-                                  [ring/ring-devel "1.9.4"]
+                                  [ring/ring-devel "1.9.5"]
                                   [prone "2021-04-23"]
                                   [figwheel-sidecar "0.5.20"]
-                                  [nrepl "0.8.3"]
+                                  [nrepl "0.9.0"]
                                   {{#shadow-cljs-hook?}}
                                   [thheller/shadow-cljs "2.16.7"]
                                   {{/shadow-cljs-hook?}}
