@@ -2,7 +2,6 @@
  :builds       {:app {:target     :browser
                       :output-dir "resources/public/js"
                       :asset-path "/js"
-                      :modules    {:app {:entries [{{project-ns}}.core]}}
-                      :devtools   {:after-load {{project-ns}}.core/mount-root}}}
+                      :modules    {:app {:init-fn {{project-ns}}.core/init!}}}}
  :dev-http     {3000 {:root    "resources/public"
                       :handler {{project-ns}}.handler/app}}}
