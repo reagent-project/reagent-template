@@ -115,3 +115,8 @@
       (boolean (reitit/match-by-path router path)))})
   (accountant/dispatch-current!)
   (mount-root))
+
+{{#shadow-cljs-hook?}}
+(defn ^:dev/after-load reload! []
+  (mount-root))
+{{/shadow-cljs-hook?}}
