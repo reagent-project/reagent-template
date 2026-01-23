@@ -64,7 +64,7 @@ lein new reagent <name> +figwheel
 To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) compiler run
 ```
 npm install
-shadow-cljs watch app
+npx shadow-cljs watch app
 ```
 
 Shadow-cljs automatically pushes cljs changes to the browser. The application will now be available at [http://localhost:3000](http://localhost:3000).
@@ -136,7 +136,7 @@ lein do clean, uberjar
 
 #### Building for release with [shadow-cljs](https://github.com/thheller/shadow-cljs)
 ```
-shadow-cljs release app
+npx shadow-cljs release app
 ```
 
 ### Deploying to Heroku

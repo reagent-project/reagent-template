@@ -4,27 +4,25 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.11.1"]
+  :dependencies [[org.clojure/clojure "1.12.4"]
                  [ring-server "0.5.0"]
-                 [reagent "1.1.1"]
-                 [reagent-utils "0.3.4"]
-                 [cljsjs/react "17.0.2-0"]
-                 [cljsjs/react-dom "17.0.2-0"]
-                 [ring "1.9.5"]
-                 [ring/ring-defaults "0.3.3"]
-                 [hiccup "1.0.5"]
-                 [yogthos/config "1.2.0"]
-                 [org.clojure/clojurescript "1.11.54"
-                  :scope "provided"]
-                 [metosin/reitit "0.5.18"]
+                 [reagent "2.0.1"]
+                 [reagent-utils "0.3.8"]
+                 [cljsjs/react "18.3.1-1"]
+                 [cljsjs/react-dom "18.3.1-1"]
+                 [ring "1.15.3"]
+                 [ring/ring-defaults "0.7.0"]
+                 [hiccup "2.0.0"]
+                 [yogthos/config "1.2.1"]
+                 [org.clojure/clojurescript "1.12.134" :scope "provided"]
+                 [metosin/reitit "0.10.0"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
                  {{/clerk-hook?}}
-                 [venantius/accountant "0.2.5"
-                  :exclusions [org.clojure/tools.reader]]]
+                 [venantius/accountant "0.2.5" :exclusions [org.clojure/tools.reader]]]
 
   :jvm-opts ["-Xmx1G"]
-  
+
   :plugins [[lein-environ "1.1.0"]
             [lein-cljsbuild "1.1.7"]
             [lein-asset-minifier "0.4.6"
@@ -135,15 +133,15 @@
   {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[cider/piggieback "0.5.3"]
-                                  [binaryage/devtools "1.0.6"]
-                                  [ring/ring-mock "0.4.0"]
-                                  [ring/ring-devel "1.9.5"]
+                   :dependencies [[cider/piggieback "0.6.1"]
+                                  [binaryage/devtools "1.0.7"]
+                                  [ring/ring-mock "0.6.2"]
+                                  [ring/ring-devel "1.15.3"]
                                   [prone "2021-04-23"]
                                   [figwheel-sidecar "0.5.20"]
-                                  [nrepl "0.9.0"]
+                                  [nrepl "1.5.2"]
                                   {{#shadow-cljs-hook?}}
-                                  [thheller/shadow-cljs "2.16.7"]
+                                  [thheller/shadow-cljs "3.3.5"]
                                   {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
@@ -188,10 +186,6 @@
                                 (pjstadig.humane-test-output/activate!)]
 
                    :env {:dev true}}
-
-             {{#shadow-cljs-hook?}}
-             :shadow-cljs {:dependencies [[com.google.javascript/closure-compiler-unshaded "v20211201"]]}
-             {{/shadow-cljs-hook?}}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
                        :source-paths ["env/prod/clj"]
