@@ -23,9 +23,9 @@
 
   :jvm-opts ["-Xmx1G"]
 
-  :plugins [[lein-environ "1.1.0"]
-            [lein-cljsbuild "1.1.7"]
-            [lein-asset-minifier "0.4.6"
+  :plugins [[lein-environ "1.2.0"]
+            [lein-cljsbuild "1.1.8"]
+            [lein-asset-minifier "0.5.2"
              :exclusions [org.clojure/clojure]]]
 
   :ring {:handler {{project-ns}}.handler/app
@@ -153,17 +153,17 @@
                                   {{dev-dependencies}}
                                   {{#less-hook?}}
                                   ;; To silence warnings from less4clj dependecies about missing logger implementation
-                                  [org.slf4j/slf4j-nop "1.7.25"]
+                                  [org.slf4j/slf4j-nop "2.0.17"]
                                   {{/less-hook?}}
                                   {{#sass-hook?}}
                                   ;; To silence warnings from sass4clj dependecies about missing logger implementation
-                                  [org.slf4j/slf4j-nop "1.7.25"]
+                                  [org.slf4j/slf4j-nop "2.0.17"]
                                   {{/sass-hook?}} ]
 
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.5.20"]
                              {{#test-hook?}}
-                             [lein-doo "0.1.10"]
+                             [lein-doo "0.1.11"]
                              {{/test-hook?}}
                              {{#spec-hook?}}
                              [speclj "3.3.2"]
@@ -176,10 +176,10 @@
                               :exclusions [org.clojure/clojure]]
                              {{/cider-hook?}}
                              {{#less-hook?}}
-                             [deraen/lein-less4j "0.6.2"]
+                             [deraen/lein-less4clj "0.8.0"]
                              {{/less-hook?}}
                              {{#sass-hook?}}
-                             [deraen/lein-sass4clj "0.3.1"]
+                             [deraen/lein-sass4clj "0.7.0"]
                              {{/sass-hook?}}]
 
                    :injections [(require 'pjstadig.humane-test-output)
