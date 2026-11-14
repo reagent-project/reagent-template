@@ -8,7 +8,7 @@
 (def mount-target
   [:div#app
    [:h2 "Welcome to {{name}}"]
-   [:p "please wait while {{#figwheel-hook?}}Figwheel{{/figwheel-hook?}}{{#shadow-cljs-hook?}}shadow-cljs{{/shadow-cljs-hook?}} is waking up ..."]
+   [:p "please wait while shadow-cljs is waking up ..."]
    [:p "(Check the js console for hints if nothing exciting happens.)"]])
 
 (defn head []
@@ -25,29 +25,11 @@
     mount-target
     (include-js "/js/app.js")]))
 
-{{#devcards-hook?}}
-
-(defn cards-page []
-  (html5
-    (head)
-    [:body
-     mount-target
-     (include-js "/js/app_devcards.js")]))
-{{/devcards-hook?}}
-
 (defn index-handler
   [_request]
   {:status 200
    :headers {"Content-Type" "text/html"}
    :body (loading-page)})
- {{#devcards-hook?}}
-
-(defn cards-handler
-  [_]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (cards-page)})
-{{/devcards-hook?}}
 
 (def app
   (reitit-ring/ring-handler
@@ -57,8 +39,7 @@
       ["" {:get {:handler index-handler}}]
       ["/:item-id" {:get {:handler index-handler
                           :parameters {:path {:item-id int?}}}}]]
-     ["/about" {:get {:handler index-handler}}]{{#devcards-hook?}}
-     ["/cards" {:get {:handler cards-handler}}]{{/devcards-hook?}}])
+     ["/about" {:get {:handler index-handler}}]])
    (reitit-ring/routes
     (reitit-ring/create-resource-handler {:path "/" :root "/public"})
     (reitit-ring/create-default-handler))

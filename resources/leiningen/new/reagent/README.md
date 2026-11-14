@@ -2,11 +2,15 @@
 
 This is the {{name}} project.
 
-## Development mode
-{{#shadow-cljs-hook?}}
+## Requirements
 
-Requires Java 21 or newer (for shadow-cljs) and Node.js. To start the
-[shadow-cljs](https://github.com/thheller/shadow-cljs) compiler, navigate to the
+* Java 21 or newer (required by shadow-cljs)
+* [Node.js](https://nodejs.org/) and npm
+* [Leiningen](https://leiningen.org/) 2.x
+
+## Development mode
+
+To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) compiler, navigate to the
 project folder and run:
 
 ```
@@ -15,68 +19,37 @@ npx shadow-cljs watch app
 ```
 
 The application will be available at [http://localhost:3000](http://localhost:3000)
-once the first build completes. shadow-cljs automatically pushes cljs changes to
-the browser.
-{{#devcards-hook?}}
+once the first build completes. shadow-cljs serves the Ring handler from
+`src/clj/{{sanitized}}/handler.clj` and automatically pushes ClojureScript and CSS changes to the browser.
 
-The [DevCards](https://github.com/bhauman/devcards) build still uses Figwheel: run
-`lein figwheel devcards` and open [http://localhost:3449/cards](http://localhost:3449/cards).
-{{/devcards-hook?}}
-{{/shadow-cljs-hook?}}
-{{#figwheel-hook?}}
-
-To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
-
-```
-lein figwheel
-```
-{{#devcards-hook?}}
-
-To start the [DevCards](https://github.com/bhauman/devcards) build, run
-
-```
-lein figwheel devcards
-```
-{{/devcards-hook?}}
-
-Figwheel will automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449) once Figwheel starts up. {{#devcards-hook?}} To view your devcards, type `(switch-to-build devcards)` at the Figwheel REPL and navigate to [http://localhost:3449/cards](http://localhost:3449/cards). {{/devcards-hook?}}
-
-Figwheel also starts `nREPL` using the value of the `:nrepl-port` in the `:figwheel`
-config found in `project.clj`. By default the port is set to `7002`.
-
-The figwheel server can have unexpected behaviors in some situations such as when using
-websockets. In this case it's recommended to run a standalone instance of a web server as follows:
-
-```
-lein do clean, run
-```
-
-The application will now be available at [http://localhost:3000](http://localhost:3000).
-{{/figwheel-hook?}}
-
+shadow-cljs also starts an nREPL server; its port is written to `.shadow-cljs/nrepl.port`.
+After connecting, run `(shadow/repl :app)` to switch to a ClojureScript REPL running in the browser.
+The shadow-cljs dashboard is available at [http://localhost:9630](http://localhost:9630).
 {{#less-or-sass-hook?}}
+
 ### Style compilation
 {{/less-or-sass-hook?}}
 {{#less-hook?}}
+
 To compile [less](https://github.com/Deraen/less4clj) sources and then watch for changes and recompile until interrupted, run
 ```
-lein less4j auto
+lein less4clj auto
 ```
 {{/less-hook?}}
 {{#sass-hook?}}
+
 To compile [sass](https://github.com/Deraen/sass4clj) sources and then watch for changes and recompile until interrupted, run
 ```
 lein sass4clj auto
 ```
 {{/sass-hook?}}
 
-### Optional development tools
-
-Start the browser REPL:
+### Running the Ring server from a Clojure REPL
 
 ```
-$ lein repl
+lein repl
 ```
+
 The Jetty server can be started by running:
 
 ```clojure
@@ -87,54 +60,58 @@ and stopped by running:
 (stop-server)
 ```
 
-{{#test-or-spec-hook?}}
-## Running the tests
-{{/test-or-spec-hook?}}
+This serves the JavaScript built by shadow-cljs, so keep `npx shadow-cljs watch app` running
+(or stop it first if you want to use port 3000).
 {{#test-hook?}}
-To run [cljs.test](https://github.com/clojure/clojurescript/blob/master/src/main/cljs/cljs/test.cljs) tests using headless chrome install karma and its plugins:
+
+## Running the tests
+
+Tests are in `test/cljs`. Namespaces ending in `-test` are picked up automatically.
+
+To run the tests in the browser while developing:
 
 ```
-npm install -g karma-cli
-npm install karma karma-cljs-test karma-chrome-launcher --save-dev
-lein doo chrome-headless test once
+npx shadow-cljs watch test
 ```
 
-For other environments please check [doo's documentation](https://github.com/bensu/doo#setting-up-environments).
+and open [http://localhost:8021](http://localhost:8021). The tests re-run on every change.
 
+To run the tests once in headless Chrome with [Karma](https://karma-runner.github.io/), e.g. on CI:
+
+```
+npm test
+```
+
+This compiles the `:ci` build and runs `karma start --single-run`. Karma needs Chrome or
+Chromium installed; set `CHROME_BIN` if it isn't found automatically.
 {{/test-hook?}}
-{{#spec-hook?}}
-
-To run [speclj](https://github.com/slagyr/speclj) tests, please use
-
-```
-lein cljsbuild test
-```
-{{/spec-hook?}}
-{{#test-or-spec-hook?}}
-
-For installation instructions of PhantomJS, please see [this](http://phantomjs.org/download.html).
-{{/test-or-spec-hook?}}
 
 ## Building for release
 
 ```
 lein do clean, uberjar
 ```
-{{#shadow-cljs-hook?}}
 
 This runs `npx shadow-cljs release app` to build the optimized JavaScript, so run
-`npm install` first. To build only the JavaScript, run
-`npx shadow-cljs release app` directly.
-{{/shadow-cljs-hook?}}
+`npm install` first. To build only the JavaScript, run `npx shadow-cljs release app` directly.
+
+The resulting jar can be run with `java -jar target/{{name}}.jar`.
 
 ## Deploying to Heroku
 
-Make sure you have [Git](http://git-scm.com/downloads) and [Heroku toolbelt](https://toolbelt.heroku.com/) installed, then simply follow the steps below.
-
-Optionally, test that your application runs locally with foreman by running.
+Make sure you have [Git](http://git-scm.com/downloads) and the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed, then simply follow the steps below.
+The Heroku build needs both Node.js and Clojure, so add the buildpacks in this order:
 
 ```
-foreman start
+heroku buildpacks:add heroku/nodejs
+heroku buildpacks:add heroku/clojure
+```
+
+Optionally, test that your application runs locally by running.
+
+```
+lein do clean, uberjar
+heroku local
 ```
 
 Now, you can initialize your git repo and commit your application.

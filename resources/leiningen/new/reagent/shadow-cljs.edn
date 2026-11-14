@@ -3,6 +3,17 @@
                       :output-dir "resources/public/js"
                       :asset-path "/js"
                       :modules    {:app {:init-fn {{project-ns}}.core/init!}}
-                      :devtools   {:preloads [devtools.preload]}}}
+                      :devtools   {:preloads  [devtools.preload]
+                                   ;; reload CSS changes under resources/public without a page refresh
+                                   :watch-dir "resources/public"}}{{#test-hook?}}
+                ;; npx shadow-cljs watch test, then open http://localhost:8021
+                :test {:target    :browser-test
+                       :test-dir  "target/browser-test"
+                       :ns-regexp "-test$"}
+                ;; npx shadow-cljs compile ci && npx karma start --single-run
+                :ci   {:target    :karma
+                       :output-to "target/ci.js"
+                       :ns-regexp "-test$"}{{/test-hook?}}}
  :dev-http     {3000 {:root    "resources/public"
-                      :handler {{project-ns}}.handler/app}}}
+                      :handler {{project-ns}}.handler/app}{{#test-hook?}}
+                8021 "target/browser-test"{{/test-hook?}}}}
