@@ -25,6 +25,22 @@ once the first build completes. shadow-cljs serves the Ring handler from
 shadow-cljs also starts an nREPL server; its port is written to `.shadow-cljs/nrepl.port`.
 After connecting, run `(shadow/repl :app)` to switch to a ClojureScript REPL running in the browser.
 The shadow-cljs dashboard is available at [http://localhost:9630](http://localhost:9630).
+{{#cider-hook?}}
+
+### Emacs and CIDER
+
+The `:dev` profile includes [cider-nrepl](https://github.com/clojure-emacs/cider-nrepl) and
+[refactor-nrepl](https://github.com/clojure-emacs/refactor-nrepl). shadow-cljs adds their middleware
+to its nREPL server automatically when they are on the classpath, so no extra configuration is needed.
+
+Start shadow-cljs in a terminal with `npx shadow-cljs watch app`, then in Emacs run
+`M-x cider-connect-cljs`, choose `localhost` and the port from `.shadow-cljs/nrepl.port`,
+select `shadow` as the REPL type and `:app` as the build. Open the app in the browser
+before evaluating ClojureScript, since the REPL runs in the page.
+
+Alternatively `M-x cider-jack-in-cljs` (choosing `shadow-cljs`) starts the shadow-cljs server
+from Emacs. See the [CIDER shadow-cljs documentation](https://docs.cider.mx/cider/cljs/shadow-cljs.html).
+{{/cider-hook?}}
 {{#less-or-sass-hook?}}
 
 ### Style compilation

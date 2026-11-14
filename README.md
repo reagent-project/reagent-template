@@ -30,11 +30,14 @@ Tests run in the browser with the shadow-cljs [`:browser-test`](https://shadow-c
 target (`npx shadow-cljs watch test`, then open [http://localhost:8021](http://localhost:8021)), or once in headless Chrome
 with [Karma](https://karma-runner.github.io/) using `npm test`.
 
-To add [CIDER](https://github.com/clojure-emacs/cider) support (cider-nrepl and refactor-nrepl middleware in the shadow-cljs nREPL), use the `+cider` flag:
+To add [CIDER](https://github.com/clojure-emacs/cider) support, use the `+cider` flag:
 
 ```
 lein new reagent <name> +cider
 ```
+This adds cider-nrepl and refactor-nrepl to the `:dev` profile. shadow-cljs loads their middleware into its
+nREPL server automatically, so you can run `npx shadow-cljs watch app` and connect with `M-x cider-connect-cljs`
+(REPL type `shadow`, build `:app`). The generated README has the details.
 
 To add  [less](https://github.com/Deraen/less4clj)/[sass](https://github.com/Deraen/sass4clj) support
 use `+less` or `+sass` flags:
