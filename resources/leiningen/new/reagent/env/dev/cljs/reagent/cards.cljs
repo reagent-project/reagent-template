@@ -1,6 +1,6 @@
 (ns {{project-ns}}.cards
   (:require [reagent.core :as reagent :refer [atom]]
-            [reagent.dom :as rdom]
+            [reagent.dom.client :as rdomc]
             [{{project-ns}}.core :as core]
             [devcards.core :as dc])
   (:require-macros
@@ -14,7 +14,7 @@
 (defcard-rg home-page-card
   [core/home-page])
 
-(rdom/render [:div] (.getElementById js/document "app"))
+(rdomc/render (rdomc/create-root (.getElementById js/document "app")) [:div])
 
 ;; remember to run 'lein figwheel devcards' and then browse to
 ;; http://localhost:3449/cards

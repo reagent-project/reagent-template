@@ -3,6 +3,27 @@
 This is the {{name}} project.
 
 ## Development mode
+{{#shadow-cljs-hook?}}
+
+Requires Java 21 or newer (for shadow-cljs) and Node.js. To start the
+[shadow-cljs](https://github.com/thheller/shadow-cljs) compiler, navigate to the
+project folder and run:
+
+```
+npm install
+npx shadow-cljs watch app
+```
+
+The application will be available at [http://localhost:3000](http://localhost:3000)
+once the first build completes. shadow-cljs automatically pushes cljs changes to
+the browser.
+{{#devcards-hook?}}
+
+The [DevCards](https://github.com/bhauman/devcards) build still uses Figwheel: run
+`lein figwheel devcards` and open [http://localhost:3449/cards](http://localhost:3449/cards).
+{{/devcards-hook?}}
+{{/shadow-cljs-hook?}}
+{{#figwheel-hook?}}
 
 To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
 
@@ -31,6 +52,7 @@ lein do clean, run
 ```
 
 The application will now be available at [http://localhost:3000](http://localhost:3000).
+{{/figwheel-hook?}}
 
 {{#less-or-sass-hook?}}
 ### Style compilation
@@ -98,6 +120,12 @@ For installation instructions of PhantomJS, please see [this](http://phantomjs.o
 ```
 lein do clean, uberjar
 ```
+{{#shadow-cljs-hook?}}
+
+This runs `npx shadow-cljs release app` to build the optimized JavaScript, so run
+`npm install` first. To build only the JavaScript, run
+`npx shadow-cljs release app` directly.
+{{/shadow-cljs-hook?}}
 
 ## Deploying to Heroku
 

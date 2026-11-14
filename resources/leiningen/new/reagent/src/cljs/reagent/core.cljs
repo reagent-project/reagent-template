@@ -89,10 +89,12 @@
 ;; -------------------------
 ;; Initialize app
 
-(defonce root (rdomc/create-root (.getElementById js/document "app")))
+;; Created lazily on first mount, so loading this namespace without the #app
+;; element (e.g. in tests) works. defonce keeps the same root on hot reload.
+(defonce root (delay (rdomc/create-root (.getElementById js/document "app"))))
 
 (defn mount-root []
-  (rdomc/render root [current-page]))
+  (rdomc/render @root [current-page]))
 
 (defn init! []
   {{#clerk-hook?}}

@@ -8,7 +8,7 @@
 (def mount-target
   [:div#app
    [:h2 "Welcome to {{name}}"]
-   [:p "please wait while Figwheel{{#shadow-cljs-hook?}}/shadow-cljs{{/shadow-cljs-hook?}} is waking up ..."]
+   [:p "please wait while {{#figwheel-hook?}}Figwheel{{/figwheel-hook?}}{{#shadow-cljs-hook?}}shadow-cljs{{/shadow-cljs-hook?}} is waking up ..."]
    [:p "(Check the js console for hints if nothing exciting happens.)"]])
 
 (defn head []

@@ -82,6 +82,8 @@
 
    :shadow-cljs-hook? (fn [block] (if (figwheel? opts) "" (str block "")))
 
+   :figwheel-hook? (fn [block] (if (figwheel? opts) (str block "") ""))
+
    :clerk-hook? (fn [block] (if (clerk? opts) (str block "") ""))})
 
 (defn format-files-args [name opts]

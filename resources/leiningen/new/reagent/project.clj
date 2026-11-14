@@ -14,7 +14,7 @@
                  [ring/ring-defaults "0.7.0"]
                  [hiccup "2.0.0"]
                  [yogthos/config "1.2.1"]
-                 [org.clojure/clojurescript "1.12.134" :scope "provided"]
+                 [org.clojure/clojurescript "1.12.42" :scope "provided"]
                  [metosin/reitit "0.10.0"]
                  {{#clerk-hook?}}
                  [pez/clerk "1.0.0"]
@@ -26,7 +26,8 @@
   :plugins [[lein-environ "1.2.0"]
             [lein-cljsbuild "1.1.8"]
             [lein-asset-minifier "0.5.2"
-             :exclusions [org.clojure/clojure]]]
+             :exclusions [org.clojure/clojure]]{{#shadow-cljs-hook?}}
+            [lein-shell "0.5.0"]{{/shadow-cljs-hook?}}]
 
   :ring {:handler {{project-ns}}.handler/app
          :uberwar-name "{{name}}.war"}
@@ -37,7 +38,8 @@
   :clean-targets ^{:protect false}
   [:target-path
    [:cljsbuild :builds :app :compiler :output-dir]
-   [:cljsbuild :builds :app :compiler :output-to]]
+   [:cljsbuild :builds :app :compiler :output-to]{{#shadow-cljs-hook?}}
+   "resources/public/js"{{/shadow-cljs-hook?}}]
 
   :source-paths ["src/clj" "src/cljc" "src/cljs"]
   {{#spec-hook?}}
@@ -57,6 +59,7 @@
               :output-dir       "target/cljsbuild/public/js"
               :source-map       "target/cljsbuild/public/js/app.js.map"
               :optimizations :advanced
+              :npm-deps false
               :infer-externs true
               :pretty-print  false}}
             :app
@@ -69,6 +72,7 @@
               :output-dir "target/cljsbuild/public/js/out"
               :source-map true
               :optimizations :none
+              :npm-deps false
               :pretty-print  true}}
             {{#test-hook?}}
             :test
@@ -78,12 +82,14 @@
                         :output-to "target/test.js"
                         :output-dir "target/cljstest/public/js/out"
                         :optimizations :whitespace
+                        :npm-deps false
                         :pretty-print true}}{{/test-hook?}}
             {{#spec-hook?}}
             :test
             {:source-paths ["src/cljs" "src/cljc" "spec/cljs"]
              :compiler {:output-to "target/test.js"
                         :optimizations :whitespace
+                        :npm-deps false
                         :pretty-print true}}{{/spec-hook?}}
             {{#devcards-hook?}}
             :devcards
@@ -94,6 +100,7 @@
                         :output-to "target/cljsbuild/public/js/app_devcards.js"
                         :output-dir "target/cljsbuild/public/js/devcards_out"
                         :source-map-timestamp true
+                        :npm-deps false
                         :optimizations :none
                         :pretty-print true}}{{/devcards-hook?}}
             }
@@ -141,7 +148,7 @@
                                   [figwheel-sidecar "0.5.20"]
                                   [nrepl "1.5.2"]
                                   {{#shadow-cljs-hook?}}
-                                  [thheller/shadow-cljs "3.3.5"]
+                                  [thheller/shadow-cljs "3.2.1"]
                                   {{/shadow-cljs-hook?}}
                                   {{#spec-hook?}}
                                   [speclj "3.3.2"]
@@ -189,7 +196,13 @@
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
                        :source-paths ["env/prod/clj"]
-                       :prep-tasks ["compile" ["cljsbuild" "once" "min"]]
+                       :prep-tasks ["compile"
+                                    {{#shadow-cljs-hook?}}
+                                    ["shell" "npx" "shadow-cljs" "release" "app"]
+                                    {{/shadow-cljs-hook?}}
+                                    {{#figwheel-hook?}}
+                                    ["cljsbuild" "once" "min"]
+                                    {{/figwheel-hook?}}]
                        :env {:production true}
                        :aot :all
                        :omit-source true}})

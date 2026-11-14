@@ -1,7 +1,8 @@
-{:lein         {:profile "+shadow-cljs"}
+{:lein         true
  :builds       {:app {:target     :browser
                       :output-dir "resources/public/js"
                       :asset-path "/js"
-                      :modules    {:app {:init-fn {{project-ns}}.core/init!}}}}
+                      :modules    {:app {:init-fn {{project-ns}}.core/init!}}
+                      :devtools   {:preloads [devtools.preload]}}}
  :dev-http     {3000 {:root    "resources/public"
                       :handler {{project-ns}}.handler/app}}}

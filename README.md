@@ -7,7 +7,7 @@ A [Leiningen](http://leiningen.org/) template for projects using Reagent.
 A Leiningen template for a Clojure/ClojureScript app based on Reagent, with a focus on providing
 a batteries included setup for development and deployment.
 
-#### Requires JDK 1.7+
+#### Requires JDK 21+ (shadow-cljs) and Node.js
 
 ### Getting Help
 
@@ -61,7 +61,9 @@ lein new reagent <name> +figwheel
 
 ### Development mode with [shadow-cljs](https://github.com/thheller/shadow-cljs)
 
-To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) compiler run
+Projects use [shadow-cljs](https://github.com/thheller/shadow-cljs) with React 19 from npm by default
+(`+figwheel` projects use lein-cljsbuild with the cljsjs React 18 packages instead).
+To start the shadow-cljs compiler run
 ```
 npm install
 npx shadow-cljs watch app
@@ -134,7 +136,8 @@ and stopped by running:
 lein do clean, uberjar
 ```
 
-#### Building for release with [shadow-cljs](https://github.com/thheller/shadow-cljs)
+For shadow-cljs projects the uberjar build runs `npx shadow-cljs release app` (so run `npm install` first).
+To only build the JavaScript, run that command directly:
 ```
 npx shadow-cljs release app
 ```
@@ -223,7 +226,8 @@ If you feel that your customizations are general enough to be useful for others 
 
 ## Requirements
 
-* JDK 1.7+
+* JDK 21+ (required by shadow-cljs)
+* Node.js and npm (shadow-cljs projects)
 * Leiningen 2.x
 
 ## License
