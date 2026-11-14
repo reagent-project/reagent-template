@@ -1,7 +1,7 @@
 (ns {{project-ns}}.core
   (:require
    [reagent.core :as reagent :refer [atom]]
-   [reagent.dom :as rdom]
+   [reagent.dom.client :as rdomc]
    [reagent.session :as session]
    [reitit.frontend :as reitit]
    {{#clerk-hook?}}[clerk.core :as clerk]{{/clerk-hook?}}
@@ -89,8 +89,12 @@
 ;; -------------------------
 ;; Initialize app
 
+;; Created lazily on first mount, so loading this namespace without the #app
+;; element (e.g. in tests) works. defonce keeps the same root on hot reload.
+(defonce root (delay (rdomc/create-root (.getElementById js/document "app"))))
+
 (defn mount-root []
-  (rdom/render [current-page] (.getElementById js/document "app")))
+  (rdomc/render @root [current-page]))
 
 (defn init! []
   {{#clerk-hook?}}
@@ -116,7 +120,5 @@
   (accountant/dispatch-current!)
   (mount-root))
 
-{{#shadow-cljs-hook?}}
 (defn ^:dev/after-load reload! []
   (mount-root))
-{{/shadow-cljs-hook?}}

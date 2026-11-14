@@ -1,9 +1,19 @@
 {
-  "devDependencies": {
-    "shadow-cljs": "^2.16.5"
+  "scripts": {
+    "watch": "shadow-cljs watch app",
+    "release": "shadow-cljs release app"{{#test-hook?}},
+    "test": "shadow-cljs compile ci && karma start --single-run"{{/test-hook?}}
   },
-  "dependencies":{
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+  "devDependencies": {
+    {{#test-hook?}}
+    "karma": "6.4.4",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-cljs-test": "0.1.0",
+    {{/test-hook?}}
+    "shadow-cljs": "3.2.1"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   }
 }
