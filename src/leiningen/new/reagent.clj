@@ -75,10 +75,7 @@
               ["src/cljc/{{sanitized}}/util.cljc" (render "src/cljc/reagent/util.cljc" data)]
               #_["LICENSE" (render "LICENSE" data)]
               ["README.md" (render "README.md" data)]
-              [".gitignore" (render "gitignore" data)]
-             ;; Heroku support
-              ["system.properties" (render "system.properties" data)]
-              ["Procfile" (render "Procfile" data)]]
+              [".gitignore" (render "gitignore" data)]]
         args (if (test? opts)
                (conj args
                      ["test/cljs/{{sanitized}}/core_test.cljs" (render "test/cljs/reagent/core_test.cljs" data)]

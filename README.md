@@ -99,53 +99,6 @@ To only build the JavaScript, run that command directly:
 npx shadow-cljs release app
 ```
 
-### Deploying to Heroku
-
-The project generates a `system.properties` used for Heroku deployments. Make sure you have [Git](http://git-scm.com/downloads) and the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed, then simply follow the steps below.
-The uberjar build runs shadow-cljs through `npx`, so the app needs the Node.js buildpack before the Clojure one:
-
-```
-heroku buildpacks:add heroku/nodejs
-heroku buildpacks:add heroku/clojure
-```
-
-Optionally, test that your application runs locally by running.
-
-```
-lein do clean, uberjar
-heroku local
-```
-
-Now, you can initialize your git repo and commit your application.
-
-```
-git init
-git add .
-git commit -m "init"
-```
-create your app on Heroku
-
-```
-heroku create
-```
-
-optionally, create a database for the application
-
-```
-heroku addons:add heroku-postgresql
-```
-
-The connection settings can be found at your [Heroku dashboard](https://dashboard.heroku.com/apps/) under the add-ons for the app.
-
-deploy the application
-
-```
-git push heroku master
-```
-
-Your application should now be deployed to Heroku!
-For further instructions see the [official documentation](https://devcenter.heroku.com/articles/clojure).
-
 ## Contents
 
 The template packages everything you need to create a production ready ClojureScript application following current best practices. The template uses the following features and libraries:
@@ -159,7 +112,6 @@ The template packages everything you need to create a production ready ClojureSc
 * [Hiccup](https://github.com/weavejester/hiccup) - server-side HTML templating
 * [Ring](https://github.com/ring-clojure/ring) - Clojure HTTP interface
 * [Prone](https://github.com/magnars/prone) - better exception reporting middleware for Ring
-* [Heroku](https://www.heroku.com/) - the template is setup to work on Heroku out of the box, simply run `git push heroku master`
 
 ## Options
 
