@@ -4,18 +4,20 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.12.4"]
+  :dependencies [[org.clojure/clojure "1.12.6"]
                  [ring-server "0.5.0"]
                  [reagent "2.0.1"]
                  [reagent-utils "0.3.8"]
-                 [ring "1.15.3"]
-                 [ring/ring-defaults "0.7.0"]
+                 [ring "1.15.6"]
+                 [ring/ring-defaults "0.7.1"]
                  [hiccup "2.0.0"]
                  [yogthos/config "1.2.1"]
-                 [org.clojure/clojurescript "1.12.42" :scope "provided"]
-                 [metosin/reitit "0.10.0"]
+                 [org.clojure/clojurescript "1.12.145" :scope "provided"
+                  ;; shadow-cljs brings the Closure Compiler version it needs
+                  :exclusions [com.google.javascript/closure-compiler]]
+                 [metosin/reitit "0.11.0"]
                  {{#clerk-hook?}}
-                 [pez/clerk "1.0.0"]
+                 [pez/clerk "1.0.0" :exclusions [org.clojure/core.async]]
                  {{/clerk-hook?}}
                  [venantius/accountant "0.2.5" :exclusions [org.clojure/tools.reader]]]
 
@@ -56,12 +58,12 @@
 {{/sass-hook?}}
 
   :profiles {:dev {:repl-options {:init-ns {{project-ns}}.repl}
-                   :dependencies [[thheller/shadow-cljs "3.2.1"]
+                   :dependencies [[thheller/shadow-cljs "3.5.14"]
                                   [binaryage/devtools "1.0.7"]
                                   [ring/ring-mock "0.6.2"]
-                                  [ring/ring-devel "1.15.3"]
+                                  [ring/ring-devel "1.15.6"]
                                   [prone "2021-04-23"]
-                                  [nrepl "1.5.2"]
+                                  [nrepl "1.8.0"]
                                   {{#cider-hook?}}
                                   ;; shadow-cljs adds the CIDER middleware to its nREPL server when these are on the classpath
                                   [cider/cider-nrepl "0.64.1"]
@@ -69,7 +71,7 @@
                                   {{/cider-hook?}}
                                   [pjstadig/humane-test-output "0.11.0"]{{#less-or-sass-hook?}}
                                   ;; To silence warnings from less4clj/sass4clj dependencies about missing logger implementation
-                                  [org.slf4j/slf4j-nop "2.0.17"]{{/less-or-sass-hook?}}]
+                                  [org.slf4j/slf4j-nop "2.0.20"]{{/less-or-sass-hook?}}]
 
                    :source-paths ["dev"]
 {{#less-or-sass-hook?}}
