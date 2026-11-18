@@ -1,7 +1,7 @@
 (ns {{project-ns}}.handler
   (:require
    [reitit.ring :as reitit-ring]
-   [{{project-ns}}.middleware :refer [middleware]]
+   [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
    [hiccup.page :refer [include-js include-css html5]]
    [config.core :refer [env]]))
 
@@ -30,6 +30,13 @@
   {:status 200
    :headers {"Content-Type" "text/html"}
    :body (loading-page)})
+
+;; prone and ring-devel are only on the classpath in the :dev profile, so the
+;; dev middleware is loaded at runtime instead of required in the ns form.
+(def middleware
+  (cond-> [#(wrap-defaults % site-defaults)]
+    (env :dev) (into [@(requiring-resolve 'prone.middleware/wrap-exceptions)
+                      @(requiring-resolve 'ring.middleware.reload/wrap-reload)])))
 
 (def app
   (reitit-ring/ring-handler

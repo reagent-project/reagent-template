@@ -1,0 +1,3 @@
+;; Read by config.core (yogthos/config). The dev folder is only on the classpath
+;; in the :dev profile, so (env :dev) is true in development and nil in the uberjar.
+{:dev true}

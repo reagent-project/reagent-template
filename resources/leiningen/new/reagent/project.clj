@@ -21,8 +21,7 @@
 
   :jvm-opts ["-Xmx1G"]
 
-  :plugins [[lein-environ "1.2.0"]
-            [lein-shell "0.5.0"]
+  :plugins [[lein-shell "0.5.0"]
             [lein-asset-minifier "0.5.2"
              :exclusions [org.clojure/clojure]]]
 
@@ -72,21 +71,17 @@
                                   ;; To silence warnings from less4clj/sass4clj dependencies about missing logger implementation
                                   [org.slf4j/slf4j-nop "2.0.17"]{{/less-or-sass-hook?}}]
 
-                   :source-paths ["env/dev/clj"]
+                   :source-paths ["dev"]
 {{#less-or-sass-hook?}}
                    :plugins [{{#less-hook?}}[deraen/lein-less4clj "0.8.0"]{{/less-hook?}}{{#sass-hook?}}
                              [deraen/lein-sass4clj "0.7.0"]{{/sass-hook?}}]
 {{/less-or-sass-hook?}}
 
                    :injections [(require 'pjstadig.humane-test-output)
-                                (pjstadig.humane-test-output/activate!)]
-
-                   :env {:dev true}}
+                                (pjstadig.humane-test-output/activate!)]}
 
              :uberjar {:hooks [minify-assets.plugin/hooks]
-                       :source-paths ["env/prod/clj"]
                        :prep-tasks ["compile"
                                     ["shell" "npx" "shadow-cljs" "release" "app"]]
-                       :env {:production true}
                        :aot :all
                        :omit-source true}})

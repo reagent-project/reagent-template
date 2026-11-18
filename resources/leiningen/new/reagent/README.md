@@ -8,6 +8,46 @@ This is the {{name}} project.
 * [Node.js](https://nodejs.org/) and npm
 * [Leiningen](https://leiningen.org/) 2.x
 
+## Project structure
+
+The app has two parts: a ClojureScript frontend, which runs in the browser and renders the
+UI with Reagent, and a small Clojure backend, which runs on the JVM and serves the HTML page and
+static files. The source folders are split by which side the code runs on:
+
+| Path | Contents |
+|------|----------|
+| `src/clj/{{sanitized}}/` | Clojure code that runs on the server (JVM) |
+| `src/clj/{{sanitized}}/handler.clj` | Ring handler: server routes, middleware and the HTML page that loads the app |
+| `src/clj/{{sanitized}}/server.clj` | `-main` entry point that starts Jetty when running the uberjar |
+| `src/cljs/{{sanitized}}/` | ClojureScript code that runs in the browser |
+| `src/cljs/{{sanitized}}/core.cljs` | Reagent components, client-side routes and the `init!` entry point |
+| `src/cljc/{{sanitized}}/` | Shared code, compiled for both the server and the browser |
+| `dev/` | Code and config only on the classpath in development (the `:dev` profile) |
+| `dev/config.edn` | Sets `:dev true`, read through `config.core/env` |
+| `dev/{{sanitized}}/repl.clj` | REPL helpers `start-server` and `stop-server` |
+| `resources/public/` | Static files served as-is, such as `css/site.css` |
+| `resources/public/js/` | JavaScript compiled by shadow-cljs (generated, not committed) |
+{{#test-hook?}}| `test/cljs/{{sanitized}}/` | ClojureScript tests |
+| `karma.conf.js` | Karma config for running the tests in headless Chrome |
+{{/test-hook?}}{{#less-hook?}}| `src/less/` | Less sources, compiled to `resources/public/css` |
+{{/less-hook?}}{{#sass-hook?}}| `src/sass/` | Sass sources, compiled to `resources/public/css` |
+{{/sass-hook?}}| `project.clj` | Leiningen config: Clojure dependencies, profiles and the uberjar build |
+| `shadow-cljs.edn` | ClojureScript builds and the development web server |
+| `package.json` | npm dependencies (React, shadow-cljs) and scripts |
+
+Namespaces map to file paths, with dashes in names becoming underscores in paths: the
+namespace `{{project-ns}}.core` lives in `src/cljs/{{sanitized}}/core.cljs`.
+
+Code in `.cljc` files can be used from both `.clj` and `.cljs` namespaces, which makes it the place
+for things such as validation or formatting that both sides need. Use
+[reader conditionals](https://clojure.org/guides/reader_conditionals) (`#?(:clj ... :cljs ...)`)
+for the parts that differ between the platforms.
+
+`(env :dev)` from [config](https://github.com/yogthos/config) is true in development because
+`dev/config.edn` is then on the classpath. The handler uses it to add [Prone](https://github.com/magnars/prone)
+error pages and code reloading. Those libraries are dev-only dependencies, so the handler loads
+them with `requiring-resolve` only in development.
+
 ## Development mode
 
 To start the [shadow-cljs](https://github.com/thheller/shadow-cljs) compiler, navigate to the
