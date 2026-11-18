@@ -9,6 +9,13 @@ a batteries included setup for development and deployment.
 
 #### Requires JDK 21+ (shadow-cljs) and Node.js
 
+### What's new in 1.0
+
+Generated projects use [Reagent](https://github.com/reagent-project/reagent) 2.0.1 with React 19 from npm,
+built with [shadow-cljs](https://github.com/thheller/shadow-cljs). Figwheel, lein-cljsbuild, the cljsjs React
+packages and Heroku support were removed, along with the `+figwheel`, `+spec` and `+devcards` options.
+See the [changelog](CHANGELOG.md) for the full list.
+
 ### Getting Help
 
 For any questions or discussion please come join us in the #reagent channel on the [Clojurians Slack](http://clojurians.net/).
@@ -106,7 +113,7 @@ npx shadow-cljs release app
 
 The template packages everything you need to create a production ready ClojureScript application following current best practices. The template uses the following features and libraries:
 
-* [Reagent](https://github.com/reagent-project/reagent) - ClojureScript interface to Facebook's React
+* [Reagent](https://github.com/reagent-project/reagent) 2.0.1 - ClojureScript interface to React (React 19)
 * [shadow-cljs](https://github.com/thheller/shadow-cljs) - ClojureScript compiler with npm support and hot reload
 * [reagent-utils](https://github.com/reagent-project/reagent-utils) - utilities such as session and cookie management
 * [Reitit](https://metosin.github.io/reitit/) - Routing, server and client side
