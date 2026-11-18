@@ -10,7 +10,7 @@
     "karma-chrome-launcher": "3.2.0",
     "karma-cljs-test": "0.1.0",
     {{/test-hook?}}
-    "shadow-cljs": "3.2.1"
+    "shadow-cljs": "3.5.14"
   },
   "dependencies": {
     "react": "^19.3.0",
