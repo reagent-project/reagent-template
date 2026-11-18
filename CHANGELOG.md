@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (2016-11-18)
+## 1.0.0 (2026-11-18)
 
 The first release since 0.10.57 (June 2022). Generated projects now use
 shadow-cljs only, with Reagent 2 and React 19 from npm.
