@@ -29,9 +29,11 @@ has_opt() {
 check_urls() {
   local base=$1 pid=$2 path status
   shift 2
+  local ready=
   for _ in $(seq 120); do
     # 7: connection refused, i.e. not listening yet
-    if curl -s -o /dev/null "$base/"; [[ $? != 7 ]]; then
+    if curl -s --max-time 10 -o /dev/null "$base/"; [[ $? != 7 ]]; then
+      ready=1
       break
     fi
     if ! kill -0 "$pid" 2>/dev/null; then
@@ -40,8 +42,12 @@ check_urls() {
     fi
     sleep 1
   done
+  if [[ -z $ready ]]; then
+    echo "Server did not start listening on $base within 120 s" >&2
+    return 1
+  fi
   for path in "$@"; do
-    status=$(curl -s -o /dev/null -w '%{http_code}' "$base$path" || true)
+    status=$(curl -s --max-time 30 -o /dev/null -w '%{http_code}' "$base$path" || true)
     echo "GET $base$path -> $status"
     if [[ $status != 200 ]]; then
       return 1
