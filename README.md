@@ -147,6 +147,16 @@ lein install
 
 If you feel that your customizations are general enough to be useful for others then please consider making a pull request.
 
+To test a change, generate a project from your local copy and build it the same way CI does:
+
+```
+scripts/test-template.sh +test
+```
+
+This installs the template, generates `target/generated/myapp-test` with the given options, builds the JavaScript
+(warnings as errors), runs the tests with `+test` (needs Chrome), builds the uberjar and checks that both the uberjar
+and the shadow-cljs dev server serve the pages. It uses ports 3000, 3100 and 9630.
+
 ## Requirements
 
 * JDK 21+ (required by shadow-cljs)
