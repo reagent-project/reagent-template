@@ -12,7 +12,7 @@ jobs:
   generate:
     # Generates a project from the template and checks that it builds, its
     # tests pass and both the uberjar and the shadow-cljs dev server serve
-    # the pages. See scripts/test-template.sh.
+    # the pages. See scripts/test-template.clj.
     strategy:
       fail-fast: false
       matrix:
@@ -57,6 +57,7 @@ jobs:
       with:
         # 2.13.x tags on the GitHub mirror have a stale bin/lein (2.12.1-SNAPSHOT)
         lein: 2.12.0
+        bb: 1.13.229
     - name: Setup Node.js
       uses: actions/setup-node@v7
       with:
@@ -65,4 +66,4 @@ jobs:
         # Generated projects have no package-lock.json
         cache-dependency-path: resources/leiningen/new/reagent/package.json
     - name: Generate and build
-      run: ./scripts/test-template.sh ${{ matrix.options }}
+      run: ./scripts/test-template.clj ${{ matrix.options }}
