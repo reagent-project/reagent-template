@@ -157,4 +157,4 @@ If you feel that your customizations are general enough to be useful for others 
 
 Copyright © 2015 Dmitri Sotnikov
 
-Distributed under the The MIT License (MIT).
+Distributed under the MIT License (MIT).
