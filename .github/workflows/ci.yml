@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    # Generates a project from the template and checks that it builds, its
+    # tests pass and both the uberjar and the shadow-cljs dev server serve
+    # the pages. See scripts/test-template.clj.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: default
+            options: ""
+          - id: test
+            options: "+test"
+          - id: test-cider
+            options: "+test +cider"
+          - id: less
+            options: "+less"
+          - id: sass
+            options: "+sass"
+          - id: no-clerk
+            options: "-clerk"
+
+    name: lein new reagent myapp ${{ matrix.options }}
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+    - uses: actions/checkout@v7
+    - name: Cache dependencies
+      uses: actions/cache@v6
+      with:
+        path: ~/.m2/repository
+        # The generated project's dependencies come from the template's
+        # project.clj, and differ between the options.
+        key: ${{ runner.os }}-m2-${{ matrix.id }}-${{ hashFiles('resources/leiningen/new/reagent/project.clj') }}
+        restore-keys: |
+          ${{ runner.os }}-m2-${{ matrix.id }}-
+          ${{ runner.os }}-m2-
+    - name: Setup Java
+      uses: actions/setup-java@v6
+      with:
+        distribution: temurin
+        java-version: 21
+    - name: Setup Clojure
+      uses: DeLaGuardo/setup-clojure@13.7.0
+      with:
+        # 2.13.x tags on the GitHub mirror have a stale bin/lein (2.12.1-SNAPSHOT)
+        lein: 2.12.0
+        bb: 1.13.229
+    - name: Setup Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version: 24
+        cache: npm
+        # Generated projects have no package-lock.json
+        cache-dependency-path: resources/leiningen/new/reagent/package.json
+    - name: Generate and build
+      run: ./scripts/test-template.clj ${{ matrix.options }}
